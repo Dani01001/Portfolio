@@ -1,9 +1,12 @@
 'use strict';
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 /* ============================================================
    1. CANVAS DE PARTÍCULAS (red de nodos)
    ============================================================ */
 (function initParticles() {
+  if (prefersReducedMotion) return;
   const canvas = document.getElementById('particleCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -261,6 +264,7 @@
    5. TILT 3D EN TARJETAS DE PROYECTO
    ============================================================ */
 (function initCardTilt() {
+  if (prefersReducedMotion) return;
   const cards = document.querySelectorAll('.project-card');
 
   cards.forEach(card => {

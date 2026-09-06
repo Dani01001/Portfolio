@@ -52,9 +52,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
   scroll-padding-top: 80px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 body {
@@ -1074,4 +1076,26 @@ button   { cursor: pointer; font-family: inherit; }
   outline: 2px solid var(--cyan);
   outline-offset: 3px;
   border-radius: 3px;
+}
+
+/* ============================================================
+   PREFERS-REDUCED-MOTION (accesibilidad)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js-fade {
+    opacity: 1;
+    transform: none;
+  }
+  .hero__canvas {
+    display: none;
+  }
+  .project-card {
+    transform: none !important;
+  }
 }

@@ -6,19 +6,64 @@
   <meta name="description" content="Jesús Daniel Amarilla Nuñez — Técnico en Informática y Desarrollador Frontend Junior. HTML, CSS, JavaScript, React, Next.js. Capiatá, Paraguay." />
   <meta name="keywords" content="desarrollador web, frontend, React, Next.js, TypeScript, HTML, CSS, JavaScript, soporte TI, Paraguay" />
   <meta name="author" content="Jesús Daniel Amarilla Nuñez" />
+  <link rel="canonical" href="https://portfolio-jda.vercel.app/" />
+  <meta name="theme-color" content="#0a0a0c" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Jesús Amarilla — Portfolio" />
   <meta property="og:title" content="Jesús Amarilla · Técnico en Informática &amp; Dev Frontend Junior" />
   <meta property="og:description" content="Construyo interfaces reales con HTML, CSS, JS y React. Técnico egresado 2025. Capiatá, Paraguay." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://portfolio-jda.vercel.app/" />
+  <meta property="og:locale" content="es_PY" />
+  <meta property="og:image" content="https://portfolio-jda.vercel.app/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Jesús Daniel Amarilla Nuñez — Técnico en Informática y Dev Frontend Junior" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jesús Amarilla · Técnico en Informática &amp; Dev Frontend Junior" />
+  <meta name="twitter:description" content="Construyo interfaces reales con HTML, CSS, JS y React. Técnico egresado 2025. Capiatá, Paraguay." />
+  <meta name="twitter:image" content="https://portfolio-jda.vercel.app/og-image.jpg" />
+
   <title>Jesús Amarilla · Técnico en Informática &amp; Dev Frontend Junior</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jesús Daniel Amarilla Nuñez",
+    "url": "https://portfolio-jda.vercel.app/",
+    "image": "https://portfolio-jda.vercel.app/profile.jpg",
+    "jobTitle": "Desarrollador Frontend Junior",
+    "description": "Técnico en Informática (MEC Paraguay, 2025) especializado en desarrollo Frontend con HTML, CSS, JavaScript y React/Next.js.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Capiatá",
+      "addressCountry": "PY"
+    },
+    "sameAs": [
+      "https://github.com/Dani01001",
+      "https://www.linkedin.com/in/jesus-amarilla-dn"
+    ],
+    "knowsAbout": ["HTML", "CSS", "JavaScript", "React", "Next.js", "TypeScript", "Tailwind CSS", "Git"]
+  }
+  </script>
 </head>
 <body>
 
   <!-- ===================== NAVEGACIÓN ===================== -->
-  <nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
+  <nav class="nav" id="nav" aria-label="Navegación principal">
     <div class="nav__container">
       <a href="#hero" class="nav__logo" aria-label="Inicio">
         <span class="nav__logo-bracket">[</span>
@@ -31,7 +76,7 @@
         <li><a href="#proyectos" class="nav__link">Proyectos</a></li>
         <li><a href="#contacto"  class="nav__link nav__link--cta">Contacto</a></li>
       </ul>
-      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <button type="button" class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -41,7 +86,7 @@
 
   <!-- Menú móvil -->
   <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
-    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Cerrar menú">✕</button>
+    <button type="button" class="mobile-menu__close" id="mobileMenuClose" aria-label="Cerrar menú">✕</button>
     <ul class="mobile-menu__links" role="list">
       <li><a href="#sobre-mi"  class="mobile-menu__link">Sobre mí</a></li>
       <li><a href="#stack"     class="mobile-menu__link">Stack</a></li>
@@ -99,7 +144,7 @@
       </div>
 
       <!-- Badges de info rápida -->
-      <div class="hero__badges" aria-label="Información rápida">
+      <div class="hero__badges" role="group" aria-label="Información rápida">
         <span class="badge">📍 Capiatá, Paraguay</span>
         <span class="badge">🎓 Ing. Informática — en curso</span>
         <span class="badge badge--active">🟢 Disponible para proyectos</span>
@@ -125,8 +170,8 @@
         <!-- Avatar -->
         <div class="about__avatar-col">
           <div class="about__avatar-wrap">
-            <div class="about__avatar" id="avatarEl" aria-label="Foto de perfil de Jesús Daniel Amarilla">
-              <img src="profile.jpg" alt="Jesús Daniel Amarilla" class="about__photo" id="avatarPhoto" onerror="this.style.display='none';document.getElementById('avatarInitials').style.display='';" />
+            <div class="about__avatar" id="avatarEl">
+              <img src="profile.jpg" alt="Jesús Daniel Amarilla" class="about__photo" id="avatarPhoto" width="480" height="480" loading="lazy" decoding="async" onerror="this.style.display='none';document.getElementById('avatarInitials').style.display='';" />
               <span class="about__initials" id="avatarInitials" style="display:none">JDA</span>
             </div>
             <div class="about__ring" aria-hidden="true"></div>
@@ -515,7 +560,7 @@
               </div>
               <div class="contact__row">
                 <dt class="contact__key">linkedin</dt>
-                <dd><span class="contact__sep"> → </span><a href="https://www.linkedin.com/in/jes%C3%BAs-daniel-amarilla-nu%C3%B1ez-724051410/" target="_blank" rel="noopener noreferrer" class="contact__val">linkedin.com/in/jesús-daniel…</a></dd>
+                <dd><span class="contact__sep"> → </span><a href="https://www.linkedin.com/in/jesus-amarilla-dn" target="_blank" rel="noopener noreferrer" class="contact__val">linkedin.com/in/jesus-amarilla-dn</a></dd>
               </div>
               <div class="contact__row">
                 <dt class="contact__key">ubicación</dt>
@@ -539,7 +584,7 @@
               </svg>
               GitHub
             </a>
-            <a href="https://www.linkedin.com/in/jes%C3%BAs-daniel-amarilla-nu%C3%B1ez-724051410/" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
+            <a href="https://www.linkedin.com/in/jesus-amarilla-dn" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
@@ -552,7 +597,7 @@
   </section>
 
   <!-- ===================== FOOTER ===================== -->
-  <footer class="footer" role="contentinfo">
+  <footer class="footer">
     <div class="container">
       <div class="footer__inner">
         <span class="footer__name">
