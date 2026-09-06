@@ -180,6 +180,10 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   const toggle     = document.getElementById('navToggle');
   const menu       = document.getElementById('mobileMenu');
   const closeBtn   = document.getElementById('mobileMenuClose');
+  const skipLink   = document.querySelector('.skip-link');
+  const main       = document.getElementById('main');
+  const footer     = document.querySelector('.footer');
+  const inertTargets = [skipLink, nav, main, footer].filter(Boolean);
   const sections   = Array.from(document.querySelectorAll('section[id]'));
   const navLinks   = Array.from(document.querySelectorAll('.nav__link:not(.nav__link--cta)'));
   let menuOpen     = false;
@@ -203,32 +207,58 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  /* Mobile menu */
+  /* Mobile menu — con trampa de foco real vía "inert" */
   function openMenu()  {
     menuOpen = true;
     menu.classList.add('open');
     toggle.classList.add('open');
     toggle.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    inertTargets.forEach(el => { el.inert = true; });
+    if (closeBtn) closeBtn.focus();
   }
-  function closeMenu() {
+  function closeMenu(returnFocus = true) {
     menuOpen = false;
     menu.classList.remove('open');
     toggle.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    inertTargets.forEach(el => { el.inert = false; });
+    if (returnFocus) toggle.focus();
   }
 
   toggle.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  if (closeBtn) closeBtn.addEventListener('click', () => closeMenu());
 
   menu.addEventListener('click', e => {
-    if (e.target.classList.contains('mobile-menu__link')) closeMenu();
+    /* Al navegar por un link, no devolvemos el foco al botón hamburguesa:
+       dejamos que la navegación a la sección siga su curso natural. */
+    if (e.target.classList.contains('mobile-menu__link')) closeMenu(false);
   });
 
-  /* Cerrar con Escape */
+  /* Cerrar con Escape + envolver el foco (Tab / Shift+Tab) dentro del menú */
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && menuOpen) closeMenu();
+    if (!menuOpen) return;
+
+    if (e.key === 'Escape') {
+      closeMenu();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusable = Array.from(menu.querySelectorAll('button, a[href]'));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 })();
 
@@ -288,12 +318,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 
 /* ============================================================
-   7. AVATAR — foto fija (sin interacción)
-   ============================================================ */
-
-
-/* ============================================================
-   8. SMOOTH SCROLL (fallback para browsers sin soporte CSS)
+   6. SMOOTH SCROLL (fallback para browsers sin soporte CSS)
    ============================================================ */
 (function initSmoothScroll() {
   if (CSS.supports('scroll-behavior', 'smooth')) return;

@@ -18,7 +18,7 @@
   /* Texto */
   --text-hi:       #e8edf5;
   --text-mid:      #8b96aa;
-  --text-lo:       #444c5e;
+  --text-lo:       #697592;
 
   /* Acentos */
   --cyan:          #00f0ff;
@@ -141,6 +141,29 @@ button   { cursor: pointer; font-family: inherit; }
   color: var(--cyan);
   border-color: var(--cyan);
   transform: translateY(-2px);
+}
+
+/* ============================================================
+   SKIP LINK (accesibilidad — navegación por teclado)
+   ============================================================ */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 200;
+  background: var(--cyan);
+  color: var(--bg-base);
+  padding: .7rem 1.2rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  font-weight: 600;
+  transition: top var(--t-fast);
+}
+.skip-link:focus {
+  top: 1rem;
+  outline: 2px solid var(--text-hi);
+  outline-offset: 3px;
 }
 
 /* ============================================================
@@ -701,7 +724,7 @@ button   { cursor: pointer; font-family: inherit; }
    ============================================================ */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 1.15rem;
 }
 
@@ -718,7 +741,6 @@ button   { cursor: pointer; font-family: inherit; }
   will-change: transform;
 }
 .project-card--featured {
-  grid-column: 1 / -1;
   background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0,240,255,.025) 100%);
 }
 .project-card:hover {
@@ -757,11 +779,6 @@ button   { cursor: pointer; font-family: inherit; }
   font-size: .65rem;
   padding: .22rem .6rem;
   border-radius: 100px;
-}
-.proj-badge--featured {
-  background: var(--cyan-dim);
-  color: var(--cyan);
-  border: 1px solid rgba(0,240,255,.2);
 }
 .proj-badge--wip {
   background: var(--orange-dim);
@@ -833,6 +850,24 @@ button   { cursor: pointer; font-family: inherit; }
 }
 .project-card__solution strong { color: var(--text-hi); }
 
+.project-card__demonstrates {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  padding: .7rem .9rem;
+  background: rgba(155,114,255,.05);
+  border-radius: 6px;
+  border-left: 2px solid var(--purple);
+  margin-bottom: .9rem;
+}
+.demonstrates-label {
+  display: block;
+  color: var(--purple);
+  font-size: .7rem;
+  margin-bottom: .4rem;
+}
+
 .project-card__impact {
   display: flex;
   flex-wrap: wrap;
@@ -868,39 +903,6 @@ button   { cursor: pointer; font-family: inherit; }
   border: 1px solid var(--border-soft);
   padding: .22rem .6rem;
   border-radius: 4px;
-}
-.tag--placeholder { color: var(--text-lo); border-style: dashed; }
-
-/* ── Card "Siempre construyendo" ─────────────── */
-.project-card--building {
-  border-color: var(--border-soft);
-  background: linear-gradient(135deg, var(--bg-card) 0%, #0d0d16 100%);
-}
-.project-card--building:hover {
-  border-color: rgba(0, 240, 255, 0.25);
-}
-.building__title {
-  background: linear-gradient(90deg, var(--cyan), #a78bfa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.building__cursor {
-  -webkit-text-fill-color: var(--cyan);
-  animation: blink-cur 1s step-end infinite;
-}
-@keyframes blink-cur {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
-}
-.building__quote {
-  font-family: var(--font-mono);
-  font-size: .82rem;
-  color: var(--text-lo);
-  border-left: 2px solid var(--border-mid);
-  padding-left: .8rem;
-  margin-top: .5rem;
-  font-style: italic;
 }
 .project-card__cta {
   font-family: var(--font-mono);
@@ -1003,7 +1005,7 @@ button   { cursor: pointer; font-family: inherit; }
 .footer__stack {
   font-family: var(--font-mono);
   font-size: .73rem;
-  color: var(--text-lo);
+  color: var(--text-mid);
 }
 
 /* ============================================================
@@ -1047,10 +1049,6 @@ button   { cursor: pointer; font-family: inherit; }
   /* Stack */
   .stack-grid { grid-template-columns: 1fr; }
 
-  /* Proyectos */
-  .projects-grid        { grid-template-columns: 1fr; }
-  .project-card--featured { grid-column: 1; }
-
   /* Contacto */
   .contact__body    { padding: 1.25rem; }
   .contact__actions { padding: 1.25rem; flex-direction: column; }
@@ -1067,6 +1065,9 @@ button   { cursor: pointer; font-family: inherit; }
   .project-card__footer { flex-direction: column; align-items: flex-start; }
 
   .about__avatar-col { flex-direction: column; }
+
+  /* Evita overflow horizontal: el texto largo del botón "ghost" ya no fuerza una sola línea */
+  .btn--ghost { white-space: normal; text-align: center; }
 }
 
 /* ============================================================
