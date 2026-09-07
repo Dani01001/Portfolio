@@ -93,7 +93,12 @@
 
   <!-- Menú móvil -->
   <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
-    <button type="button" class="mobile-menu__close" id="mobileMenuClose" aria-label="Cerrar menú">✕</button>
+    <button type="button" class="mobile-menu__close" id="mobileMenuClose" aria-label="Cerrar menú">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
     <ul class="mobile-menu__links" role="list">
       <li><a href="#sobre-mi"    class="mobile-menu__link">Sobre mí</a></li>
       <li><a href="#experiencia" class="mobile-menu__link">Experiencia</a></li>
@@ -155,10 +160,33 @@
 
       <!-- Badges de info rápida -->
       <div class="hero__badges" role="group" aria-label="Información rápida">
-        <span class="badge">📍 Capiatá, Paraguay</span>
-        <span class="badge">🎓 Ing. Informática — en curso</span>
-        <span class="badge">🛠️ 220 hs de soporte TI corporativo</span>
-        <span class="badge badge--active">🟢 Disponible para nuevas oportunidades</span>
+        <span class="badge">
+          <svg class="badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Capiatá, Paraguay
+        </span>
+        <span class="badge">
+          <svg class="badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="12 4 22 9 12 14 2 9"/>
+            <path d="M6 11.5V16c0 1.66 2.69 3 6 3s6-1.34 6-3v-4.5"/>
+            <line x1="22" y1="9" x2="22" y2="14"/>
+          </svg>
+          Ing. Informática — en curso
+        </span>
+        <span class="badge">
+          <svg class="badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="13" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          220 hs de soporte TI corporativo
+        </span>
+        <span class="badge badge--active">
+          <span class="badge__dot" aria-hidden="true"></span>
+          Disponible para nuevas oportunidades
+        </span>
       </div>
     </div>
 
@@ -219,21 +247,27 @@
 
           <div class="about__highlights" role="list">
             <div class="highlight" role="listitem">
-              <span class="highlight__icon" aria-hidden="true">⚡</span>
+              <span class="highlight__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 4 14 11 14 10 22 20 10 13 10 13 2"/></svg>
+              </span>
               <div>
                 <strong>Frontend — HTML/CSS/JS fuerte</strong>
                 <span>Arquitectura de estado real en JS vanilla (IR Barber Supply); React y Next.js en aprendizaje activo</span>
               </div>
             </div>
             <div class="highlight" role="listitem">
-              <span class="highlight__icon" aria-hidden="true">🛠️</span>
+              <span class="highlight__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </span>
               <div>
                 <strong>Experiencia TI real</strong>
                 <span>220 hs en Distribuidora La Policlínica S.A.: redes, hardware y soporte técnico</span>
               </div>
             </div>
             <div class="highlight" role="listitem">
-              <span class="highlight__icon" aria-hidden="true">🚀</span>
+              <span class="highlight__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 5"/><polyline points="21 11 21 5 15 5"/></svg>
+              </span>
               <div>
                 <strong>Proyectos reales, no solo tutoriales</strong>
                 <span>SERCAP live en Vercel · IR Barber Supply (prototipo funcional) · ReservaYa y FortBox en equipo</span>
@@ -243,7 +277,9 @@
 
           <!-- Cert -->
           <div class="about__cert">
-            <span class="about__cert-icon" aria-hidden="true">📋</span>
+            <span class="about__cert-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </span>
             <div>
               <strong>Técnico en Informática — MEC Paraguay · Egresado 2025</strong>
               <span>Título oficial habilitante · Salesianito, Asunción · Promedio 4.5/5.0</span>
@@ -302,7 +338,9 @@
         <!-- HTML/CSS — Fuerte -->
         <div class="stack-card">
           <div class="stack-card__header">
-            <span class="stack-card__icon" aria-hidden="true">🎨</span>
+            <span class="stack-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 3 12 8 20"/><polyline points="16 4 21 12 16 20"/></svg>
+            </span>
             <h3 class="stack-card__title">HTML &amp; CSS</h3>
             <span class="stack-card__badge badge--strong">Fuerte</span>
           </div>
@@ -317,7 +355,9 @@
         <!-- JavaScript — Fuerte -->
         <div class="stack-card">
           <div class="stack-card__header">
-            <span class="stack-card__icon" aria-hidden="true">⚡</span>
+            <span class="stack-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 4 14 11 14 10 22 20 10 13 10 13 2"/></svg>
+            </span>
             <h3 class="stack-card__title">JavaScript</h3>
             <span class="stack-card__badge badge--strong">Fuerte</span>
           </div>
@@ -332,7 +372,9 @@
         <!-- React / Next / TS — Aprendiendo -->
         <div class="stack-card">
           <div class="stack-card__header">
-            <span class="stack-card__icon" aria-hidden="true">🔧</span>
+            <span class="stack-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </span>
             <h3 class="stack-card__title">React, Next.js &amp; TypeScript</h3>
             <span class="stack-card__badge badge--theory">Aprendiendo</span>
           </div>
@@ -347,7 +389,9 @@
         <!-- Backend & BD — En práctica -->
         <div class="stack-card">
           <div class="stack-card__header">
-            <span class="stack-card__icon" aria-hidden="true">⚙️</span>
+            <span class="stack-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="6" rx="1"/><rect x="4" y="14" width="16" height="6" rx="1"/><circle cx="8" cy="7" r=".6" fill="currentColor" stroke="none"/><circle cx="8" cy="17" r=".6" fill="currentColor" stroke="none"/></svg>
+            </span>
             <h3 class="stack-card__title">Backend &amp; Bases de datos</h3>
             <span class="stack-card__badge badge--mid">En práctica</span>
           </div>
@@ -362,9 +406,11 @@
         <!-- Soporte TI — Experiencia real -->
         <div class="stack-card">
           <div class="stack-card__header">
-            <span class="stack-card__icon" aria-hidden="true">🖥️</span>
+            <span class="stack-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </span>
             <h3 class="stack-card__title">Soporte TI &amp; Redes</h3>
-            <span class="stack-card__badge badge--strong">Exp. real ✓</span>
+            <span class="stack-card__badge badge--strong">Exp. real <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
           </div>
           <div class="tech-tags">
             <span class="tech-tag">Redes LAN</span>
@@ -377,7 +423,9 @@
         <!-- Herramientas & Sistemas — Manejando -->
         <div class="stack-card">
           <div class="stack-card__header">
-            <span class="stack-card__icon" aria-hidden="true">🛠️</span>
+            <span class="stack-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="2" fill="currentColor" stroke="none"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="15" cy="12" r="2" fill="currentColor" stroke="none"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="7" cy="18" r="2" fill="currentColor" stroke="none"/></svg>
+            </span>
             <h3 class="stack-card__title">Herramientas &amp; Sistemas</h3>
             <span class="stack-card__badge badge--mid">Manejando</span>
           </div>
@@ -458,9 +506,9 @@
             </div>
 
             <div class="project-card__impact" role="list" aria-label="Características del proyecto">
-              <span class="impact-tag" role="listitem">✓ Diseño moderno y responsivo</span>
-              <span class="impact-tag" role="listitem">✓ Sin librerías externas</span>
-              <span class="impact-tag" role="listitem">✓ Deployado en Vercel</span>
+              <span class="impact-tag" role="listitem"><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Diseño moderno y responsivo</span>
+              <span class="impact-tag" role="listitem"><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Sin librerías externas</span>
+              <span class="impact-tag" role="listitem"><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Deployado en Vercel</span>
             </div>
           </div>
 
@@ -515,9 +563,9 @@
             </div>
 
             <div class="project-card__impact" role="list" aria-label="Características del proyecto">
-              <span class="impact-tag" role="listitem">✓ Catálogo con filtros por categoría</span>
-              <span class="impact-tag" role="listitem">✓ Carrito con reglas de precio dual</span>
-              <span class="impact-tag" role="listitem">✓ Estado sincronizado entre pestañas</span>
+              <span class="impact-tag" role="listitem"><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Catálogo con filtros por categoría</span>
+              <span class="impact-tag" role="listitem"><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Carrito con reglas de precio dual</span>
+              <span class="impact-tag" role="listitem"><svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Estado sincronizado entre pestañas</span>
             </div>
           </div>
 
@@ -583,11 +631,11 @@
               </div>
               <div class="contact__row">
                 <dt class="contact__key">ubicación</dt>
-                <dd><span class="contact__sep"> → </span><span class="contact__val contact__val--plain">Capiatá, Paraguay 🇵🇾</span></dd>
+                <dd><span class="contact__sep"> → </span><span class="contact__val contact__val--plain">Capiatá, Paraguay</span></dd>
               </div>
               <div class="contact__row">
                 <dt class="contact__key">disponible</dt>
-                <dd><span class="contact__sep"> → </span><span class="contact__val contact__val--green">true ✓</span></dd>
+                <dd><span class="contact__sep"> → </span><span class="contact__val contact__val--green">true <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></dd>
               </div>
             </dl>
           </div>
@@ -625,6 +673,7 @@
           <span class="footer__comment">// </span>Jesús Daniel Amarilla Nuñez &middot; 2026
         </span>
         <span class="footer__stack">Hecho con HTML, CSS &amp; JS nativo · Sin librerías pesadas</span>
+        <a href="legal.html" class="footer__stack">Aviso legal y privacidad</a>
       </div>
     </div>
   </footer>
