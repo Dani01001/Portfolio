@@ -291,10 +291,13 @@ code     {
 .mobile-menu__close {
   position: absolute;
   top: 1.5rem; right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   color: var(--text-mid);
-  font-size: 1.4rem;
+  padding: .4rem;
   transition: color var(--t-fast);
 }
 .mobile-menu__close:hover { color: var(--cyan); }
@@ -446,6 +449,9 @@ code     {
 /* Badges */
 .hero__badges { display: flex; flex-wrap: wrap; gap: .65rem; }
 .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
   font-family: var(--font-mono);
   font-size: .73rem;
   color: var(--text-mid);
@@ -453,6 +459,14 @@ code     {
   border: 1px solid var(--border-soft);
   padding: .32rem .72rem;
   border-radius: 100px;
+}
+.badge__icon { width: 13px; height: 13px; flex-shrink: 0; color: var(--cyan); }
+.badge__dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+  animation: dotPulse 2.2s ease-in-out infinite;
 }
 .badge--active {
   color: var(--green);
@@ -631,7 +645,8 @@ code     {
   align-items: flex-start;
   gap: .9rem;
 }
-.highlight__icon { font-size: 1.15rem; margin-top: .1rem; flex-shrink: 0; }
+.highlight__icon { display: inline-flex; margin-top: .1rem; flex-shrink: 0; color: var(--cyan); }
+.highlight__icon svg { width: 20px; height: 20px; }
 .highlight div   { display: flex; flex-direction: column; gap: .2rem; }
 .highlight strong { font-size: .9rem; color: var(--text-hi); }
 .highlight span   { font-size: .85rem; color: var(--text-mid); }
@@ -647,7 +662,8 @@ code     {
   border-left: 2px solid var(--cyan);
   border-radius: 6px;
 }
-.about__cert-icon { font-size: 1.1rem; flex-shrink: 0; }
+.about__cert-icon { display: inline-flex; flex-shrink: 0; color: var(--cyan); }
+.about__cert-icon svg { width: 20px; height: 20px; }
 .about__cert div  { display: flex; flex-direction: column; gap: .2rem; }
 .about__cert strong { font-size: .875rem; color: var(--text-hi); }
 .about__cert span   { font-size: .8rem;   color: var(--text-mid); }
@@ -780,14 +796,21 @@ code     {
   margin-bottom: 1.15rem;
   flex-wrap: wrap;
 }
-.stack-card__icon  { font-size: 1.05rem; flex-shrink: 0; }
+.stack-card__icon  { display: inline-flex; flex-shrink: 0; color: var(--cyan); }
+.stack-card__icon svg { width: 19px; height: 19px; }
 .stack-card__title { font-size: .9rem; font-weight: 600; color: var(--text-hi); flex: 1; }
 .stack-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
   font-family: var(--font-mono);
   font-size: .65rem;
   padding: .2rem .6rem;
   border-radius: 100px;
 }
+
+/* Icono de check minimalista — reemplaza el glifo ✓ en badges y tags */
+.icon-check { width: 11px; height: 11px; flex-shrink: 0; }
 .badge--strong  { background: var(--green-dim);  color: var(--green);  }
 .badge--mid     { background: var(--cyan-dim);   color: var(--cyan);   }
 .badge--theory  { background: var(--purple-dim); color: var(--purple); }
@@ -970,6 +993,9 @@ code     {
   margin-bottom: 1.1rem;
 }
 .impact-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
   font-family: var(--font-mono);
   font-size: .7rem;
   color: var(--green);
@@ -1067,7 +1093,7 @@ code     {
 .contact__val  { color: var(--text-hi); transition: color var(--t-fast); }
 .contact__val:hover { color: var(--cyan); }
 .contact__val--plain { color: var(--text-mid); }
-.contact__val--green { color: var(--green); }
+.contact__val--green { display: inline-flex; align-items: center; gap: .35rem; color: var(--green); }
 
 .contact__actions {
   display: flex;
@@ -1076,6 +1102,51 @@ code     {
   flex-wrap: wrap;
   border-top: 1px solid var(--border-subtle);
 }
+
+/* ============================================================
+   PÁGINA LEGAL
+   ============================================================ */
+.legal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  color: var(--text-mid);
+  transition: color var(--t-fast);
+}
+.legal-back svg { width: 15px; height: 15px; }
+.legal-back:hover { color: var(--cyan); }
+
+.legal-page { padding-top: calc(var(--section-py) + 3rem); }
+.legal-content { max-width: 760px; }
+
+.legal-block {
+  margin-bottom: 2.25rem;
+  padding-bottom: 2.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.legal-block:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.legal-block h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-hi);
+  letter-spacing: -.01em;
+  margin-bottom: .9rem;
+}
+.legal-block p {
+  color: var(--text-mid);
+  line-height: 1.85;
+  margin-bottom: .9rem;
+}
+.legal-block p:last-child { margin-bottom: 0; }
+.legal-block strong { color: var(--text-hi); font-weight: 600; }
+.legal-block a { color: var(--cyan); text-decoration: underline; text-underline-offset: 2px; }
+.legal-block a:hover { text-decoration: none; }
 
 /* ============================================================
    FOOTER
@@ -1102,6 +1173,8 @@ code     {
   font-size: .73rem;
   color: var(--text-mid);
 }
+a.footer__stack { transition: color var(--t-fast); }
+a.footer__stack:hover { color: var(--cyan); }
 
 /* ============================================================
    ANIMACIONES DE ENTRADA (Intersection Observer)
