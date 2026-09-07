@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jesús Daniel Amarilla Nuñez — Técnico en Informática y Desarrollador Frontend Junior. HTML, CSS, JavaScript, React, Next.js. Capiatá, Paraguay." />
-  <meta name="keywords" content="desarrollador web, frontend, React, Next.js, TypeScript, HTML, CSS, JavaScript, soporte TI, Paraguay" />
+  <meta name="description" content="Jesús Daniel Amarilla Nuñez — Frontend Developer Junior con experiencia real en soporte TI e infraestructura. HTML, CSS, JavaScript, React, Next.js. Capiatá, Paraguay." />
+  <meta name="keywords" content="desarrollador frontend junior, frontend developer, React, Next.js, JavaScript, HTML, CSS, soporte TI, Paraguay" />
   <meta name="author" content="Jesús Daniel Amarilla Nuñez" />
   <link rel="canonical" href="https://portfolio-jda.vercel.app/" />
   <meta name="theme-color" content="#0a0a0c" />
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Jesús Amarilla — Portfolio" />
-  <meta property="og:title" content="Jesús Amarilla · Técnico en Informática &amp; Dev Frontend Junior" />
-  <meta property="og:description" content="Construyo interfaces reales con HTML, CSS, JS y React. Técnico egresado 2025. Capiatá, Paraguay." />
+  <meta property="og:title" content="Jesús Amarilla · Frontend Developer Junior" />
+  <meta property="og:description" content="Construyo interfaces reales con HTML, CSS y JavaScript. Base sólida en soporte TI. Capiatá, Paraguay." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://portfolio-jda.vercel.app/" />
   <meta property="og:locale" content="es_PY" />
   <meta property="og:image" content="https://portfolio-jda.vercel.app/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Jesús Daniel Amarilla Nuñez — Técnico en Informática y Dev Frontend Junior" />
+  <meta property="og:image:alt" content="Jesús Daniel Amarilla Nuñez — Frontend Developer Junior" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Jesús Amarilla · Técnico en Informática &amp; Dev Frontend Junior" />
-  <meta name="twitter:description" content="Construyo interfaces reales con HTML, CSS, JS y React. Técnico egresado 2025. Capiatá, Paraguay." />
+  <meta name="twitter:title" content="Jesús Amarilla · Frontend Developer Junior" />
+  <meta name="twitter:description" content="Construyo interfaces reales con HTML, CSS y JavaScript. Base sólida en soporte TI. Capiatá, Paraguay." />
   <meta name="twitter:image" content="https://portfolio-jda.vercel.app/og-image.jpg" />
 
-  <title>Jesús Amarilla · Técnico en Informática &amp; Dev Frontend Junior</title>
+  <title>Jesús Amarilla · Frontend Developer Junior</title>
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
@@ -45,18 +45,22 @@
     "name": "Jesús Daniel Amarilla Nuñez",
     "url": "https://portfolio-jda.vercel.app/",
     "image": "https://portfolio-jda.vercel.app/profile.jpg",
-    "jobTitle": "Desarrollador Frontend Junior",
-    "description": "Técnico en Informática (MEC Paraguay, 2025) especializado en desarrollo Frontend con HTML, CSS, JavaScript y React/Next.js.",
+    "jobTitle": "Frontend Developer Junior",
+    "description": "Técnico en Informática (MEC Paraguay, 2025), cursando Ingeniería en Informática (UAA). Desarrollo Frontend con HTML, CSS y JavaScript, con experiencia real en soporte TI e infraestructura.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Capiatá",
       "addressCountry": "PY"
     },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Universidad Autónoma de Asunción (UAA)" },
+      { "@type": "EducationalOrganization", "name": "Colegio Sagrado Corazón de Jesús \"Salesianito\"" }
+    ],
     "sameAs": [
       "https://github.com/Dani01001",
       "https://www.linkedin.com/in/jesus-amarilla-dn"
     ],
-    "knowsAbout": ["HTML", "CSS", "JavaScript", "React", "Next.js", "TypeScript", "Tailwind CSS", "Git"]
+    "knowsAbout": ["HTML", "CSS", "JavaScript", "React", "Next.js", "Git", "Django", "SQL", "Redes", "Soporte técnico", "Arduino"]
   }
   </script>
 </head>
@@ -73,10 +77,11 @@
         <span class="nav__logo-bracket">]</span>
       </a>
       <ul class="nav__links" role="list">
-        <li><a href="#sobre-mi"  class="nav__link">Sobre mí</a></li>
-        <li><a href="#stack"     class="nav__link">Stack</a></li>
-        <li><a href="#proyectos" class="nav__link">Proyectos</a></li>
-        <li><a href="#contacto"  class="nav__link nav__link--cta">Contacto</a></li>
+        <li><a href="#sobre-mi"    class="nav__link">Sobre mí</a></li>
+        <li><a href="#experiencia" class="nav__link">Experiencia</a></li>
+        <li><a href="#stack"       class="nav__link">Stack</a></li>
+        <li><a href="#proyectos"   class="nav__link">Proyectos</a></li>
+        <li><a href="#contacto"    class="nav__link nav__link--cta">Contacto</a></li>
       </ul>
       <button type="button" class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
         <span></span>
@@ -90,10 +95,11 @@
   <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
     <button type="button" class="mobile-menu__close" id="mobileMenuClose" aria-label="Cerrar menú">✕</button>
     <ul class="mobile-menu__links" role="list">
-      <li><a href="#sobre-mi"  class="mobile-menu__link">Sobre mí</a></li>
-      <li><a href="#stack"     class="mobile-menu__link">Stack</a></li>
-      <li><a href="#proyectos" class="mobile-menu__link">Proyectos</a></li>
-      <li><a href="#contacto"  class="mobile-menu__link">Contacto</a></li>
+      <li><a href="#sobre-mi"    class="mobile-menu__link">Sobre mí</a></li>
+      <li><a href="#experiencia" class="mobile-menu__link">Experiencia</a></li>
+      <li><a href="#stack"       class="mobile-menu__link">Stack</a></li>
+      <li><a href="#proyectos"   class="mobile-menu__link">Proyectos</a></li>
+      <li><a href="#contacto"    class="mobile-menu__link">Contacto</a></li>
     </ul>
   </div>
 
@@ -125,9 +131,9 @@
           </p>
 
           <p class="hero__role">
-            <span class="accent-cyan">Técnico en Informática</span>
+            <span class="accent-cyan">Frontend Developer Junior</span>
             <span class="role-sep"> · </span>
-            Dev <span class="accent-cyan">Frontend Junior</span>
+            con base real en soporte TI
           </p>
 
           <p class="hero__prompt" aria-hidden="true">
@@ -151,7 +157,8 @@
       <div class="hero__badges" role="group" aria-label="Información rápida">
         <span class="badge">📍 Capiatá, Paraguay</span>
         <span class="badge">🎓 Ing. Informática — en curso</span>
-        <span class="badge badge--active">🟢 Disponible para proyectos</span>
+        <span class="badge">🛠️ 220 hs de soporte TI corporativo</span>
+        <span class="badge badge--active">🟢 Disponible para nuevas oportunidades</span>
       </div>
     </div>
 
@@ -182,7 +189,7 @@
           </div>
           <p class="about__status">
             <span class="about__status-dot" aria-hidden="true"></span>
-            Disponible para freelance
+            Disponible para nuevas oportunidades
           </p>
         </div>
 
@@ -190,29 +197,32 @@
         <div class="about__content">
           <p class="about__text">
             Soy <strong>Técnico en Informática</strong> — egresado del Salesianito en 2025 con
-            título MEC — y actualmente cursando <strong>Ingeniería en Informática con énfasis en
-            Sistemas Informáticos</strong> en la UAA. Realicé una pasantía real en el área de
-            infraestructura TI de Distribuidora La Policlínica S.A., trabajando con redes, hardware,
-            soporte remoto y bases de datos durante 220 horas.
+            título MEC — y actualmente cursando <strong>Ingeniería en Informática</strong> en la
+            UAA. Realicé una pasantía real en el área de infraestructura TI de Distribuidora La
+            Policlínica S.A., trabajando con redes, hardware, soporte remoto y bases de datos
+            durante 220 horas.
           </p>
           <p class="about__text">
-            Me especializo en <strong>desarrollo Frontend</strong> — construyo interfaces con
-            <strong>HTML, CSS, JavaScript y React/Next.js</strong>. Estoy incorporando TypeScript
-            y Tailwind en proyectos activos. Entiendo el stack completo: desde cómo funciona
-            una red hasta cómo se despliega una aplicación en producción.
+            Mi base es <strong>HTML, CSS y JavaScript</strong>. Diseñé y construí desde cero la
+            arquitectura de <strong>IR Barber Supply</strong>, un prototipo de e-commerce en
+            JavaScript vanilla: estado global con patrón pub/sub, carrito persistente con
+            sincronización entre pestañas, y reglas de negocio reales (tarifas mayorista/minorista,
+            descuentos por volumen) pensadas para el mercado paraguayo. Estoy profundizando en
+            <strong>React, Next.js y TypeScript</strong>.
           </p>
           <p class="about__text">
-            Tengo proyectos reales en producción, una pasantía corporativa completada y la
-            disciplina de quien aprende haciendo. Sin experiencia de años, pero con resultados
-            concretos y fundamentos sólidos.
+            También trabajé en equipo en un proyecto de <strong>hardware</strong> (FortBox, control
+            de acceso RFID con Arduino) y en el backend de <strong>ReservaYa</strong>, un sistema de
+            reservas hecho en Django. Aprendo rápido y entiendo el stack completo: de la red al
+            deploy.
           </p>
 
           <div class="about__highlights" role="list">
             <div class="highlight" role="listitem">
               <span class="highlight__icon" aria-hidden="true">⚡</span>
               <div>
-                <strong>Frontend — HTML/CSS fuerte</strong>
-                <span>React y Next.js en proyectos activos; TS y Tailwind en desarrollo</span>
+                <strong>Frontend — HTML/CSS/JS fuerte</strong>
+                <span>Arquitectura de estado real en JS vanilla (IR Barber Supply); React y Next.js en aprendizaje activo</span>
               </div>
             </div>
             <div class="highlight" role="listitem">
@@ -225,8 +235,8 @@
             <div class="highlight" role="listitem">
               <span class="highlight__icon" aria-hidden="true">🚀</span>
               <div>
-                <strong>Proyectos en producción</strong>
-                <span>SERCAP live en Vercel · IR Barber Supply en desarrollo activo</span>
+                <strong>Proyectos reales, no solo tutoriales</strong>
+                <span>SERCAP live en Vercel · IR Barber Supply (prototipo funcional) · ReservaYa y FortBox en equipo</span>
               </div>
             </div>
           </div>
@@ -244,11 +254,45 @@
     </div>
   </section>
 
-  <!-- ===================== STACK ===================== -->
-  <section class="section section--alt" id="stack" aria-labelledby="title-stack">
+  <!-- ===================== EXPERIENCIA ===================== -->
+  <section class="section section--alt" id="experiencia" aria-labelledby="title-experiencia">
     <div class="container">
       <header class="section__header">
         <span class="section__label">// 02</span>
+        <h2 class="section__title" id="title-experiencia">Experiencia</h2>
+        <p class="section__subtitle">220 horas de práctica profesional real en infraestructura TI.</p>
+      </header>
+
+      <div class="experience">
+        <article class="exp-card">
+          <header class="exp-card__header">
+            <div>
+              <h3 class="exp-card__role">Técnico de Soporte TI <span class="exp-card__type">— Pasantía profesional</span></h3>
+              <p class="exp-card__company">Distribuidora La Policlínica S.A. · Capiatá, Paraguay</p>
+            </div>
+            <div class="exp-card__meta">
+              <span class="exp-card__dates">Dic 2024 – Ene 2025</span>
+              <span class="exp-card__hours">220 hs</span>
+            </div>
+          </header>
+          <ul class="exp-card__list">
+            <li>Relevamiento completo del parque informático en más de 6 departamentos corporativos.</li>
+            <li>Soporte técnico presencial y remoto: incidencias de hardware, redes y sistemas UPS.</li>
+            <li>Mantenimiento preventivo y correctivo de PCs y laptops (pasta térmica, limpieza, RAM).</li>
+            <li>Gestión de inventario: altas y bajas de equipos en el sistema interno de la empresa.</li>
+            <li>Configuración de dispositivos corporativos y actualización de bases de datos en SQL.</li>
+            <li>Migración de la herramienta de soporte remoto de AnyDesk a VNC en equipos piloto.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STACK ===================== -->
+  <section class="section" id="stack" aria-labelledby="title-stack">
+    <div class="container">
+      <header class="section__header">
+        <span class="section__label">// 03</span>
         <h2 class="section__title" id="title-stack">Stack técnico</h2>
         <p class="section__subtitle">Lo que uso, lo que entiendo y lo que sigo aprendiendo.</p>
       </header>
@@ -270,60 +314,48 @@
           </div>
         </div>
 
-        <!-- JS/React/Next — Manejando -->
+        <!-- JavaScript — Fuerte -->
         <div class="stack-card">
           <div class="stack-card__header">
             <span class="stack-card__icon" aria-hidden="true">⚡</span>
-            <h3 class="stack-card__title">JavaScript &amp; React</h3>
-            <span class="stack-card__badge badge--mid">Manejando</span>
+            <h3 class="stack-card__title">JavaScript</h3>
+            <span class="stack-card__badge badge--strong">Fuerte</span>
           </div>
           <div class="tech-tags">
-            <span class="tech-tag">JavaScript ES6+</span>
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">ES6+ / Módulos</span>
+            <span class="tech-tag">Arquitectura de estado</span>
+            <span class="tech-tag">Eventos (pub/sub)</span>
+            <span class="tech-tag">localStorage</span>
           </div>
         </div>
 
-        <!-- TypeScript / Tailwind — Aprendiendo -->
+        <!-- React / Next / TS — Aprendiendo -->
         <div class="stack-card">
           <div class="stack-card__header">
             <span class="stack-card__icon" aria-hidden="true">🔧</span>
-            <h3 class="stack-card__title">TypeScript &amp; Tailwind</h3>
+            <h3 class="stack-card__title">React, Next.js &amp; TypeScript</h3>
             <span class="stack-card__badge badge--theory">Aprendiendo</span>
           </div>
           <div class="tech-tags">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Next.js</span>
             <span class="tech-tag">TypeScript</span>
             <span class="tech-tag">Tailwind CSS</span>
           </div>
         </div>
 
-        <!-- Backend — Aprendiendo -->
+        <!-- Backend & BD — En práctica -->
         <div class="stack-card">
           <div class="stack-card__header">
             <span class="stack-card__icon" aria-hidden="true">⚙️</span>
-            <h3 class="stack-card__title">Backend</h3>
-            <span class="stack-card__badge badge--theory">Aprendiendo</span>
+            <h3 class="stack-card__title">Backend &amp; Bases de datos</h3>
+            <span class="stack-card__badge badge--mid">En práctica</span>
           </div>
           <div class="tech-tags">
             <span class="tech-tag">Python</span>
             <span class="tech-tag">Django</span>
+            <span class="tech-tag">SQL</span>
             <span class="tech-tag">SQLite</span>
-            <span class="tech-tag">REST API</span>
-          </div>
-        </div>
-
-        <!-- Git/GitHub/Vercel — Manejando -->
-        <div class="stack-card">
-          <div class="stack-card__header">
-            <span class="stack-card__icon" aria-hidden="true">🛠️</span>
-            <h3 class="stack-card__title">Herramientas</h3>
-            <span class="stack-card__badge badge--mid">Manejando</span>
-          </div>
-          <div class="tech-tags">
-            <span class="tech-tag">Git</span>
-            <span class="tech-tag">GitHub</span>
-            <span class="tech-tag">Vercel</span>
-            <span class="tech-tag">Linux</span>
           </div>
         </div>
 
@@ -331,7 +363,7 @@
         <div class="stack-card">
           <div class="stack-card__header">
             <span class="stack-card__icon" aria-hidden="true">🖥️</span>
-            <h3 class="stack-card__title">Soporte TI</h3>
+            <h3 class="stack-card__title">Soporte TI &amp; Redes</h3>
             <span class="stack-card__badge badge--strong">Exp. real ✓</span>
           </div>
           <div class="tech-tags">
@@ -342,15 +374,31 @@
           </div>
         </div>
 
+        <!-- Herramientas & Sistemas — Manejando -->
+        <div class="stack-card">
+          <div class="stack-card__header">
+            <span class="stack-card__icon" aria-hidden="true">🛠️</span>
+            <h3 class="stack-card__title">Herramientas &amp; Sistemas</h3>
+            <span class="stack-card__badge badge--mid">Manejando</span>
+          </div>
+          <div class="tech-tags">
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">GitHub</span>
+            <span class="tech-tag">Vercel</span>
+            <span class="tech-tag">Linux</span>
+            <span class="tech-tag">Arduino / C++</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- ===================== PROYECTOS ===================== -->
-  <section class="section" id="proyectos" aria-labelledby="title-proyectos">
+  <section class="section section--alt" id="proyectos" aria-labelledby="title-proyectos">
     <div class="container">
       <header class="section__header">
-        <span class="section__label">// 03</span>
+        <span class="section__label">// 04</span>
         <h2 class="section__title" id="title-proyectos">Proyectos</h2>
         <p class="section__subtitle">Problemas reales. Soluciones funcionales.</p>
       </header>
@@ -446,39 +494,42 @@
 
             <div class="project-card__problem">
               <span class="problem-label">// Problema identificado</span>
-              Las barberías y barberos independientes no tenían dónde comprar sus insumos
-              profesionales online. Dependían de proveedores físicos, sin catálogo digital,
-              sin carrito, sin historial de pedidos.
+              Las barberías paraguayas no tenían dónde comprar insumos profesionales online con
+              precios diferenciados: el minorista paga distinto que el barbero que compra al por
+              mayor, y esa lógica no existía en ningún catálogo digital simple.
             </div>
 
             <p class="project-card__solution">
-              <strong>E-commerce completo</strong> para la venta de insumos profesionales de barbería.
-              Catálogo de productos, carrito de compras, gestión de pedidos y panel de administración.
-              Orientado a barberos que necesitan aprovisionarse rápido y desde cualquier lugar.
+              <strong>Prototipo de e-commerce en JavaScript vanilla</strong>, sin frameworks.
+              Diseñé un estado global con patrón pub/sub (eventos personalizados), carrito
+              persistido en <code>localStorage</code> con sincronización entre pestañas, y reglas
+              de negocio reales: tarifas mayorista/minorista, descuentos automáticos por volumen y
+              pedido mínimo mayorista — formateado en guaraníes (es-PY).
             </p>
 
             <div class="project-card__demonstrates">
               <span class="demonstrates-label">// Qué demuestra</span>
-              Manejo de una arquitectura moderna (Next.js + TypeScript + Tailwind) y modelado
-              de un flujo de e-commerce real: catálogo, carrito y panel de administración.
+              Capacidad de diseñar arquitectura de estado desde cero sin depender de un framework,
+              y de modelar lógica de negocio real (precios duales, descuentos, validaciones) para
+              un mercado específico.
             </div>
 
             <div class="project-card__impact" role="list" aria-label="Características del proyecto">
               <span class="impact-tag" role="listitem">✓ Catálogo con filtros por categoría</span>
-              <span class="impact-tag" role="listitem">✓ Carrito y flujo de compra completo</span>
-              <span class="impact-tag" role="listitem">✓ Panel de administración de productos</span>
+              <span class="impact-tag" role="listitem">✓ Carrito con reglas de precio dual</span>
+              <span class="impact-tag" role="listitem">✓ Estado sincronizado entre pestañas</span>
             </div>
           </div>
 
           <footer class="project-card__footer">
             <div class="project-card__tags" role="list" aria-label="Tecnologías">
-              <span class="tag" role="listitem">Next.js</span>
-              <span class="tag" role="listitem">TypeScript</span>
-              <span class="tag" role="listitem">Tailwind CSS</span>
-              <span class="tag" role="listitem">React</span>
+              <span class="tag" role="listitem">JavaScript ES6+</span>
+              <span class="tag" role="listitem">Módulos ES6</span>
+              <span class="tag" role="listitem">CSS3</span>
+              <span class="tag" role="listitem">localStorage</span>
             </div>
             <span class="project-card__cta project-card__cta--wip">
-              Código privado · Demo próximamente
+              Prototipo funcional · Código privado
             </span>
           </footer>
         </article>
@@ -499,12 +550,12 @@
   </section>
 
   <!-- ===================== CONTACTO ===================== -->
-  <section class="section section--alt" id="contacto" aria-labelledby="title-contacto">
+  <section class="section" id="contacto" aria-labelledby="title-contacto">
     <div class="container">
       <header class="section__header">
-        <span class="section__label">// 04</span>
+        <span class="section__label">// 05</span>
         <h2 class="section__title" id="title-contacto">Contacto</h2>
-        <p class="section__subtitle">¿Tenés un proyecto? Hablemos.</p>
+        <p class="section__subtitle">¿Tenés una posición Junior o un proyecto real? Conversemos.</p>
       </header>
 
       <div class="contact">
