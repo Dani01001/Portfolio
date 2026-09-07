@@ -73,6 +73,14 @@ a        { color: inherit; text-decoration: none; }
 ul, ol   { list-style: none; }
 img      { max-width: 100%; display: block; }
 button   { cursor: pointer; font-family: inherit; }
+code     {
+  font-family: var(--font-mono);
+  font-size: .88em;
+  color: var(--cyan);
+  background: rgba(0,240,255,.08);
+  padding: .1em .35em;
+  border-radius: 4px;
+}
 
 /* Scrollbar */
 ::-webkit-scrollbar       { width: 5px; }
@@ -645,6 +653,93 @@ button   { cursor: pointer; font-family: inherit; }
 .about__cert span   { font-size: .8rem;   color: var(--text-mid); }
 
 /* ============================================================
+   EXPERIENCIA
+   ============================================================ */
+.experience { display: flex; flex-direction: column; gap: 1.15rem; }
+
+.exp-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 2px solid var(--green);
+  border-radius: 10px;
+  padding: 1.6rem 1.8rem;
+  transition: border-color var(--t-mid), box-shadow var(--t-mid);
+}
+.exp-card:hover {
+  border-color: var(--border-mid);
+  border-left-color: var(--green);
+  box-shadow: var(--shadow-card);
+}
+
+.exp-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.exp-card__role {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-hi);
+  letter-spacing: -.01em;
+}
+.exp-card__type {
+  font-weight: 500;
+  color: var(--text-mid);
+  font-size: .85rem;
+}
+.exp-card__company {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  color: var(--text-mid);
+  margin-top: .35rem;
+}
+.exp-card__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .3rem;
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+.exp-card__dates {
+  font-size: .75rem;
+  color: var(--text-lo);
+  white-space: nowrap;
+}
+.exp-card__hours {
+  font-size: .72rem;
+  color: var(--green);
+  background: var(--green-dim);
+  padding: .2rem .6rem;
+  border-radius: 100px;
+}
+
+.exp-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+.exp-card__list li {
+  position: relative;
+  padding-left: 1.2rem;
+  font-size: .9rem;
+  color: var(--text-mid);
+  line-height: 1.65;
+}
+.exp-card__list li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+}
+
+/* ============================================================
    STACK
    ============================================================ */
 .stack-grid {
@@ -1045,6 +1140,10 @@ button   { cursor: pointer; font-family: inherit; }
     gap: 2rem;
   }
   .about__avatar-col { flex-direction: row; align-items: center; }
+
+  /* Experiencia */
+  .exp-card { padding: 1.4rem 1.3rem; }
+  .exp-card__meta { align-items: flex-start; flex-direction: row; }
 
   /* Stack */
   .stack-grid { grid-template-columns: 1fr; }

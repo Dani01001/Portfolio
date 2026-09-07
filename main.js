@@ -132,10 +132,10 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
   const phrases = [
     'Construyo interfaces que funcionan.',
-    'Diseño sistemas que escalan.',
-    'Código limpio. Resultados reales.',
-    'Del frontend a la base de datos.',
-    'Disponible para tu próximo proyecto.',
+    'Del soporte técnico al frontend.',
+    'Código limpio. Sin frameworks de más.',
+    'Entiendo el stack completo: de la red al deploy.',
+    'Disponible para mi próxima oportunidad.',
   ];
 
   let pIdx    = 0;
@@ -269,7 +269,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 (function initFadeIn() {
   /* Elementos a animar */
   const targets = document.querySelectorAll(
-    '.section__header, .about, .stack-card, .project-card, .contact__card, .about__cert'
+    '.section__header, .about, .exp-card, .stack-card, .project-card, .contact__card, .about__cert'
   );
 
   targets.forEach((el, i) => {

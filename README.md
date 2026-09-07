@@ -1,6 +1,6 @@
 # Portfolio — Jesús Daniel Amarilla Nuñez
 
-Sitio personal de presentación profesional. Técnico en Informática (MEC Paraguay, 2025) especializado en desarrollo Frontend.
+Sitio personal de presentación profesional. Frontend Developer Junior, Técnico en Informática (MEC Paraguay, 2025), con experiencia real en soporte TI.
 
 **Demo en vivo:** https://portfolio-jda.vercel.app/
 
@@ -17,7 +17,7 @@ HTML5, CSS3 y JavaScript nativo — sin frameworks ni dependencias de build. El 
 ## Estructura
 
 ```
-index.html   → Markup y contenido (Hero, Sobre mí, Stack, Proyectos, Contacto)
+index.html   → Markup y contenido (Hero, Sobre mí, Experiencia, Stack, Proyectos, Contacto)
 styles.css   → Estilos (variables de diseño, layout, responsive)
 main.js      → Interactividad (partículas, typewriter, nav, animaciones, tilt)
 profile.jpg  → Foto de perfil (optimizada, 480×480)
