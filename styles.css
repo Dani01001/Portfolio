@@ -941,6 +941,11 @@ code     {
   letter-spacing: -.02em;
   margin-bottom: .9rem;
 }
+.project-card__subtitle {
+  font-size: .85rem;
+  font-weight: 400;
+  color: var(--text-lo);
+}
 
 .project-card__problem {
   font-family: var(--font-mono);
