@@ -1,42 +1,48 @@
-# Portfolio — Jesús Daniel Amarilla Nuñez
+# Portafolio · Jesús Daniel Amarilla Nuñez
 
-Sitio personal de presentación profesional. Frontend Developer Junior, Técnico en Informática (MEC Paraguay, 2025), con experiencia real en soporte TI.
+Sitio personal de presentación profesional. Frontend Developer Junior, Técnico en Informática (MEC Paraguay, 2025), estudiante de Ingeniería en Informática (UAA) y con experiencia real en soporte TI.
 
-**Demo en vivo:** https://portfolio-jda.vercel.app/
+**En vivo:** https://portfolio-jda.vercel.app/
+
+## Qué incluye
+
+- **Proyectos reales:** ReservaYa, SERCAP e IR Barber Supply, con enlaces en vivo y el caso completo de cada uno.
+- **Estudio de diseño:** 15 prototipos navegables de marcas ficticias (gastronomía, e-commerce y corporativo), con visor en modo escritorio, tablet y móvil. Tres son experimentales: un helado 3D con Three.js, una zapatilla 3D con model-viewer y una agencia con tipografía de ancho variable.
+- **Laboratorio de componentes:** 16 componentes interactivos con su HTML, CSS y JavaScript a la vista.
+- **Lo que puedo integrar:** demostraciones de inicio de sesión con Google, pago con tarjeta en modo prueba, pedidos a WhatsApp, formularios, app sin conexión, API con JWT y panel de ventas.
+
+Todas las demostraciones corren en el navegador y no envían datos a ningún servidor.
 
 ## Stack
 
-HTML5, CSS3 y JavaScript nativo — sin frameworks ni dependencias de build. El sitio corre directamente en el navegador:
-
-- Terminal interactiva animada (efecto typewriter) en el Hero
-- Fondo de partículas en `<canvas>` con interacción al mouse
-- Animaciones de entrada por scroll (`IntersectionObserver`)
-- Menú responsive con navegación por scroll-spy
-- Soporte de `prefers-reduced-motion` para accesibilidad
+HTML5, CSS3 y JavaScript nativo, sin frameworks ni proceso de build. Three.js y model-viewer se cargan desde jsDelivr solo en los prototipos que los usan.
 
 ## Estructura
 
 ```
-index.html   → Markup y contenido (Hero, Sobre mí, Experiencia, Stack, Proyectos, Contacto)
-styles.css   → Estilos (variables de diseño, layout, responsive)
-main.js      → Interactividad (partículas, typewriter, nav, animaciones, tilt)
-profile.jpg  → Foto de perfil (optimizada, 480×480)
-favicon.svg / favicon-32.png / apple-touch-icon.png → Iconos del sitio
-og-image.jpg → Imagen para previews de redes sociales (Open Graph / Twitter Card)
-robots.txt / sitemap.xml → SEO
+index.html          Página principal
+legal.html          Aviso legal y política de privacidad
+styles.css          Estilos del sitio
+main.js             Navegación, visor del estudio y animaciones
+js/                 Laboratorio y demos de integraciones
+prototipos/         Los 15 prototipos y el modelo 3D optimizado
+vercel.json         Cabeceras de seguridad
 ```
 
 ## Ejecutar localmente
 
-No requiere instalación ni build. Basta con abrir `index.html` en el navegador, o servirlo con cualquier servidor estático:
+No requiere instalación. Se puede servir con cualquier servidor estático:
 
 ```bash
 npx serve .
 ```
 
-## Deploy
+El prototipo de la zapatilla necesita un servidor: abierto como archivo local, el navegador bloquea la carga del modelo 3D.
 
-Desplegado en [Vercel](https://vercel.com) como sitio estático, con deploy automático desde la rama `main`.
+## Créditos
+
+- Fotografías de [Unsplash](https://unsplash.com).
+- Modelo 3D "Materials Variants Shoe" © 2021 Shopify, publicado por el Khronos Group bajo licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## Contacto
 

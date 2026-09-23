@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Paso Libre · Runner 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer.min.js"></script>
+<style>:root {
+  --bg: #f1e6d4;
+  --bg-2: #e6d6bd;
+  --ink: #1d1a14;
+  --acc: #e5732e;
+  --display: 'Unbounded',system-ui,sans-serif;
+  --body: 'Onest',system-ui,sans-serif
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+html {
+  scroll-behavior: smooth
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.55;
+  overflow-x: hidden;
+  transition: background .7s ease,color .7s ease
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: 0 0;
+  border: 0
+}
+a {
+  color: inherit;
+  text-decoration: none
+}
+:focus-visible {
+  outline: 3px solid var(--acc);
+  outline-offset: 3px
+}
+.wrap {
+  width: min(1200px,100% - 32px);
+  margin-inline: auto
+}
+.nav .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 68px
+}
+.logo {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: -.02em
+}
+.logo span {
+  color: var(--acc);
+  transition: color .7s
+}
+.nav .bag {
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  gap: 8px;
+  align-items: center
+}
+.nav .bag b {
+  background: var(--ink);
+  color: var(--bg);
+  min-width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  transition: background .7s,color .7s
+}
+.hero {
+  position: relative;
+  min-height: min(88vh,760px);
+  display: grid;
+  grid-template-columns: minmax(220px,300px) 1fr minmax(180px,250px);
+  gap: 16px;
+  align-items: center;
+  padding: 0 clamp(16px,4vw,48px);
+  overflow: hidden
+}
+.ghost {
+  position: absolute;
+  inset: auto 0 12%;
+  text-align: center;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(80px, 19vw, 300px);
+  line-height: .8;
+  letter-spacing: -.05em;
+  color: var(--bg-2);
+  transition: color .7s;
+  user-select: none;
+  pointer-events: none
+}
+model-viewer {
+  width: 100%;
+  min-width: 0;
+  height: min(78vh,680px);
+  --poster-color: transparent;
+  --progress-bar-color: var(--acc);
+  background: 0 0;
+  position: relative;
+  z-index: 1
+}
+model-viewer::part(default-progress-bar) {
+  height: 4px
+}
+.loading {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: opacity .4s
+}
+.loading.hide {
+  opacity: 0;
+  pointer-events: none
+}
+.side {
+  position: relative;
+  z-index: 2
+}
+.side.r {
+  text-align: right;
+  align-self: end;
+  margin-bottom: 18%
+}
+.kick {
+  font-weight: 600;
+  font-size: 12.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase
+}
+h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(28px, 3.4vw, 46px);
+  line-height: 1;
+  letter-spacing: -.04em;
+  margin-top: 10px
+}
+.side p {
+  margin-top: 12px;
+  font-size: 15.5px
+}
+.price-big {
+  white-space: nowrap;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(22px, 2.2vw, 32px)
+}
+.hint {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 16px
+}
+.ways {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: -8px;
+  position: relative;
+  z-index: 2
+}
+.way {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 8px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background: rgba(255,255,255,.4);
+  font-weight: 600;
+  transition: border-color .3s,background .3s
+}
+.way i {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%
+}
+.way[aria-pressed=true] {
+  border-color: var(--ink);
+  background: rgba(255,255,255,.75)
+}
+section.block {
+  padding: clamp(64px,10vw,120px) 0
+}
+h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(34px, 5vw, 68px);
+  line-height: .95;
+  letter-spacing: -.045em
+}
+.angles {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(24px,4vw,56px);
+  align-items: center
+}
+.angles ol {
+  list-style: none;
+  margin-top: 24px;
+  display: grid;
+  gap: 8px
+}
+.angles li button {
+  width: 100%;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  border-radius: 16px;
+  border: 2px solid rgba(29,26,20,.15);
+  transition: border-color .25s,background .25s
+}
+.angles li button:hover {
+  border-color: rgba(29,26,20,.4)
+}
+.angles li button[aria-pressed=true] {
+  border-color: var(--ink);
+  background: rgba(255,255,255,.5)
+}
+.angles li .n {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--acc);
+  transition: color .7s
+}
+.angles li b {
+  display: block
+}
+.angles li small {
+  font-size: 14px;
+  opacity: .75
+}
+.anglebar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 14px
+}
+.anglebar span {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-right: 6px
+}
+.anglebar button {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(128,128,128,.35);
+  font-size: 14px;
+  font-weight: 500;
+  transition: border-color .25s,background .25s
+}
+.anglebar button[aria-pressed=true] {
+  border-color: var(--ink);
+  background: rgba(255,255,255,.55)
+}
+.specs {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
+  margin-top: 28px
+}
+.spec {
+  border-top: 2px solid var(--ink);
+  padding-top: 14px;
+  transition: border-color .7s
+}
+.spec b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(28px, 3.4vw, 44px);
+  letter-spacing: -.04em;
+  color: var(--acc);
+  transition: color .7s
+}
+.spec span {
+  font-size: 15px
+}
+.buy {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(24px,4vw,56px);
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 32px;
+  padding: clamp(24px,5vw,56px);
+  transition: background .7s,color .7s
+}
+.sizes {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 6px;
+  margin-top: 20px
+}
+.sizes button {
+  padding: 14px 0;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255,255,255,.25);
+  font-weight: 600;
+  transition: background .2s,color .2s,border-color .2s
+}
+.sizes button:hover:not(:disabled) {
+  border-color: var(--bg)
+}
+.sizes button[aria-pressed=true] {
+  background: var(--acc);
+  border-color: var(--acc);
+  color: var(--ink)
+}
+.sizes button:disabled {
+  opacity: .3;
+  text-decoration: line-through;
+  cursor: not-allowed
+}
+.buy .sum {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px
+}
+.buy dl {
+  display: grid;
+  gap: 10px
+}
+.buy dl div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+  padding-bottom: 10px
+}
+.buy dt {
+  opacity: .7
+}
+.add {
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--acc);
+  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 16px;
+  transition: transform .2s,background .7s
+}
+.add:hover {
+  transform: translateY(-2px)
+}
+.err {
+  min-height: 20px;
+  font-size: 14px;
+  color: #ffb4a0
+}
+.ar {
+  font-size: 14px;
+  opacity: .8
+}
+footer {
+  padding: 28px 0 40px;
+  font-size: 13px
+}
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px
+}
+@media (max-width:900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 12px
+  }
+  .side.l {
+    text-align: center;
+    max-width: 520px;
+    margin-inline: auto
+  }
+  .side.r {
+    text-align: center;
+    margin: 0;
+    align-self: auto
+  }
+  .ghost {
+    inset: auto 0 18%
+  }
+  model-viewer {
+    height: 56vh
+  }
+  .angles,
+  .buy {
+    grid-template-columns: 1fr
+  }
+  .specs {
+    grid-template-columns: 1fr 1fr
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,
+  ::after,
+  ::before {
+    transition: none!important
+  }
+}</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap"><a class="logo" href="#inicio">PASO<span>LIBRE</span></a><span class="bag">Bolsa <b id="bag" aria-live="polite">0</b></span></div></header>
+
+<main>
+  <section class="hero" id="inicio">
+    <p class="ghost" aria-hidden="true" id="ghost">PLAYA</p>
+    <div class="side l">
+      <span class="kick">Runner 01 · Edición limitada</span>
+      <h1>Gírala. Mírala. Elige su color.</h1>
+      <p>Arrastra la zapatilla para verla desde cualquier ángulo. En el celular también puedes verla en tu piso con realidad aumentada.</p>
+      <span class="hint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4"/></svg>Arrastra para girar</span>
+    </div>
+    <model-viewer id="mv" src="modelos/zapatilla.glb" alt="Zapatilla deportiva en 3D que se puede girar" camera-controls touch-action="pan-y" auto-rotate auto-rotate-delay="1500" rotation-per-second="18deg" shadow-intensity="1.2" shadow-softness=".8" exposure="1.05" camera-orbit="-30deg 75deg 105%" interaction-prompt="none" ar ar-modes="webxr scene-viewer quick-look" disable-zoom>
+      <span class="loading" id="loading" slot="progress-bar">Cargando modelo 3D <span id="pct">0</span> %</span>
+    </model-viewer>
+    <div class="side r"><span class="kick">Precio</span><div class="price-big">Gs. 890.000</div></div>
+  </section>
+
+  <div class="ways" role="group" aria-label="Color de la zapatilla" id="ways"></div>
+  <div class="anglebar" role="group" aria-labelledby="angLbl" id="angles"><span id="angLbl">Ángulo</span></div>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="kick">Ficha técnica</span>
+      <h2>Liviana de verdad.</h2>
+      <div class="specs">
+        <div class="spec"><b>245 g</b><span>Peso en talle 41</span></div>
+        <div class="spec"><b>8 mm</b><span>Drop talón a puntera</span></div>
+        <div class="spec"><b>100 %</b><span>Capellada de malla reciclada</span></div>
+        <div class="spec"><b>EVA</b><span>Suela de espuma con goma en zonas de apoyo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="* {
+  padding-top: 0
+}">
+    <div class="wrap">
+      <div class="buy">
+        <div>
+          <span class="kick">Tu par</span>
+          <h2 style="* {
+  color: inherit
+}">Elige tu talle.</h2>
+          <div class="sizes" role="group" aria-label="Talle" id="sizes"></div>
+          <p class="err" id="err" aria-live="assertive"></p>
+        </div>
+        <div class="sum">
+          <dl>
+            <div><dt>Modelo</dt><dd>Runner 01</dd></div>
+            <div><dt>Color</dt><dd id="sColor">Playa</dd></div>
+            <div><dt>Talle</dt><dd id="sSize">Sin elegir</dd></div>
+            <div><dt>Total</dt><dd>Gs. 890.000</dd></div>
+          </dl>
+          <button class="add" type="button" id="add">Agregar a la bolsa</button>
+          <span class="ar">Envío gratis y cambio de talle sin costo dentro de 30 días.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>Marca ficticia · Prototipo de diseño por Jesús Amarilla</span><span>Modelo 3D: Materials Variants Shoe © 2021 Shopify, licencia CC BY 4.0</span></div></footer>
+
+<script>const ways = [ {
+  v: 'beach',
+  n: 'Playa',
+  dot: '#d69a9c',
+  bg: '#f1e6d4',
+  bg2: '#e6d6bd',
+  ink: '#1d1a14',
+  acc: '#e5732e'
+}, {
+  v: 'midnight',
+  n: 'Medianoche',
+  dot: '#27324d',
+  bg: '#141a2b',
+  bg2: '#1d2640',
+  ink: '#eef1f8',
+  acc: '#7aa7ff'
+}, {
+  v: 'street',
+  n: 'Calle',
+  dot: '#c43b2f',
+  bg: '#e9e7e2',
+  bg2: '#dcd9d1',
+  ink: '#161616',
+  acc: '#d23a2c'
+} ];
+
+const mv = document.getElementById('mv'), root = document.documentElement;
+
+let current = ways[0];
+
+function setWay(w) {
+  current = w;
+  root.style.setProperty('--bg', w.bg);
+  root.style.setProperty('--bg-2', w.bg2);
+  root.style.setProperty('--ink', w.ink);
+  root.style.setProperty('--acc', w.acc);
+  mv.variantName = w.v;
+  const ghost = document.getElementById('ghost');
+  ghost.textContent = w.n.toUpperCase();
+  ghost.style.fontSize = `clamp(60px, ${Math.min(19, 95 / w.n.length)}vw, 300px)`;
+  document.getElementById('sColor').textContent = w.n;
+  document.querySelectorAll('.way').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === w.v));
+}
+
+const waysEl = document.getElementById('ways');
+
+ways.forEach(w => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'way';
+  b.dataset.v = w.v;
+  const i = document.createElement('i');
+  i.style.background = w.dot;
+  i.setAttribute('aria-hidden', 'true');
+  b.append(i, w.n);
+  b.onclick = () => setWay(w);
+  waysEl.append(b);
+});
+
+setWay(ways[0]);
+
+mv.addEventListener('progress', e => {
+  document.getElementById('pct').textContent = Math.round(e.detail.totalProgress * 100);
+  if (e.detail.totalProgress === 1) document.getElementById('loading').classList.add('hide');
+});
+
+mv.addEventListener('error', () => {
+  document.getElementById('loading').textContent = 'No se pudo cargar el modelo 3D. Revisa tu conexión.';
+});
+
+mv.addEventListener('load', async () => {
+  const avg = async tex => {
+    const img = new Image;
+    img.src = await tex.source.createThumbnail(32, 32);
+    await img.decode();
+    const c = document.createElement('canvas');
+    c.width = c.height = 32;
+    const g = c.getContext('2d');
+    g.drawImage(img, 0, 0);
+    const d = g.getImageData(0, 0, 32, 32).data;
+    let r = 0, gg = 0, b = 0, n = 0;
+    for (let i = 0; i < d.length; i += 4) {
+      const mx = Math.max(d[i], d[i + 1], d[i + 2]), mn = Math.min(d[i], d[i + 1], d[i + 2]);
+      if (mx > 25 && mx < 245) {
+        r += d[i];
+        gg += d[i + 1];
+        b += d[i + 2];
+        n++;
+      }
+    }
+    return n ? {
+      hex: '#' + [ r, gg, b ].map(x => Math.round(x / n).toString(16).padStart(2, '0')).join(''),
+      sat: Math.max(r, gg, b) / n - Math.min(r, gg, b) / n
+    } : null;
+  };
+  try {
+    for (const w of ways) {
+      mv.variantName = w.v;
+      await new Promise(r => setTimeout(r, 120));
+      let best = null;
+      for (const m of mv.model.materials) {
+        const t = m.pbrMetallicRoughness.baseColorTexture && m.pbrMetallicRoughness.baseColorTexture.texture;
+        if (!t) continue;
+        const c = await avg(t);
+        if (c && (!best || c.sat > best.sat)) best = c;
+      }
+      if (best) document.querySelector(`.way[data-v="${w.v}"] i`).style.background = best.hex;
+    }
+  } catch (e) {}
+  mv.variantName = current.v;
+});
+
+const angles = [ [ 'Lateral', '90deg 80deg 105%' ], [ 'Frente', '0deg 75deg 100%' ], [ 'Talón', '180deg 75deg 100%' ], [ 'Arriba', '30deg 15deg 110%' ], [ 'Suela', '-60deg 165deg 110%' ] ];
+
+const bar = document.getElementById('angles');
+
+angles.forEach(([t, orbit]) => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.textContent = t;
+  b.setAttribute('aria-pressed', 'false');
+  b.onclick = () => {
+    bar.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    mv.autoRotate = false;
+    mv.cameraOrbit = orbit;
+  };
+  bar.append(b);
+});
+
+mv.addEventListener('camera-change', e => {
+  if (e.detail.source === 'user-interaction') bar.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', 'false'));
+});
+
+let size = null, units = 0;
+
+const sizesEl = document.getElementById('sizes');
+
+[ 38, 39, 40, 41, 42, 43, 44, 45, 46, 47 ].forEach(s => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.textContent = s;
+  b.setAttribute('aria-pressed', 'false');
+  if (s === 38 || s === 47) {
+    b.disabled = true;
+    b.setAttribute('aria-label', s + ' agotado');
+  }
+  b.onclick = () => {
+    size = s;
+    sizesEl.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    document.getElementById('sSize').textContent = s;
+    document.getElementById('err').textContent = '';
+  };
+  sizesEl.append(b);
+});
+
+document.getElementById('add').onclick = () => {
+  if (!size) {
+    document.getElementById('err').textContent = 'Elige un talle para continuar.';
+    return;
+  }
+  units++;
+  document.getElementById('bag').textContent = units;
+  document.getElementById('add').textContent = 'Agregado a la bolsa';
+  setTimeout(() => document.getElementById('add').textContent = 'Agregar a la bolsa', 1500);
+}</script>
+</body>
+</html>

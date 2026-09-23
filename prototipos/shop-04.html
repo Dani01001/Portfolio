@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nido · Deco y hogar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>:root {
+  --paper: #f6f5f1;
+  --stone: #e6e4dc;
+  --olive: #4b5a2e;
+  --olive-2: #37421f;
+  --mustard: #e2b93b;
+  --ink: #1c1d17;
+  --ink-2: #5d5f52;
+  --line: #d3d1c6;
+  --font: 'Schibsted Grotesk',system-ui,sans-serif
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+html {
+  scroll-behavior: smooth
+}
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  line-height: 1.55;
+  overflow-x: hidden
+}
+img {
+  display: block;
+  max-width: 100%
+}
+button,
+input,
+select {
+  font: inherit;
+  color: inherit
+}
+button {
+  cursor: pointer;
+  background: 0 0;
+  border: 0
+}
+a {
+  color: inherit;
+  text-decoration: none
+}
+:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px
+}
+.wrap {
+  width: min(1180px,100% - 32px);
+  margin-inline: auto
+}
+.nav .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 66px;
+  border-bottom: 1px solid var(--line)
+}
+.logo {
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: -.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+.logo svg {
+  color: var(--olive)
+}
+.nav ul {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  font-size: 14px;
+  color: var(--ink-2)
+}
+.nav ul a:hover {
+  color: var(--ink)
+}
+.cart {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+.cart span {
+  background: var(--olive);
+  color: var(--paper);
+  min-width: 22px;
+  height: 22px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-size: 12px
+}
+.hero {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 16px;
+  padding: 20px 0 clamp(48px,7vw,80px)
+}
+.hero .txt {
+  background: var(--olive);
+  color: var(--paper);
+  border-radius: 6px;
+  padding: clamp(24px,4vw,48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px
+}
+.hero .season {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mustard)
+}
+h1 {
+  font-weight: 800;
+  font-size: clamp(42px, 5.8vw, 80px);
+  line-height: .95;
+  letter-spacing: -.055em
+}
+.hero p {
+  color: #d8dcc9;
+  max-width: 34ch
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 4px;
+  background: var(--mustard);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 15px;
+  transition: gap .25s,background .2s;
+  align-self: start
+}
+.btn:hover {
+  gap: 16px;
+  background: #f0c94c
+}
+.hero .img {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 460px
+}
+.hero .img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+.hot {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 6px rgba(246,245,241,.35);
+  animation: ping 2s ease-in-out infinite
+}
+.hot::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--olive)
+}
+@keyframes ping {
+  50% {
+    box-shadow: 0 0 0 12px rgba(246,245,241,0)
+  }
+}
+.hot .tip {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--paper);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s,left .25s
+}
+.hot:focus-visible .tip,
+.hot:hover .tip {
+  opacity: 1;
+  left: 44px
+}
+.hot .tip b {
+  display: block
+}
+h2 {
+  font-weight: 800;
+  font-size: clamp(32px, 4.4vw, 56px);
+  letter-spacing: -.05em;
+  line-height: 1
+}
+section.block {
+  padding: clamp(48px,8vw,96px) 0
+}
+.tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line)
+}
+.rooms {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap
+}
+.rooms button {
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background .2s,color .2s,border-color .2s
+}
+.rooms button[aria-pressed=true] {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink)
+}
+.range {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-2);
+  min-width: 240px
+}
+.range input {
+  accent-color: var(--olive)
+}
+.range output {
+  font-weight: 600;
+  color: var(--ink)
+}
+select {
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper)
+}
+.count {
+  font-size: 13px;
+  color: var(--ink-2);
+  margin-bottom: 14px
+}
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px 16px
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: in .45s cubic-bezier(.2,.7,.2,1) both
+}
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: translateY(12px)
+  }
+}
+.item .ph {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--stone)
+}
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s cubic-bezier(.2,.7,.2,1)
+}
+.item:hover img {
+  transform: scale(1.05)
+}
+.item .tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--paper);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 3px
+}
+.item .pick {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  transition: background .2s,transform .2s
+}
+.item .pick:hover {
+  transform: scale(1.1)
+}
+.item .pick[aria-pressed=true] {
+  background: var(--olive);
+  color: var(--paper)
+}
+.item h3 {
+  font-size: 15px;
+  font-weight: 600
+}
+.item .row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--ink-2)
+}
+.empty {
+  grid-column: 1/-1;
+  padding: 40px;
+  text-align: center;
+  color: var(--ink-2);
+  border: 1px dashed var(--line);
+  border-radius: 6px
+}
+.combo {
+  position: sticky;
+  bottom: 12px;
+  z-index: 10;
+  margin-top: 28px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 6px;
+  padding: 14px 18px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,.5)
+}
+.slots {
+  display: flex;
+  gap: 6px
+}
+.slot {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  border: 1.5px dashed #6f7163;
+  overflow: hidden
+}
+.slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: in .3s both
+}
+.combo p {
+  font-size: 14px;
+  color: #c9cabd
+}
+.combo p b {
+  color: var(--mustard)
+}
+.combo .tot {
+  text-align: right
+}
+.combo .tot s {
+  font-size: 13px;
+  color: #8d8f80;
+  display: block
+}
+.combo .tot strong {
+  font-size: 20px
+}
+.rooms-show {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 28px
+}
+.room {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 16/11
+}
+.room img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(.2,.7,.2,1)
+}
+.room:hover img {
+  transform: scale(1.04)
+}
+.room figcaption {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  right: 14px;
+  background: var(--paper);
+  border-radius: 4px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px
+}
+.room figcaption b {
+  font-size: 16px
+}
+footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 0 40px;
+  font-size: 14px;
+  color: var(--ink-2)
+}
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px
+}
+footer small {
+  width: 100%;
+  font-size: 12.5px
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)
+}
+.reveal.in {
+  opacity: 1;
+  transform: none
+}
+@media (max-width:900px) {
+  .catalog {
+    grid-template-columns: repeat(3,1fr)
+  }
+}
+@media (max-width:760px) {
+  .nav ul {
+    display: none
+  }
+  .hero,
+  .rooms-show {
+    grid-template-columns: 1fr
+  }
+  .hero .img {
+    min-height: 320px
+  }
+  .catalog {
+    grid-template-columns: 1fr 1fr
+  }
+  .combo {
+    grid-template-columns: 1fr
+  }
+  .combo .tot {
+    text-align: left
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,
+  ::after,
+  ::before {
+    animation: none!important;
+    transition: none!important
+  }
+  .reveal {
+    opacity: 1;
+    transform: none
+  }
+}</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#inicio"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 11l9-7 9 7M5 10v10h14V10"/></svg>nido</a>
+    <nav aria-label="Principal"><ul><li><a href="#catalogo">Catálogo</a></li><li><a href="#ambientes">Ambientes</a></li><li><a href="#catalogo">Combos</a></li></ul></nav>
+    <span class="cart">Carrito <span id="cartN" aria-live="polite">0</span></span>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero" id="inicio">
+    <div class="txt reveal">
+      <span class="season">Colección primavera</span>
+      <div><h1>Cosas lindas para la casa que ya tienes.</h1><p style="* {
+  margin-top: 16px
+}">Muebles, lámparas y detalles elegidos uno por uno. Arma un combo de tres y paga menos.</p></div>
+      <a class="btn" href="#catalogo">Ver el catálogo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="img reveal">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1400&q=80&auto=format&fit=crop" alt="Living con sillón amarillo, lámpara de pie y cuadro abstracto">
+      <button class="hot" type="button" style="* {
+  left: 44%;
+  top: 58%
+}" aria-label="Sillón Sol, Gs. 1.890.000"><span class="tip"><b>Sillón Sol</b>Gs. 1.890.000</span></button>
+      <button class="hot" type="button" style="* {
+  left: 24%;
+  top: 30%
+}" aria-label="Lámpara Arco, Gs. 690.000"><span class="tip"><b>Lámpara Arco</b>Gs. 690.000</span></button>
+      <button class="hot" type="button" style="* {
+  left: 62%;
+  top: 26%
+}" aria-label="Cuadro Luna, Gs. 320.000"><span class="tip"><b>Cuadro Luna</b>Gs. 320.000</span></button>
+    </div>
+  </section>
+
+  <section class="block" id="catalogo" style="* {
+  padding-top: 0
+}">
+    <div class="wrap">
+      <h2 class="reveal">Catálogo</h2>
+      <div class="tools reveal">
+        <div class="rooms" role="group" aria-label="Filtrar por ambiente">
+          <button type="button" aria-pressed="true" data-r="todos">Todos</button>
+          <button type="button" aria-pressed="false" data-r="living">Living</button>
+          <button type="button" aria-pressed="false" data-r="dormitorio">Dormitorio</button>
+          <button type="button" aria-pressed="false" data-r="detalles">Detalles</button>
+        </div>
+        <label class="range">Precio máximo <output id="maxOut">Gs. 3.000.000</output><input type="range" id="max" min="100000" max="3000000" step="100000" value="3000000"></label>
+        <select id="sort" aria-label="Ordenar"><option value="rel">Destacados</option><option value="asc">Menor precio</option><option value="desc">Mayor precio</option></select>
+      </div>
+      <p class="count" id="count" aria-live="polite"></p>
+      <div class="catalog" id="catalog"></div>
+      <div class="combo" id="combo">
+        <div class="slots" id="slots"><span class="slot"></span><span class="slot"></span><span class="slot"></span></div>
+        <p id="comboText">Toca el corazón de tres productos para armar un combo con <b>15 % de descuento</b>.</p>
+        <div class="tot"><s id="comboOld"></s><strong id="comboNew">Gs. 0</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="ambientes" style="* {
+  padding-top: 0
+}">
+    <div class="wrap">
+      <h2 class="reveal">Ambientes listos</h2>
+      <div class="rooms-show">
+        <figure class="room reveal"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1100&q=80&auto=format&fit=crop" alt="Sofá verde de terciopelo contra pared blanca" loading="lazy"><figcaption><span><b>Living verde</b><br>Sofá, mesa y alfombra</span><span>Gs. 4.900.000</span></figcaption></figure>
+        <figure class="room reveal"><img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=1100&q=80&auto=format&fit=crop" alt="Living luminoso con sofá gris y almohadones turquesa" loading="lazy"><figcaption><span><b>Living claro</b><br>Sofá, almohadones y cortinas</span><span>Gs. 3.750.000</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>Nido · Deco y hogar · Luque</span><span>Envío y armado sin costo en Gran Asunción</span><small>Marca ficticia · Prototipo de diseño por Jesús Amarilla</small></div></footer>
+
+<script>const gs = n => 'Gs. ' + n.toLocaleString('es-PY');
+
+const u = id => `https://images.unsplash.com/photo-${id}?w=700&q=80&auto=format&fit=crop`;
+
+const items = [ {
+  id: 1,
+  n: 'Sillón Sol',
+  r: 'living',
+  p: 189e4,
+  img: '1586023492125-27b2c045efd7',
+  tag: 'Más vendido'
+}, {
+  id: 2,
+  n: 'Sofá Monte',
+  r: 'living',
+  p: 295e4,
+  img: '1555041469-a586c61ea9bc'
+}, {
+  id: 3,
+  n: 'Lámpara Taller',
+  r: 'dormitorio',
+  p: 42e4,
+  img: '1507473885765-e6ed057f782c'
+}, {
+  id: 4,
+  n: 'Mueble Nube',
+  r: 'dormitorio',
+  p: 135e4,
+  img: '1513694203232-719a280e022f',
+  tag: 'Nuevo'
+}, {
+  id: 5,
+  n: 'Florero Pampa',
+  r: 'detalles',
+  p: 18e4,
+  img: '1578500494198-246f612d3b3d'
+}, {
+  id: 6,
+  n: 'Set almohadones',
+  r: 'living',
+  p: 26e4,
+  img: '1493663284031-b7e3aefcae8e'
+}, {
+  id: 7,
+  n: 'Perchero Roble',
+  r: 'dormitorio',
+  p: 54e4,
+  img: '1512436991641-6745cdb1723f'
+}, {
+  id: 8,
+  n: 'Cuadro Luna',
+  r: 'detalles',
+  p: 32e4,
+  img: '1600607687939-ce8a6c25118c',
+  tag: 'Últimas unidades'
+} ];
+
+let room = 'todos', max = 3e6, sort = 'rel';
+
+const picked = [];
+
+const catalog = document.getElementById('catalog');
+
+function render() {
+  let list = items.filter(i => (room === 'todos' || i.r === room) && i.p <= max);
+  if (sort === 'asc') list.sort((a, b) => a.p - b.p);
+  if (sort === 'desc') list.sort((a, b) => b.p - a.p);
+  catalog.replaceChildren();
+  document.getElementById('count').textContent = `${list.length} ${list.length === 1 ? 'producto' : 'productos'}`;
+  if (!list.length) {
+    const e = document.createElement('p');
+    e.className = 'empty';
+    e.textContent = 'No hay productos con ese filtro. Prueba subir el precio máximo.';
+    catalog.append(e);
+    return;
+  }
+  list.forEach((i, k) => {
+    const a = document.createElement('article');
+    a.className = 'item';
+    a.style.animationDelay = k * 40 + 'ms';
+    const ph = document.createElement('div');
+    ph.className = 'ph';
+    const img = document.createElement('img');
+    img.src = u(i.img);
+    img.alt = i.n;
+    img.loading = 'lazy';
+    ph.append(img);
+    if (i.tag) {
+      const t = document.createElement('span');
+      t.className = 'tag';
+      t.textContent = i.tag;
+      ph.append(t);
+    }
+    const pick = document.createElement('button');
+    pick.type = 'button';
+    pick.className = 'pick';
+    pick.setAttribute('aria-pressed', picked.includes(i.id));
+    pick.setAttribute('aria-label', 'Sumar ' + i.n + ' al combo');
+    pick.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>';
+    pick.onclick = () => toggle(i.id);
+    ph.append(pick);
+    const h = document.createElement('h3');
+    h.textContent = i.n;
+    const row = document.createElement('div');
+    row.className = 'row';
+    const r = document.createElement('span');
+    r.textContent = i.r[0].toUpperCase() + i.r.slice(1);
+    const p = document.createElement('span');
+    p.textContent = gs(i.p);
+    row.append(r, p);
+    a.append(ph, h, row);
+    catalog.append(a);
+  });
+}
+
+function toggle(id) {
+  const at = picked.indexOf(id);
+  if (at >= 0) picked.splice(at, 1); else {
+    if (picked.length === 3) picked.shift();
+    picked.push(id);
+  }
+  renderCombo();
+  render();
+}
+
+function renderCombo() {
+  const slots = document.querySelectorAll('.slot');
+  slots.forEach((s, k) => {
+    s.replaceChildren();
+    const it = items.find(i => i.id === picked[k]);
+    if (it) {
+      const img = document.createElement('img');
+      img.src = u(it.img);
+      img.alt = '';
+      s.append(img);
+    }
+  });
+  const sum = picked.reduce((a, id) => a + items.find(i => i.id === id).p, 0);
+  const full = picked.length === 3;
+  document.getElementById('comboOld').textContent = full ? gs(sum) : '';
+  document.getElementById('comboNew').textContent = gs(full ? Math.round(sum * .85) : sum);
+  document.getElementById('cartN').textContent = picked.length;
+  const t = document.getElementById('comboText');
+  t.replaceChildren();
+  if (full) {
+    t.append('Combo completo. Ahorras ');
+    const b = document.createElement('b');
+    b.textContent = gs(Math.round(sum * .15));
+    t.append(b, '.');
+  } else {
+    t.append(`Elegiste ${picked.length} de 3. Completa el combo para tener `);
+    const b = document.createElement('b');
+    b.textContent = '15 % de descuento';
+    t.append(b, '.');
+  }
+}
+
+document.querySelectorAll('.rooms button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.rooms button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  room = b.dataset.r;
+  render();
+});
+
+document.getElementById('max').oninput = e => {
+  max = +e.target.value;
+  document.getElementById('maxOut').textContent = gs(max);
+  render();
+};
+
+document.getElementById('sort').onchange = e => {
+  sort = e.target.value;
+  render();
+};
+
+render();
+
+renderCombo();
+
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) {
+    en.target.classList.add('in');
+    io.unobserve(en.target);
+  }
+}), {
+  threshold: .15
+});
+
+document.querySelectorAll('.reveal').forEach(e => io.observe(e))</script>
+</body>
+</html>

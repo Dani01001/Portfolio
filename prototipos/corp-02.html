@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Altura Desarrollos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>:root {
+  --coal: #121416;
+  --coal-2: #1b1e21;
+  --line: #2d3136;
+  --bone: #efece6;
+  --bone-2: #a8a49c;
+  --copper: #c77d4a;
+  --display: 'Tenor Sans',Georgia,serif;
+  --body: 'Karla',system-ui,sans-serif
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark
+}
+body {
+  background: var(--coal);
+  color: var(--bone);
+  font-family: var(--body);
+  line-height: 1.6;
+  overflow-x: hidden
+}
+img {
+  display: block;
+  max-width: 100%
+}
+button,
+input {
+  font: inherit;
+  color: inherit
+}
+button {
+  cursor: pointer;
+  background: 0 0;
+  border: 0
+}
+a {
+  color: inherit;
+  text-decoration: none
+}
+:focus-visible {
+  outline: 1.5px solid var(--copper);
+  outline-offset: 4px
+}
+.wrap {
+  width: min(1180px,100% - 32px);
+  margin-inline: auto
+}
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10
+}
+.nav .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 76px
+}
+.logo {
+  font-family: var(--display);
+  font-size: 20px;
+  letter-spacing: .28em;
+  text-transform: uppercase
+}
+.logo span {
+  color: var(--copper)
+}
+.nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase
+}
+.nav ul a {
+  opacity: .8
+}
+.nav ul a:hover {
+  opacity: 1
+}
+.nav .cta {
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  border: 1px solid rgba(239,236,230,.5);
+  padding: 10px 16px
+}
+.nav .cta:hover {
+  background: var(--bone);
+  color: var(--coal)
+}
+.hero {
+  position: relative;
+  min-height: min(100vh,800px);
+  display: grid;
+  align-items: end;
+  overflow: hidden
+}
+.hero > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: drift 14s ease-out both
+}
+@keyframes drift {
+  from {
+    transform: scale(1.12)
+  }
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg,rgba(18,20,22,.95) 0,rgba(18,20,22,.3) 55%,rgba(18,20,22,.55) 100%)
+}
+.hero .wrap {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 32px;
+  align-items: end;
+  padding-bottom: clamp(32px,6vw,64px)
+}
+.kick {
+  font-size: 12.5px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--copper)
+}
+h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(42px, 6.6vw, 92px);
+  line-height: 1;
+  letter-spacing: -.01em;
+  margin-top: 14px
+}
+.hero p {
+  margin-top: 16px;
+  max-width: 44ch;
+  color: #d4d0c8;
+  font-size: 17px
+}
+.sheet {
+  background: rgba(18,20,22,.72);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+  padding: 22px
+}
+.sheet h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 24px
+}
+.sheet dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 16px 0
+}
+.sheet dt {
+  font-size: 11.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--bone-2)
+}
+.sheet dd {
+  font-size: 17px
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 22px;
+  background: var(--copper);
+  color: var(--coal);
+  font-weight: 700;
+  font-size: 14.5px;
+  letter-spacing: .04em;
+  transition: gap .25s,background .2s
+}
+.btn:hover {
+  gap: 18px;
+  background: #d98f5b
+}
+section.block {
+  padding: clamp(64px,10vw,120px) 0
+}
+.head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 36px
+}
+h2.big {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(34px, 4.8vw, 60px);
+  line-height: 1.02
+}
+.head p {
+  color: var(--bone-2);
+  max-width: 44ch;
+  justify-self: end
+}
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+  overflow-x: auto
+}
+.tabs button {
+  padding: 14px 20px;
+  font-size: 13.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--bone-2);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  transition: color .2s,border-color .2s
+}
+.tabs button[aria-pressed=true] {
+  color: var(--bone);
+  border-color: var(--copper)
+}
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px
+}
+.proj {
+  background: var(--coal-2);
+  border: 1px solid var(--line);
+  animation: rise .5s cubic-bezier(.2,.7,.2,1) both
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px)
+  }
+}
+.proj .ph {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  position: relative
+}
+.proj img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(.2,.7,.2,1)
+}
+.proj:hover img {
+  transform: scale(1.05)
+}
+.proj .state {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 11.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  background: var(--coal);
+  padding: 6px 10px
+}
+.proj .body {
+  padding: 18px 20px 22px
+}
+.proj h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 24px
+}
+.proj .loc {
+  font-size: 14px;
+  color: var(--bone-2)
+}
+.progress {
+  margin-top: 16px
+}
+.progress .lbl {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: var(--bone-2);
+  margin-bottom: 6px
+}
+.progress .track {
+  height: 3px;
+  background: var(--line)
+}
+.progress .track i {
+  display: block;
+  height: 100%;
+  background: var(--copper);
+  width: 0;
+  transition: width 1.2s cubic-bezier(.2,.7,.2,1)
+}
+.proj .meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 14px
+}
+.ba {
+  position: relative;
+  aspect-ratio: 16/8;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  user-select: none;
+  touch-action: pan-y
+}
+.ba img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+.ba .after {
+  clip-path: inset(0 0 0 var(--pos,50%))
+}
+.ba .handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos,50%);
+  width: 2px;
+  background: var(--bone);
+  transform: translateX(-1px);
+  pointer-events: none
+}
+.ba .handle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--bone);
+  transform: translate(-50%,-50%);
+  box-shadow: 0 10px 30px rgba(0,0,0,.4)
+}
+.ba .handle svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 1;
+  color: var(--coal)
+}
+.ba .tag {
+  position: absolute;
+  top: 16px;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  background: rgba(18,20,22,.8);
+  padding: 6px 10px
+}
+.ba .tag.l {
+  left: 16px
+}
+.ba .tag.r {
+  right: 16px
+}
+.ba input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize
+}
+.mapbox {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 18px
+}
+.map {
+  background: var(--coal-2);
+  border: 1px solid var(--line);
+  position: relative
+}
+.map svg {
+  width: 100%;
+  height: auto;
+  display: block
+}
+.pin {
+  cursor: pointer
+}
+.pin circle.ring {
+  fill: none;
+  stroke: var(--copper);
+  stroke-width: 1.5;
+  opacity: .6;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: ring 2.2s ease-out infinite
+}
+@keyframes ring {
+  from {
+    transform: scale(.6);
+    opacity: .8
+  }
+  to {
+    transform: scale(2.2);
+    opacity: 0
+  }
+}
+.pin circle.dot {
+  fill: var(--bone);
+  stroke: var(--coal);
+  stroke-width: 2;
+  transition: fill .2s
+}
+.pin:hover circle.dot,
+.pin[aria-pressed=true] circle.dot {
+  fill: var(--copper)
+}
+.pin:focus-visible {
+  outline: 0
+}
+.pin:focus-visible circle.dot {
+  stroke: var(--copper);
+  stroke-width: 4
+}
+.info {
+  border: 1px solid var(--line);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
+.info img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover
+}
+.info h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 28px
+}
+.info p {
+  color: var(--bone-2)
+}
+.info ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-size: 14px
+}
+.info li b {
+  display: block;
+  font-size: 11.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--bone-2);
+  font-weight: 500
+}
+footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 0;
+  font-size: 14px;
+  color: var(--bone-2)
+}
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px
+}
+footer small {
+  width: 100%;
+  font-size: 12.5px;
+  color: #767269
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .9s,transform .9s cubic-bezier(.2,.7,.2,1)
+}
+.reveal.in {
+  opacity: 1;
+  transform: none
+}
+@media (max-width:860px) {
+  .nav ul {
+    display: none
+  }
+  .head,
+  .hero .wrap,
+  .mapbox {
+    grid-template-columns: 1fr
+  }
+  .head p {
+    justify-self: start
+  }
+  .projects {
+    grid-template-columns: 1fr
+  }
+  .ba {
+    aspect-ratio: 4/3
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,
+  ::after,
+  ::before {
+    animation: none!important;
+    transition: none!important
+  }
+  .reveal {
+    opacity: 1;
+    transform: none
+  }
+}</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#inicio">Altura<span>.</span></a>
+    <nav aria-label="Principal"><ul><li><a href="#proyectos">Proyectos</a></li><li><a href="#obra">Obra</a></li><li><a href="#ubicaciones">Ubicaciones</a></li></ul></nav>
+    <a class="cta" href="#ubicaciones">Agendar visita</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1900&q=80&auto=format&fit=crop" alt="Casa moderna iluminada al anochecer rodeada de árboles">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="kick">Desarrollos residenciales · Desde 2009</span>
+        <h1>Casas que se ven igual de bien en diez años.</h1>
+        <p>Diseñamos, construimos y entregamos llave en mano en Asunción, Luque y San Bernardino. Con avance de obra que puedes seguir desde aquí.</p>
+      </div>
+      <aside class="sheet reveal" aria-label="Proyecto destacado">
+        <span class="kick">Proyecto destacado</span>
+        <h2>Casa Lapacho</h2>
+        <dl><div><dt>Superficie</dt><dd>320 m²</dd></div><div><dt>Dormitorios</dt><dd>4 en suite</dd></div><div><dt>Terreno</dt><dd>900 m²</dd></div><div><dt>Entrega</dt><dd>Marzo 2027</dd></div></dl>
+        <a class="btn" href="#proyectos">Ver proyectos <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="block" id="proyectos">
+    <div class="wrap">
+      <div class="head reveal"><h2 class="big">Proyectos</h2><p>Filtra por etapa. Las barras muestran el avance real de cada obra, actualizado cada semana.</p></div>
+      <div class="tabs reveal" role="group" aria-label="Filtrar por etapa">
+        <button type="button" aria-pressed="true" data-s="todos">Todos</button>
+        <button type="button" aria-pressed="false" data-s="pozo">En pozo</button>
+        <button type="button" aria-pressed="false" data-s="obra">En obra</button>
+        <button type="button" aria-pressed="false" data-s="entregado">Entregados</button>
+      </div>
+      <div class="projects" id="projects"></div>
+    </div>
+  </section>
+
+  <section class="block" id="obra" style="* {
+  padding-top: 0
+}">
+    <div class="wrap">
+      <div class="head reveal"><h2 class="big">De la losa<br>al living</h2><p>Arrastra la línea para comparar la obra en construcción con el interior terminado.</p></div>
+      <div class="ba reveal" id="ba">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80&auto=format&fit=crop" alt="Obra en construcción vista desde arriba con trabajadores sobre la losa" loading="lazy">
+        <img class="after" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=80&auto=format&fit=crop" alt="Living terminado con sofá gris, chimenea y cocina integrada" loading="lazy">
+        <span class="tag l">Mes 3</span><span class="tag r">Entrega</span>
+        <span class="handle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+        <input type="range" min="0" max="100" value="50" id="baRange" aria-label="Comparar antes y después">
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="ubicaciones" style="* {
+  padding-top: 0
+}">
+    <div class="wrap">
+      <div class="head reveal"><h2 class="big">Dónde estamos</h2><p>Toca un punto del mapa para ver el proyecto de esa zona.</p></div>
+      <div class="mapbox">
+        <div class="map reveal">
+          <svg viewBox="0 0 600 420" role="group" aria-label="Mapa esquemático de Gran Asunción">
+            <path d="M40 120 C 90 60, 160 40, 210 70 S 260 150, 230 210 S 150 330, 90 300 S 10 190, 40 120 Z" fill="#1f2a2e" stroke="#2d3136"/>
+            <path d="M20 40 C 60 110, 50 200, 110 260 S 200 360, 180 420" fill="none" stroke="#2c4a5a" stroke-width="10" stroke-linecap="round" opacity=".6"/>
+            <text x="30" y="30" fill="#6f7d84" font-size="12" font-family="Karla" letter-spacing="2">RÍO PARAGUAY</text>
+            <path d="M200 140 L 330 160 L 460 120" stroke="#3a3f45" stroke-width="3" fill="none" stroke-dasharray="6 6"/>
+            <path d="M330 160 L 360 280 L 520 340" stroke="#3a3f45" stroke-width="3" fill="none" stroke-dasharray="6 6"/>
+            <text x="150" y="200" fill="#8b8780" font-size="13" font-family="Karla">Asunción</text>
+            <text x="345" y="150" fill="#8b8780" font-size="13" font-family="Karla">Luque</text>
+            <text x="470" y="360" fill="#8b8780" font-size="13" font-family="Karla">San Bernardino</text>
+            <text x="370" y="300" fill="#8b8780" font-size="13" font-family="Karla">Areguá</text>
+          </svg>
+        </div>
+        <div class="info reveal" id="info" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>Altura Desarrollos · Asunción, Paraguay</span><span>Lunes a sábado · 8:00 a 18:00</span><small>Marca ficticia · Prototipo de diseño por Jesús Amarilla</small></div></footer>
+
+<script>const u = (id, w = 900) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`;
+
+const projects = [ {
+  n: 'Casa Lapacho',
+  loc: 'Luque',
+  s: 'obra',
+  pct: 62,
+  img: '1600585154340-be6161a56a0c',
+  m2: '320 m²',
+  d: 'Marzo 2027',
+  x: 360,
+  y: 170,
+  desc: 'Cuatro dormitorios en suite, galería con quincho y piscina climatizada.'
+}, {
+  n: 'Residencia Costa',
+  loc: 'San Bernardino',
+  s: 'pozo',
+  pct: 8,
+  img: '1600596542815-ffad4c1539a9',
+  m2: '410 m²',
+  d: 'Diciembre 2027',
+  x: 500,
+  y: 330,
+  desc: 'Frente al lago Ypacaraí, con muelle propio y terrazas en dos niveles.'
+}, {
+  n: 'Casas Mburucuyá',
+  loc: 'Asunción',
+  s: 'entregado',
+  pct: 100,
+  img: '1560518883-ce09059eeffa',
+  m2: '180 m²',
+  d: 'Entregado 2025',
+  x: 160,
+  y: 170,
+  desc: 'Seis casas en condominio cerrado con seguridad y áreas verdes comunes.'
+}, {
+  n: 'Lofts Areguá',
+  loc: 'Areguá',
+  s: 'obra',
+  pct: 35,
+  img: '1600607687939-ce8a6c25118c',
+  m2: '95 m²',
+  d: 'Agosto 2027',
+  x: 370,
+  y: 280,
+  desc: 'Doce lofts de doble altura cerca del centro histórico y la zona de artesanos.'
+} ];
+
+const grid = document.getElementById('projects');
+
+function render(s) {
+  grid.replaceChildren();
+  projects.filter(p => s === 'todos' || p.s === s).forEach((p, k) => {
+    const a = document.createElement('article');
+    a.className = 'proj';
+    a.style.animationDelay = k * 70 + 'ms';
+    const state = {
+      pozo: 'En pozo',
+      obra: 'En obra',
+      entregado: 'Entregado'
+    }[p.s];
+    const ph = document.createElement('div');
+    ph.className = 'ph';
+    const img = document.createElement('img');
+    img.src = u(p.img);
+    img.alt = p.n;
+    img.loading = 'lazy';
+    const st = document.createElement('span');
+    st.className = 'state';
+    st.textContent = state;
+    ph.append(img, st);
+    const body = document.createElement('div');
+    body.className = 'body';
+    const h = document.createElement('h3');
+    h.textContent = p.n;
+    const loc = document.createElement('span');
+    loc.className = 'loc';
+    loc.textContent = p.loc;
+    const pr = document.createElement('div');
+    pr.className = 'progress';
+    const lbl = document.createElement('div');
+    lbl.className = 'lbl';
+    const l1 = document.createElement('span');
+    l1.textContent = 'Avance de obra';
+    const l2 = document.createElement('span');
+    l2.textContent = p.pct + ' %';
+    lbl.append(l1, l2);
+    const tr = document.createElement('div');
+    tr.className = 'track';
+    tr.setAttribute('role', 'progressbar');
+    tr.setAttribute('aria-valuenow', p.pct);
+    tr.setAttribute('aria-valuemin', 0);
+    tr.setAttribute('aria-valuemax', 100);
+    tr.setAttribute('aria-label', 'Avance de ' + p.n);
+    const bar = document.createElement('i');
+    tr.append(bar);
+    pr.append(lbl, tr);
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    const m1 = document.createElement('span');
+    m1.textContent = p.m2;
+    const m2 = document.createElement('span');
+    m2.textContent = p.d;
+    meta.append(m1, m2);
+    body.append(h, loc, pr, meta);
+    a.append(ph, body);
+    grid.append(a);
+    requestAnimationFrame(() => requestAnimationFrame(() => bar.style.width = p.pct + '%'));
+  });
+}
+
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  render(b.dataset.s);
+});
+
+render('todos');
+
+const ba = document.getElementById('ba');
+
+document.getElementById('baRange').addEventListener('input', e => ba.style.setProperty('--pos', e.target.value + '%'));
+
+const svg = document.querySelector('.map svg'), info = document.getElementById('info');
+
+const NS = 'http://www.w3.org/2000/svg';
+
+function showInfo(p) {
+  info.replaceChildren();
+  const img = document.createElement('img');
+  img.src = u(p.img, 700);
+  img.alt = p.n;
+  const k = document.createElement('span');
+  k.className = 'kick';
+  k.textContent = p.loc;
+  const h = document.createElement('h3');
+  h.textContent = p.n;
+  const d = document.createElement('p');
+  d.textContent = p.desc;
+  const ul = document.createElement('ul');
+  [ [ 'Superficie', p.m2 ], [ 'Entrega', p.d ] ].forEach(([a, b]) => {
+    const li = document.createElement('li');
+    const bb = document.createElement('b');
+    bb.textContent = a;
+    li.append(bb, b);
+    ul.append(li);
+  });
+  const btn = document.createElement('a');
+  btn.className = 'btn';
+  btn.href = '#ubicaciones';
+  btn.textContent = 'Agendar una visita';
+  info.append(img, k, h, d, ul, btn);
+}
+
+projects.forEach((p, i) => {
+  const g = document.createElementNS(NS, 'g');
+  g.setAttribute('class', 'pin');
+  g.setAttribute('tabindex', '0');
+  g.setAttribute('role', 'button');
+  g.setAttribute('aria-label', `${p.n}, ${p.loc}`);
+  g.setAttribute('aria-pressed', i === 0);
+  const ring = document.createElementNS(NS, 'circle');
+  ring.setAttribute('class', 'ring');
+  ring.setAttribute('cx', p.x);
+  ring.setAttribute('cy', p.y);
+  ring.setAttribute('r', 10);
+  const dot = document.createElementNS(NS, 'circle');
+  dot.setAttribute('class', 'dot');
+  dot.setAttribute('cx', p.x);
+  dot.setAttribute('cy', p.y);
+  dot.setAttribute('r', 9);
+  g.append(ring, dot);
+  const pick = () => {
+    svg.querySelectorAll('.pin').forEach(x => x.setAttribute('aria-pressed', x === g));
+    showInfo(p);
+  };
+  g.addEventListener('click', pick);
+  g.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      pick();
+    }
+  });
+  svg.append(g);
+});
+
+showInfo(projects[0]);
+
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) {
+    en.target.classList.add('in');
+    io.unobserve(en.target);
+  }
+}), {
+  threshold: .15
+});
+
+document.querySelectorAll('.reveal').forEach(e => io.observe(e))</script>
+</body>
+</html>

@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clínica Dental Arandú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>:root {
+  --white: #ffffff;
+  --sky: #eef6f7;
+  --teal: #0e7c86;
+  --teal-2: #0a5f67;
+  --teal-soft: #d4ecee;
+  --coral: #ff7a5c;
+  --ink: #0f2a2e;
+  --ink-2: #4f6a6e;
+  --line: #d9e6e8;
+  --font: 'Lexend',system-ui,sans-serif
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+html {
+  scroll-behavior: smooth
+}
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font);
+  line-height: 1.6;
+  overflow-x: hidden;
+  font-weight: 300
+}
+b,
+h1,
+h2,
+h3,
+strong {
+  font-weight: 500
+}
+img {
+  display: block;
+  max-width: 100%
+}
+button,
+input,
+select {
+  font: inherit;
+  color: inherit
+}
+button {
+  cursor: pointer;
+  background: 0 0;
+  border: 0
+}
+a {
+  color: inherit;
+  text-decoration: none
+}
+:focus-visible {
+  outline: 2.5px solid var(--coral);
+  outline-offset: 3px
+}
+.wrap {
+  width: min(1140px,100% - 32px);
+  margin-inline: auto
+}
+.nav .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 18px
+}
+.logo i {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--teal);
+  display: grid;
+  place-items: center;
+  color: var(--white)
+}
+.nav ul {
+  display: flex;
+  gap: 26px;
+  list-style: none;
+  font-size: 14.5px;
+  color: var(--ink-2)
+}
+.nav ul a:hover {
+  color: var(--teal)
+}
+.nav .tel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--teal)
+}
+.hero {
+  background: var(--sky);
+  border-radius: 28px;
+  margin: 0 clamp(8px,1.5vw,16px);
+  overflow: hidden
+}
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 32px;
+  align-items: center;
+  padding: clamp(32px,6vw,72px) 0
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border-radius: 999px;
+  padding: 6px 12px 6px 6px;
+  font-size: 13px;
+  font-weight: 400
+}
+.pill i {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--teal-soft);
+  display: grid;
+  place-items: center;
+  color: var(--teal)
+}
+h1 {
+  font-weight: 500;
+  font-size: clamp(38px, 5.4vw, 70px);
+  line-height: 1.04;
+  letter-spacing: -.035em;
+  margin-top: 18px
+}
+h1 span {
+  color: var(--teal)
+}
+.hero p {
+  margin-top: 18px;
+  font-size: 18px;
+  color: var(--ink-2);
+  max-width: 40ch
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 26px;
+  flex-wrap: wrap
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 22px;
+  border-radius: 12px;
+  background: var(--teal);
+  color: var(--white);
+  font-weight: 500;
+  transition: background .2s,transform .2s
+}
+.btn:hover {
+  background: var(--teal-2);
+  transform: translateY(-2px)
+}
+.btn.soft {
+  background: var(--white);
+  color: var(--teal)
+}
+.btn.soft:hover {
+  background: var(--teal-soft)
+}
+.photo {
+  position: relative
+}
+.photo img {
+  width: 100%;
+  aspect-ratio: 5/4;
+  object-fit: cover;
+  border-radius: 22px
+}
+.next {
+  position: absolute;
+  left: -24px;
+  bottom: -20px;
+  background: var(--white);
+  border-radius: 18px;
+  padding: 16px 18px;
+  box-shadow: 0 24px 50px -24px rgba(15,42,46,.45);
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  animation: pop .7s .5s cubic-bezier(.3,1.4,.5,1) both
+}
+@keyframes pop {
+  from {
+    transform: translateY(20px) scale(.9);
+    opacity: 0
+  }
+}
+.next .d {
+  width: 52px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--coral);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  line-height: 1.05;
+  font-weight: 500;
+  font-size: 20px
+}
+.next .d small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase
+}
+.next b {
+  display: block;
+  font-size: 15px
+}
+.next span {
+  font-size: 13px;
+  color: var(--ink-2)
+}
+section.block {
+  padding: clamp(56px,9vw,104px) 0
+}
+h2 {
+  font-weight: 500;
+  font-size: clamp(32px, 4.2vw, 52px);
+  letter-spacing: -.035em;
+  line-height: 1.05
+}
+.lead {
+  color: var(--ink-2);
+  margin-top: 10px;
+  max-width: 50ch
+}
+.treat {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: clamp(20px,4vw,48px);
+  margin-top: 32px
+}
+.tlist {
+  display: flex;
+  flex-direction: column;
+  gap: 6px
+}
+.tlist button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  padding: 16px 18px;
+  border-radius: 14px;
+  font-size: 15.5px;
+  transition: background .25s,color .25s
+}
+.tlist button:hover {
+  background: var(--sky)
+}
+.tlist button[aria-selected=true] {
+  background: var(--teal);
+  color: var(--white)
+}
+.tlist button svg {
+  opacity: 0;
+  transition: opacity .2s,transform .3s
+}
+.tlist button[aria-selected=true] svg {
+  opacity: 1;
+  transform: translateX(4px)
+}
+.tpanel {
+  background: var(--sky);
+  border-radius: 22px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 360px
+}
+.tpanel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fade .5s both
+}
+.tpanel .txt {
+  padding: clamp(20px,3vw,36px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: fade .5s both
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px)
+  }
+}
+.tpanel h3 {
+  font-size: 28px;
+  letter-spacing: -.02em
+}
+.tpanel ul {
+  list-style: none;
+  display: grid;
+  gap: 8px
+}
+.tpanel li {
+  display: flex;
+  gap: 10px;
+  font-size: 15px
+}
+.tpanel li svg {
+  flex: none;
+  color: var(--teal);
+  margin-top: 3px
+}
+.tpanel .from {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line)
+}
+.tpanel .from b {
+  font-size: 22px
+}
+.tpanel .from small {
+  display: block;
+  color: var(--ink-2);
+  font-size: 12.5px
+}
+.book {
+  background: var(--ink);
+  color: var(--white);
+  border-radius: 28px;
+  margin: 0 clamp(8px,1.5vw,16px);
+  padding: clamp(40px,7vw,80px) 0
+}
+.book h2 {
+  color: var(--white)
+}
+.book .lead {
+  color: #a9c3c6
+}
+.cal {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+  margin-top: 32px
+}
+.panel {
+  background: #173a3f;
+  border-radius: 20px;
+  padding: 22px
+}
+.panel h3 {
+  font-size: 17px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+.month-nav {
+  display: flex;
+  gap: 6px
+}
+.month-nav button {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #214a50;
+  display: grid;
+  place-items: center
+}
+.month-nav button:disabled {
+  opacity: .3;
+  cursor: not-allowed
+}
+.days {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 4px;
+  text-align: center
+}
+.days .dn {
+  font-size: 12px;
+  color: #86a6aa;
+  padding: 4px 0
+}
+.days button {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  font-size: 14.5px;
+  transition: background .2s,color .2s
+}
+.days button:hover:not(:disabled) {
+  background: #214a50
+}
+.days button:disabled {
+  opacity: .25;
+  cursor: not-allowed
+}
+.days button[aria-pressed=true] {
+  background: var(--coral);
+  color: var(--white);
+  font-weight: 500
+}
+.days button.today {
+  box-shadow: inset 0 0 0 1.5px #4d7d83
+}
+.slots {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 6px
+}
+.slots button {
+  padding: 12px 0;
+  border-radius: 10px;
+  background: #214a50;
+  font-size: 14.5px;
+  transition: background .2s
+}
+.slots button[aria-pressed=true] {
+  background: var(--white);
+  color: var(--ink);
+  font-weight: 500
+}
+.slots button:disabled {
+  opacity: .3;
+  text-decoration: line-through;
+  cursor: not-allowed
+}
+.slots .hint {
+  grid-column: 1/-1;
+  color: #86a6aa;
+  font-size: 14px;
+  padding: 10px 0
+}
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: #214a50;
+  border: 0;
+  color: var(--white);
+  margin-bottom: 16px
+}
+.confirm {
+  margin-top: 16px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  background: var(--coral);
+  color: var(--white);
+  font-weight: 500;
+  transition: opacity .2s
+}
+.confirm:disabled {
+  opacity: .35;
+  cursor: not-allowed
+}
+.ok {
+  display: none;
+  text-align: left
+}
+.ok h3 {
+  font-size: 22px;
+  display: block
+}
+.ok p {
+  color: #a9c3c6;
+  margin-top: 6px
+}
+.done .form {
+  display: none
+}
+.done .ok {
+  display: block
+}
+.faq {
+  max-width: 780px;
+  margin: 32px auto 0
+}
+details {
+  border-bottom: 1px solid var(--line)
+}
+summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 17px;
+  font-weight: 400
+}
+summary::-webkit-details-marker {
+  display: none
+}
+summary i {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--sky);
+  display: grid;
+  place-items: center;
+  flex: none;
+  transition: transform .3s,background .3s
+}
+details[open] summary i {
+  transform: rotate(45deg);
+  background: var(--teal-soft)
+}
+details p {
+  padding: 0 0 20px;
+  color: var(--ink-2);
+  max-width: 62ch
+}
+footer {
+  padding: 32px 0;
+  font-size: 14px;
+  color: var(--ink-2)
+}
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px
+}
+footer small {
+  width: 100%;
+  font-size: 12.5px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)
+}
+.reveal.in {
+  opacity: 1;
+  transform: none
+}
+@media (max-width:860px) {
+  .nav ul {
+    display: none
+  }
+  .cal,
+  .hero .wrap,
+  .treat {
+    grid-template-columns: 1fr
+  }
+  .next {
+    left: 12px
+  }
+  .tlist {
+    flex-direction: row;
+    overflow-x: auto
+  }
+  .tlist button {
+    white-space: nowrap
+  }
+  .tpanel {
+    grid-template-columns: 1fr
+  }
+  .tpanel img {
+    aspect-ratio: 16/9
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,
+  ::after,
+  ::before {
+    animation: none!important;
+    transition: none!important
+  }
+  .reveal {
+    opacity: 1;
+    transform: none
+  }
+}</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#inicio"><i aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3c-3 0-4 3-3 7l2 9c.3 1.3 2 1.3 2.3 0L9.5 14c.3-1.3 2.7-1.3 3 0l1.2 5c.3 1.3 2 1.3 2.3 0l2-9c1-4 0-7-3-7-2 0-3 1-3 1s-1-1-3-1z"/></svg></i>Arandú</a>
+    <nav aria-label="Principal"><ul><li><a href="#tratamientos">Tratamientos</a></li><li><a href="#turnos">Turnos</a></li><li><a href="#preguntas">Preguntas</a></li></ul></nav>
+    <a class="tel" href="#turnos">Reservar turno</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="pill"><i aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l4 4L19 6"/></svg></i>Primera consulta con diagnóstico digital</span>
+        <h1>Ir al dentista <span>sin miedo</span> y sin esperas.</h1>
+        <p>Turnos online en un minuto, precios claros antes de empezar y un equipo que te explica cada paso.</p>
+        <div class="actions"><a class="btn" href="#turnos">Reservar turno</a><a class="btn soft" href="#tratamientos">Ver tratamientos</a></div>
+      </div>
+      <div class="photo reveal">
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=80&auto=format&fit=crop" alt="Consultorio dental luminoso con sillón y equipamiento moderno">
+        <div class="next" aria-live="polite"><div class="d" id="nextD"></div><div><b>Próximo turno libre</b><span id="nextT"></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="tratamientos">
+    <div class="wrap">
+      <h2 class="reveal">Tratamientos</h2>
+      <p class="lead reveal">Precio de referencia visible desde el inicio. El presupuesto final se confirma en la primera consulta.</p>
+      <div class="treat reveal">
+        <div class="tlist" role="tablist" aria-label="Tratamientos" id="tlist"></div>
+        <div class="tpanel" role="tabpanel" id="tpanel" tabindex="0"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="book" id="turnos">
+    <div class="wrap">
+      <h2 class="reveal">Reserva tu turno</h2>
+      <p class="lead reveal">Elige día y horario. En el sitio real, el turno se agenda en Google Calendar y te llega la confirmación por correo.</p>
+      <div class="cal reveal" id="calBox">
+        <div class="panel">
+          <h3><span id="monthLbl"></span><span class="month-nav"><button type="button" id="prevM" aria-label="Mes anterior"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" id="nextM" aria-label="Mes siguiente"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></span></h3>
+          <div class="days" id="days"></div>
+        </div>
+        <div class="panel">
+          <div class="form">
+            <label for="motivo" style="* {
+  display: block;
+  font-size: 13px;
+  color: #86a6aa;
+  margin-bottom: 6px
+}">Motivo</label>
+            <select id="motivo"><option>Consulta y diagnóstico</option><option>Limpieza</option><option>Blanqueamiento</option><option>Ortodoncia invisible</option><option>Urgencia</option></select>
+            <h3>Horarios</h3>
+            <div class="slots" id="slots" aria-live="polite"><span class="hint">Primero elige un día del calendario.</span></div>
+            <button class="confirm" type="button" id="confirm" disabled="disabled">Confirmar turno</button>
+          </div>
+          <div class="ok" role="status" tabindex="-1" id="ok"><h3>Turno reservado</h3><p id="okText"></p><p>Es una demostración: no se agendó nada ni se guardaron datos.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="preguntas">
+    <div class="wrap">
+      <h2 class="reveal" style="* {
+  text-align: center
+}">Antes de tu primera visita</h2>
+      <div class="faq reveal">
+        <details><summary>¿Cuánto dura la primera consulta?<i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>Unos 40 minutos. Incluye revisión completa, fotos intraorales y un plan de tratamiento por escrito con precios.</p></details>
+        <details><summary>¿Atienden seguros médicos?<i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>Trabajamos con los principales seguros privados. Trae tu carné y verificamos la cobertura antes de empezar.</p></details>
+        <details><summary>¿Puedo pagar en cuotas?<i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>Sí, con tarjeta de crédito. Los tratamientos largos como la ortodoncia se pueden pagar mes a mes.</p></details>
+        <details><summary>¿Qué hago si tengo una urgencia?<i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>Elige "Urgencia" como motivo al reservar. Guardamos dos horarios por día para casos que no pueden esperar.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>Clínica Dental Arandú · Fernando de la Mora</span><span>Lunes a viernes 8:00 a 19:00 · Sábados 8:00 a 12:00</span><small>Marca ficticia · Prototipo de diseño por Jesús Amarilla</small></div></footer>
+
+<script>const gs = n => 'Gs. ' + n.toLocaleString('es-PY');
+
+const check = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>';
+
+const treatments = [ {
+  n: 'Limpieza y control',
+  img: '1629909613654-28e377c37b09',
+  d: 'Limpieza con ultrasonido, pulido y control general.',
+  pts: [ '45 minutos', 'Recomendado cada 6 meses', 'Incluye aplicación de flúor' ],
+  p: 25e4
+}, {
+  n: 'Ortodoncia invisible',
+  img: '1609840114035-3c981b782dfe',
+  d: 'Alineadores transparentes hechos a medida con escaneo digital.',
+  pts: [ 'Sin brackets metálicos', 'Controles cada 6 semanas', 'Simulación del resultado antes de empezar' ],
+  p: 98e5
+}, {
+  n: 'Blanqueamiento',
+  img: '1606811971618-4486d14f3f99',
+  d: 'Blanqueamiento en consultorio con protección de encías.',
+  pts: [ 'Una sesión de 60 minutos', 'Hasta 4 tonos más claro', 'Kit de mantenimiento para casa' ],
+  p: 12e5
+}, {
+  n: 'Diagnóstico digital',
+  img: '1588776814546-1ffcf47267a5',
+  d: 'Radiografía panorámica y revisión con el especialista.',
+  pts: [ 'Resultado el mismo día', 'Plan de tratamiento por escrito', 'Se descuenta si inicias tratamiento' ],
+  p: 18e4
+} ];
+
+const tlist = document.getElementById('tlist'), tpanel = document.getElementById('tpanel');
+
+function showT(i, focus) {
+  [ ...tlist.children ].forEach((b, k) => {
+    b.setAttribute('aria-selected', k === i);
+    b.tabIndex = k === i ? 0 : -1;
+  });
+  if (focus) tlist.children[i].focus();
+  const t = treatments[i];
+  tpanel.setAttribute('aria-labelledby', 'tt' + i);
+  tpanel.replaceChildren();
+  const img = document.createElement('img');
+  img.src = `https://images.unsplash.com/photo-${t.img}?w=800&q=80&auto=format&fit=crop`;
+  img.alt = t.n;
+  const txt = document.createElement('div');
+  txt.className = 'txt';
+  const h = document.createElement('h3');
+  h.textContent = t.n;
+  const p = document.createElement('p');
+  p.textContent = t.d;
+  p.style.color = 'var(--ink-2)';
+  const ul = document.createElement('ul');
+  t.pts.forEach(x => {
+    const li = document.createElement('li');
+    li.innerHTML = check;
+    li.append(x);
+    ul.append(li);
+  });
+  const from = document.createElement('div');
+  from.className = 'from';
+  const pr = document.createElement('div');
+  const sm = document.createElement('small');
+  sm.textContent = 'Desde';
+  const b = document.createElement('b');
+  b.textContent = gs(t.p);
+  pr.append(sm, b);
+  const a = document.createElement('a');
+  a.className = 'btn';
+  a.href = '#turnos';
+  a.textContent = 'Reservar';
+  from.append(pr, a);
+  txt.append(h, p, ul, from);
+  tpanel.append(img, txt);
+}
+
+treatments.forEach((t, i) => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.role = 'tab';
+  b.id = 'tt' + i;
+  b.setAttribute('aria-controls', 'tpanel');
+  b.append(t.n);
+  b.insertAdjacentHTML('beforeend', '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>');
+  b.onclick = () => showT(i);
+  b.onkeydown = e => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      showT((i + 1) % 4, true);
+    }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      showT((i + 3) % 4, true);
+    }
+  };
+  tlist.append(b);
+});
+
+showT(0);
+
+const today = new Date;
+
+today.setHours(0, 0, 0, 0);
+
+let view = new Date(today.getFullYear(), today.getMonth(), 1), selDay = null, selTime = null;
+
+const monthNames = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ];
+
+const busy = (d, t) => (d.getDate() * 7 + t.length * 3 + parseInt(t)) % 5 === 0;
+
+function slotsFor(d) {
+  return d.getDay() === 6 ? [ '8:00', '9:00', '10:00', '11:00' ] : [ '8:00', '9:30', '11:00', '14:00', '15:30', '17:00', '18:00' ];
+}
+
+function drawCal() {
+  document.getElementById('monthLbl').textContent = `${monthNames[view.getMonth()]} ${view.getFullYear()}`;
+  document.getElementById('prevM').disabled = view <= new Date(today.getFullYear(), today.getMonth(), 1);
+  const days = document.getElementById('days');
+  days.replaceChildren();
+  [ 'L', 'M', 'M', 'J', 'V', 'S', 'D' ].forEach(x => {
+    const s = document.createElement('span');
+    s.className = 'dn';
+    s.textContent = x;
+    s.setAttribute('aria-hidden', 'true');
+    days.append(s);
+  });
+  const offset = (view.getDay() + 6) % 7;
+  for (let i = 0; i < offset; i++) days.append(document.createElement('span'));
+  const last = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+  for (let n = 1; n <= last; n++) {
+    const d = new Date(view.getFullYear(), view.getMonth(), n);
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = n;
+    b.setAttribute('aria-label', d.toLocaleDateString('es-PY', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long'
+    }));
+    b.disabled = d < today || d.getDay() === 0;
+    if (+d === +today) b.classList.add('today');
+    b.setAttribute('aria-pressed', selDay && +selDay === +d);
+    b.onclick = () => {
+      selDay = d;
+      selTime = null;
+      drawCal();
+      drawSlots();
+    };
+    days.append(b);
+  }
+}
+
+function drawSlots() {
+  const s = document.getElementById('slots');
+  s.replaceChildren();
+  slotsFor(selDay).forEach(t => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = t;
+    b.disabled = busy(selDay, t);
+    if (b.disabled) b.setAttribute('aria-label', t + ' ocupado');
+    b.setAttribute('aria-pressed', t === selTime);
+    b.onclick = () => {
+      selTime = t;
+      drawSlots();
+    };
+    s.append(b);
+  });
+  document.getElementById('confirm').disabled = !selTime;
+}
+
+document.getElementById('prevM').onclick = () => {
+  view.setMonth(view.getMonth() - 1);
+  drawCal();
+};
+
+document.getElementById('nextM').onclick = () => {
+  view.setMonth(view.getMonth() + 1);
+  drawCal();
+};
+
+document.getElementById('confirm').onclick = () => {
+  const f = selDay.toLocaleDateString('es-PY', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long'
+  });
+  document.getElementById('okText').textContent = `${document.getElementById('motivo').value}, ${f} a las ${selTime}.`;
+  document.getElementById('calBox').classList.add('done');
+  document.getElementById('ok').focus();
+};
+
+drawCal();
+
+(function() {
+  const d = new Date(today);
+  for (let k = 0; k < 14; k++) {
+    d.setDate(d.getDate() + 1);
+    if (d.getDay() === 0) continue;
+    const free = slotsFor(d).find(t => !busy(d, t));
+    if (free) {
+      const box = document.getElementById('nextD');
+      box.textContent = d.getDate();
+      const sm = document.createElement('small');
+      sm.textContent = d.toLocaleDateString('es-PY', {
+        weekday: 'short'
+      });
+      box.prepend(sm);
+      document.getElementById('nextT').textContent = `${d.toLocaleDateString('es-PY', {
+        weekday: 'long'
+      })} a las ${free}`;
+      break;
+    }
+  }
+})();
+
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) {
+    en.target.classList.add('in');
+    io.unobserve(en.target);
+  }
+}), {
+  threshold: .15
+});
+
+document.querySelectorAll('.reveal').forEach(e => io.observe(e))</script>
+</body>
+</html>

@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SUR CLUB · Drop 07</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Martian+Mono:wght@400;600&family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>:root {
+  --black: #0a0a0a;
+  --white: #f4f4f1;
+  --grey: #8d8d88;
+  --line: #2a2a28;
+  --acid: #ff5a1f;
+  --display: 'Big Shoulders Display',Impact,sans-serif;
+  --mono: 'Martian Mono',ui-monospace,monospace;
+  --body: 'Archivo',system-ui,sans-serif
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark
+}
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--body);
+  line-height: 1.5;
+  overflow-x: hidden
+}
+img {
+  display: block;
+  max-width: 100%
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: 0 0;
+  border: 0
+}
+a {
+  color: inherit;
+  text-decoration: none
+}
+:focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: 3px
+}
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 14px clamp(16px,3vw,32px);
+  background: var(--black);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-transform: uppercase
+}
+.nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none
+}
+.nav ul a:hover {
+  color: var(--acid)
+}
+.logo {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 26px;
+  letter-spacing: .02em
+}
+.bag {
+  justify-self: end;
+  display: flex;
+  gap: 8px;
+  align-items: center
+}
+.bag span {
+  background: var(--acid);
+  color: var(--black);
+  padding: 2px 7px;
+  font-weight: 600
+}
+.hero {
+  position: relative;
+  min-height: min(94vh,760px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden
+}
+.hero figure {
+  position: relative;
+  overflow: hidden
+}
+.hero figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(.2) contrast(1.1);
+  transform: scale(1.08);
+  animation: zoom 1.8s cubic-bezier(.2,.7,.2,1) both
+}
+@keyframes zoom {
+  to {
+    transform: scale(1)
+  }
+}
+.hero .copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(20px,3vw,36px)
+}
+.drop {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--grey);
+  text-transform: uppercase
+}
+.drop b {
+  color: var(--acid);
+  font-weight: 600
+}
+.big {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6%;
+  pointer-events: none;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(80px, 17vw, 240px);
+  line-height: .8;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+  mix-blend-mode: difference;
+  color: var(--white);
+  padding-left: clamp(12px,2vw,24px)
+}
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  border: 1px solid var(--line)
+}
+.countdown div {
+  padding: 14px 8px;
+  text-align: center;
+  border-right: 1px solid var(--line)
+}
+.countdown div:last-child {
+  border-right: 0
+}
+.countdown b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(34px, 4.4vw, 56px);
+  line-height: 1;
+  font-variant-numeric: tabular-nums
+}
+.countdown small {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--grey);
+  text-transform: uppercase
+}
+.cta {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+  padding: 18px 20px;
+  background: var(--acid);
+  color: var(--black);
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  transition: letter-spacing .25s
+}
+.cta:hover {
+  letter-spacing: .06em
+}
+.marquee {
+  border-block: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--white);
+  color: var(--black)
+}
+.marquee div {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  padding: 10px 0;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 28px;
+  text-transform: uppercase;
+  animation: run 22s linear infinite
+}
+.marquee span::after {
+  content: "/";
+  margin-left: 32px;
+  color: var(--acid)
+}
+@keyframes run {
+  to {
+    transform: translateX(-50%)
+  }
+}
+section.block {
+  padding: clamp(56px,9vw,100px) clamp(16px,3vw,32px)
+}
+.row-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap
+}
+h2 {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(48px, 8vw, 110px);
+  line-height: .85;
+  text-transform: uppercase
+}
+.hint {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--grey);
+  text-transform: uppercase
+}
+.look {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  cursor: grab;
+  scroll-snap-type: x proximity;
+  padding-bottom: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--acid) var(--line)
+}
+.look.drag {
+  cursor: grabbing;
+  scroll-snap-type: none
+}
+.look figure {
+  flex: 0 0 clamp(240px,30vw,380px);
+  scroll-snap-align: start;
+  position: relative;
+  user-select: none
+}
+.look figure:nth-child(2n) {
+  margin-top: 48px
+}
+.look img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  pointer-events: none
+}
+.look figcaption {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  padding-top: 8px;
+  color: var(--grey)
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line)
+}
+.prod {
+  background: var(--black);
+  position: relative;
+  text-align: left;
+  display: block;
+  width: 100%
+}
+.prod .ph {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: #151513
+}
+.prod img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s cubic-bezier(.2,.7,.2,1),filter .4s;
+  filter: grayscale(1)
+}
+.prod:focus-visible img,
+.prod:hover img {
+  transform: scale(1.05);
+  filter: grayscale(0)
+}
+.prod .meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  text-transform: uppercase
+}
+.prod .quick {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 52px;
+  padding: 10px;
+  text-align: center;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .25s,transform .25s
+}
+.prod:focus-visible .quick,
+.prod:hover .quick {
+  opacity: 1;
+  transform: none
+}
+.soldout {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--acid);
+  color: var(--black);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 4px 7px;
+  text-transform: uppercase
+}
+dialog {
+  margin: auto;
+  width: min(760px,94vw);
+  background: var(--white);
+  color: var(--black);
+  border: 0;
+  padding: 0
+}
+dialog::backdrop {
+  background: rgba(0,0,0,.75)
+}
+dialog[open] {
+  animation: up .35s cubic-bezier(.2,.8,.2,1)
+}
+@keyframes up {
+  from {
+    transform: translateY(24px);
+    opacity: 0
+  }
+}
+.qv {
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}
+.qv img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 300px
+}
+.qv .info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px
+}
+.qv h3 {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 40px;
+  line-height: .9;
+  text-transform: uppercase
+}
+.qv .p {
+  font-family: var(--mono);
+  font-size: 14px
+}
+.sizes {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 4px
+}
+.sizes button {
+  padding: 12px 0;
+  border: 1.5px solid var(--black);
+  font-family: var(--mono);
+  font-size: 12px
+}
+.sizes button[aria-pressed=true] {
+  background: var(--black);
+  color: var(--white)
+}
+.sizes button:disabled {
+  opacity: .3;
+  text-decoration: line-through;
+  cursor: not-allowed
+}
+.err {
+  min-height: 16px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: #c2300a
+}
+.add {
+  padding: 16px;
+  background: var(--acid);
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 12.5px;
+  text-transform: uppercase
+}
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 36px;
+  height: 36px;
+  background: var(--black);
+  color: var(--white);
+  display: grid;
+  place-items: center
+}
+footer {
+  border-top: 1px solid var(--line);
+  padding: 24px clamp(16px,3vw,32px);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--grey);
+  text-transform: uppercase
+}
+@media (max-width:820px) {
+  .nav {
+    grid-template-columns: auto 1fr
+  }
+  .nav ul {
+    display: none
+  }
+  .hero {
+    grid-template-columns: 1fr
+  }
+  .hero figure {
+    height: 60vh
+  }
+  .big {
+    bottom: auto;
+    top: 44vh
+  }
+  .grid {
+    grid-template-columns: 1fr 1fr
+  }
+  .qv {
+    grid-template-columns: 1fr
+  }
+  .qv img {
+    max-height: 260px
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,
+  ::after,
+  ::before {
+    animation: none!important;
+    transition: none!important
+  }
+}</style>
+</head>
+<body>
+
+<header class="nav">
+  <nav aria-label="Principal"><ul><li><a href="#look">Lookbook</a></li><li><a href="#tienda">Tienda</a></li></ul></nav>
+  <a class="logo" href="#inicio">SUR CLUB</a>
+  <span class="bag">Bolsa <span id="bag" aria-live="polite">0</span></span>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <figure><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1300&q=80&auto=format&fit=crop" alt="Modelo con remera roja y campera negra sobre fondo turquesa"></figure>
+    <div class="copy">
+      <p class="drop">Drop <b>07</b> · Temporada calor · 120 unidades por modelo</p>
+      <div>
+        <p class="drop" style="* {
+  margin-bottom: 10px
+}">El próximo drop se libera en</p>
+        <div class="countdown" role="timer" aria-label="Cuenta regresiva al próximo drop">
+          <div><b id="cd-d">00</b><small>días</small></div><div><b id="cd-h">00</b><small>horas</small></div><div><b id="cd-m">00</b><small>min</small></div><div><b id="cd-s">00</b><small>seg</small></div>
+        </div>
+        <a class="cta" href="#tienda">Ver el drop actual <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <p class="big" aria-hidden="true">Sur Club</p>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div>
+    <span>Hecho en Paraguay</span><span>Algodón peinado 24/1</span><span>Unidades limitadas</span><span>Envío a todo el país</span>
+    <span>Hecho en Paraguay</span><span>Algodón peinado 24/1</span><span>Unidades limitadas</span><span>Envío a todo el país</span>
+  </div></div>
+
+  <section class="block" id="look">
+    <div class="row-head"><h2>Lookbook</h2><span class="hint">Arrastra para ver más</span></div>
+    <div class="look" id="lookRail" tabindex="0" aria-label="Lookbook desplazable">
+      <figure><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80&auto=format&fit=crop" alt="Conjunto amarillo de buzo y jogger en una cancha" loading="lazy"><figcaption><span>Look 01</span><span>Set Mostaza</span></figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&q=80&auto=format&fit=crop" alt="Remera negra con estampa frente a una pared rosa" loading="lazy"><figcaption><span>Look 02</span><span>Remera Paz</span></figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=800&q=80&auto=format&fit=crop" alt="Campera deportiva en la calle con carteles de fondo" loading="lazy"><figcaption><span>Look 03</span><span>Campera Barrio</span></figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=800&q=80&auto=format&fit=crop" alt="Modelo sentado con saco color camel y pantalón claro" loading="lazy"><figcaption><span>Look 04</span><span>Saco Arena</span></figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&q=80&auto=format&fit=crop" alt="Perchero con prendas en tonos neutros" loading="lazy"><figcaption><span>Look 05</span><span>El taller</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="block" id="tienda" style="* {
+  padding-top: 0
+}">
+    <div class="row-head"><h2>Drop 07</h2><span class="hint">Toca un producto para elegir talle</span></div>
+    <div class="grid" id="grid"></div>
+  </section>
+</main>
+
+<dialog id="qv" aria-labelledby="qvTitle">
+  <div class="qv">
+    <img id="qvImg" src="" alt="">
+    <div class="info">
+      <span class="hint" id="qvTag"></span>
+      <h3 id="qvTitle"></h3>
+      <span class="p" id="qvPrice"></span>
+      <div><span class="hint" id="szl">Talle</span><div class="sizes" id="sizes" role="group" aria-labelledby="szl" style="* {
+  margin-top: 8px
+}"></div></div>
+      <span class="err" id="err" aria-live="assertive"></span>
+      <button class="add" type="button" id="addBtn">Agregar a la bolsa</button>
+    </div>
+  </div>
+  <button class="close" type="button" id="closeBtn" aria-label="Cerrar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</dialog>
+
+<footer><span>Sur Club · Asunción</span><span>Cambios dentro de 15 días</span><span>Marca ficticia · Prototipo de diseño por Jesús Amarilla</span></footer>
+
+<script>const gs = n => 'Gs. ' + n.toLocaleString('es-PY');
+
+const u = id => `https://images.unsplash.com/photo-${id}?w=800&q=80&auto=format&fit=crop`;
+
+function nextDrop() {
+  const now = new Date, d = new Date(now);
+  d.setHours(20, 0, 0, 0);
+  d.setDate(d.getDate() + (5 - d.getDay() + 7) % 7);
+  if (d <= now) d.setDate(d.getDate() + 7);
+  return d;
+}
+
+let target = nextDrop();
+
+const pad = n => String(n).padStart(2, '0');
+
+function tick() {
+  let s = Math.max(0, Math.floor((target - new Date) / 1e3));
+  if (!s) target = nextDrop();
+  document.getElementById('cd-d').textContent = pad(Math.floor(s / 86400));
+  document.getElementById('cd-h').textContent = pad(Math.floor(s % 86400 / 3600));
+  document.getElementById('cd-m').textContent = pad(Math.floor(s % 3600 / 60));
+  document.getElementById('cd-s').textContent = pad(s % 60);
+}
+
+tick();
+
+setInterval(tick, 1e3);
+
+const rail = document.getElementById('lookRail');
+
+let down = false, sx = 0, sl = 0;
+
+rail.addEventListener('pointerdown', e => {
+  if (e.pointerType !== 'mouse') return;
+  down = true;
+  sx = e.clientX;
+  sl = rail.scrollLeft;
+  rail.classList.add('drag');
+  rail.setPointerCapture(e.pointerId);
+});
+
+rail.addEventListener('pointermove', e => {
+  if (down) rail.scrollLeft = sl - (e.clientX - sx) * 1.4;
+});
+
+rail.addEventListener('pointerup', () => {
+  down = false;
+  rail.classList.remove('drag');
+});
+
+const products = [ [ 'Remera Pesada Roja', 189e3, '1529139574466-a303027c1d8b', [ 'XS' ] ], [ 'Set Mostaza', 42e4, '1515886657613-9f3515b0c78f', [] ], [ 'Remera Paz Negra', 175e3, '1503342217505-b0a15ec3261c', [ 'S', 'M' ] ], [ 'Saco Arena', 54e4, '1552374196-1ab2a1c593e8', [ 'XS', 'S', 'M', 'L', 'XL' ] ] ];
+
+const grid = document.getElementById('grid'), dlg = document.getElementById('qv');
+
+let current = null, size = null, units = 0;
+
+products.forEach((p, i) => {
+  const b = document.createElement('button');
+  b.className = 'prod';
+  b.type = 'button';
+  b.setAttribute('aria-label', `Vista rápida de ${p[0]}`);
+  const ph = document.createElement('div');
+  ph.className = 'ph';
+  const img = document.createElement('img');
+  img.src = u(p[2]);
+  img.alt = '';
+  img.loading = 'lazy';
+  ph.append(img);
+  const meta = document.createElement('div');
+  meta.className = 'meta';
+  const n = document.createElement('span');
+  n.textContent = p[0];
+  const pr = document.createElement('span');
+  pr.textContent = p[3].length === 5 ? 'Agotado' : gs(p[1]);
+  meta.append(n, pr);
+  const q = document.createElement('span');
+  q.className = 'quick';
+  q.textContent = 'Vista rápida';
+  b.append(ph, meta, q);
+  if (p[3].length === 5) {
+    const so = document.createElement('span');
+    so.className = 'soldout';
+    so.textContent = 'Agotado';
+    b.append(so);
+  }
+  b.onclick = () => open(i);
+  grid.append(b);
+});
+
+function open(i) {
+  current = products[i];
+  size = null;
+  document.getElementById('qvImg').src = u(current[2]);
+  document.getElementById('qvImg').alt = current[0];
+  document.getElementById('qvTitle').textContent = current[0];
+  document.getElementById('qvPrice').textContent = gs(current[1]);
+  document.getElementById('qvTag').textContent = `Drop 07 · ${current[3].length === 5 ? 'Agotado' : 'Quedan pocas unidades'}`;
+  document.getElementById('err').textContent = '';
+  const sizes = document.getElementById('sizes');
+  sizes.replaceChildren();
+  [ 'XS', 'S', 'M', 'L', 'XL' ].forEach(s => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = s;
+    b.setAttribute('aria-pressed', 'false');
+    if (current[3].includes(s)) {
+      b.disabled = true;
+      b.setAttribute('aria-label', s + ' agotado');
+    }
+    b.onclick = () => {
+      size = s;
+      sizes.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+      document.getElementById('err').textContent = '';
+    };
+    sizes.append(b);
+  });
+  document.getElementById('addBtn').disabled = current[3].length === 5;
+  document.getElementById('addBtn').textContent = current[3].length === 5 ? 'Agotado' : 'Agregar a la bolsa';
+  dlg.showModal();
+}
+
+document.getElementById('addBtn').onclick = () => {
+  if (!size) {
+    document.getElementById('err').textContent = 'Elige un talle antes de agregar.';
+    return;
+  }
+  units++;
+  document.getElementById('bag').textContent = units;
+  dlg.close();
+};
+
+document.getElementById('closeBtn').onclick = () => dlg.close();
+
+dlg.addEventListener('click', e => {
+  if (e.target === dlg) dlg.close();
+})</script>
+</body>
+</html>

@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nodo · Tecnología</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>:root {
+  --paper: #f2f1ee;
+  --white: #ffffff;
+  --ink: #111111;
+  --ink-2: #55534e;
+  --ink-3: #8a877f;
+  --line: #dcdad4;
+  --volt: #3b2cff;
+  --volt-soft: #e7e4ff;
+  --lime: #d9f84a;
+  --font: 'Sora',system-ui,sans-serif
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+html {
+  scroll-behavior: smooth
+}
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  line-height: 1.55;
+  overflow-x: hidden
+}
+img {
+  display: block;
+  max-width: 100%
+}
+button,
+select {
+  font: inherit;
+  color: inherit
+}
+button {
+  cursor: pointer;
+  background: 0 0;
+  border: 0
+}
+a {
+  color: inherit;
+  text-decoration: none
+}
+:focus-visible {
+  outline: 2px solid var(--volt);
+  outline-offset: 3px
+}
+.wrap {
+  width: min(1160px,100% - 32px);
+  margin-inline: auto
+}
+.bar {
+  background: var(--ink);
+  color: #cfcdc6;
+  font-size: 12.5px;
+  text-align: center;
+  padding: 8px 16px
+}
+.bar b {
+  color: var(--lime);
+  font-weight: 600
+}
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(242,241,238,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line)
+}
+.nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px
+}
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -.04em;
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+.logo i {
+  width: 14px;
+  height: 14px;
+  background: var(--volt);
+  display: inline-block;
+  clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%)
+}
+.nav ul {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  font-size: 14px;
+  color: var(--ink-2)
+}
+.nav ul a:hover {
+  color: var(--ink)
+}
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600
+}
+.cart span {
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: var(--ink);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  transition: transform .25s cubic-bezier(.3,1.6,.5,1),background .25s
+}
+.cart span.bump {
+  transform: scale(1.3);
+  background: var(--volt)
+}
+.hero {
+  padding: clamp(28px,5vw,56px) 0 clamp(40px,7vw,88px)
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: clamp(24px,4vw,56px);
+  align-items: center
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--volt)
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: currentColor
+}
+h1 {
+  margin-top: 16px;
+  font-size: clamp(40px, 6.2vw, 80px);
+  font-weight: 700;
+  line-height: .98;
+  letter-spacing: -.055em
+}
+h1 span {
+  color: var(--ink-3);
+  font-weight: 300
+}
+.lead {
+  margin-top: 18px;
+  color: var(--ink-2);
+  max-width: 40ch;
+  font-size: 16.5px
+}
+.price {
+  margin-top: 26px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap
+}
+.price b {
+  font-size: 28px;
+  letter-spacing: -.03em
+}
+.price small {
+  color: var(--ink-2);
+  font-size: 14px
+}
+.cta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: transform .2s,background .2s,color .2s
+}
+.btn.solid {
+  background: var(--ink);
+  color: var(--white)
+}
+.btn.solid:hover {
+  background: var(--volt);
+  transform: translateY(-2px)
+}
+.btn.line {
+  border: 1.5px solid var(--ink)
+}
+.btn.line:hover {
+  background: var(--ink);
+  color: var(--white)
+}
+.stage {
+  position: relative;
+  aspect-ratio: 5/4;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1a1714
+}
+.stage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: rise 1.2s cubic-bezier(.2,.7,.2,1) both
+}
+@keyframes rise {
+  from {
+    transform: scale(1.1) translateY(20px);
+    opacity: 0
+  }
+}
+.callout {
+  position: absolute;
+  background: var(--white);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  box-shadow: 0 12px 30px -12px rgba(0,0,0,.4);
+  animation: pop .6s cubic-bezier(.3,1.5,.5,1) both
+}
+.callout b {
+  display: block;
+  font-size: 17px;
+  letter-spacing: -.02em
+}
+.callout.a {
+  left: 16px;
+  bottom: 16px;
+  animation-delay: .7s
+}
+.callout.b {
+  right: 16px;
+  top: 16px;
+  animation-delay: .9s
+}
+@keyframes pop {
+  from {
+    transform: scale(.7);
+    opacity: 0
+  }
+}
+section.block {
+  padding: clamp(56px,9vw,104px) 0
+}
+.sec-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 36px
+}
+h2 {
+  font-size: clamp(30px, 4.4vw, 52px);
+  font-weight: 700;
+  letter-spacing: -.05em;
+  line-height: 1
+}
+.sec-head p {
+  color: var(--ink-2);
+  max-width: 44ch;
+  justify-self: end
+}
+.compare {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden
+}
+.seg {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border-bottom: 1px solid var(--line);
+  position: relative
+}
+.seg button {
+  padding: 18px 12px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink-3);
+  position: relative;
+  z-index: 1;
+  transition: color .3s
+}
+.seg button[aria-selected=true] {
+  color: var(--ink)
+}
+.seg .ind {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 33.333%;
+  height: 3px;
+  background: var(--volt);
+  transition: transform .45s cubic-bezier(.2,.8,.2,1)
+}
+.specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}
+.spec {
+  padding: 22px 26px;
+  border-bottom: 1px solid var(--line)
+}
+.spec:nth-child(odd) {
+  border-right: 1px solid var(--line)
+}
+.spec dt {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: .06em
+}
+.spec dd {
+  margin-top: 4px;
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -.02em;
+  transition: opacity .2s
+}
+.meter {
+  margin-top: 12px;
+  height: 6px;
+  background: #eeece7;
+  border-radius: 3px;
+  overflow: hidden
+}
+.meter i {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  border-radius: 3px;
+  transition: width .7s cubic-bezier(.2,.8,.2,1),background .3s
+}
+.spec.up .meter i {
+  background: var(--volt)
+}
+.compare-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 26px;
+  flex-wrap: wrap
+}
+.compare-foot b {
+  font-size: 26px;
+  letter-spacing: -.03em
+}
+.plans {
+  background: var(--ink);
+  color: var(--white);
+  border-radius: 10px;
+  padding: clamp(24px,5vw,56px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px,5vw,64px);
+  align-items: center
+}
+.plans h2 {
+  color: var(--white)
+}
+.plans p {
+  color: #b3b0a8;
+  margin-top: 12px;
+  max-width: 38ch
+}
+.field {
+  margin-top: 24px
+}
+.field .lbl,
+.field label {
+  display: block;
+  font-size: 12.5px;
+  color: #8f8c84;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 8px
+}
+select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  background: #1f1e1c;
+  border: 1px solid #36342f;
+  color: var(--white)
+}
+.months {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 6px
+}
+.months button {
+  padding: 12px 0;
+  border-radius: 6px;
+  border: 1px solid #36342f;
+  font-weight: 600;
+  transition: background .2s,color .2s,border-color .2s
+}
+.months button[aria-pressed=true] {
+  background: var(--lime);
+  color: var(--ink);
+  border-color: var(--lime)
+}
+.result {
+  border-left: 1px solid #36342f;
+  padding-left: clamp(0px,4vw,56px)
+}
+.result small {
+  color: #8f8c84;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .08em
+}
+.result output {
+  display: block;
+  margin-top: 8px;
+  font-size: clamp(40px, 6vw, 68px);
+  font-weight: 700;
+  letter-spacing: -.05em;
+  line-height: 1;
+  color: var(--lime);
+  font-variant-numeric: tabular-nums
+}
+.result .per {
+  color: #b3b0a8;
+  margin-top: 8px
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 26px
+}
+.cards span {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  padding: 7px 10px;
+  border: 1px solid #36342f;
+  border-radius: 4px;
+  color: #cfcdc6
+}
+.note {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #77746c
+}
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-auto-rows: 240px;
+  gap: 12px
+}
+.tile {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end
+}
+.tile img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s cubic-bezier(.2,.7,.2,1)
+}
+.tile:hover img {
+  transform: scale(1.05)
+}
+.tile .info {
+  position: relative;
+  margin: 12px;
+  padding: 12px 14px;
+  background: rgba(255,255,255,.94);
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px
+}
+.tile h3 {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.02em
+}
+.tile .gs {
+  font-size: 13.5px;
+  color: var(--ink-2)
+}
+.tile .add {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 6px;
+  background: var(--ink);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  transition: background .2s,transform .2s
+}
+.tile .add:hover {
+  background: var(--volt);
+  transform: rotate(90deg)
+}
+.t1 {
+  grid-column: span 2;
+  grid-row: span 2
+}
+.t2 {
+  grid-column: span 2
+}
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translate(-50%,140%);
+  background: var(--ink);
+  color: var(--white);
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: transform .4s cubic-bezier(.2,.8,.2,1);
+  z-index: 40
+}
+.toast.show {
+  transform: translate(-50%,0)
+}
+.toast i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lime)
+}
+footer {
+  border-top: 1px solid var(--line);
+  padding: 36px 0 44px;
+  font-size: 14px;
+  color: var(--ink-2)
+}
+footer .wrap {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px
+}
+footer b {
+  display: block;
+  color: var(--ink);
+  margin-bottom: 4px
+}
+footer small {
+  grid-column: 1/-1;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--ink-3)
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)
+}
+.reveal.in {
+  opacity: 1;
+  transform: none
+}
+@media (max-width:820px) {
+  .nav ul {
+    display: none
+  }
+  .hero-grid,
+  .plans,
+  .sec-head {
+    grid-template-columns: 1fr
+  }
+  .sec-head p {
+    justify-self: start
+  }
+  .result {
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid #36342f;
+    padding-top: 24px
+  }
+  .bento {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 200px
+  }
+  footer .wrap {
+    grid-template-columns: 1fr
+  }
+}
+@media (max-width:520px) {
+  .specs {
+    grid-template-columns: 1fr
+  }
+  .spec:nth-child(odd) {
+    border-right: 0
+  }
+  .bento {
+    grid-template-columns: 1fr
+  }
+  .t1,
+  .t2 {
+    grid-column: auto;
+    grid-row: span 1
+  }
+  .seg button {
+    font-size: 13px
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,
+  ::after,
+  ::before {
+    animation: none!important;
+    transition: none!important
+  }
+  .reveal {
+    opacity: 1;
+    transform: none
+  }
+}</style>
+</head>
+<body>
+
+<div class="bar">Envío en 24 h en Asunción y Gran Asunción · <b>Retiro gratis en tienda</b></div>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#inicio"><i></i>nodo</a>
+    <nav aria-label="Principal"><ul>
+      <li><a href="#inicio">Celulares</a></li>
+      <li><a href="#comparar">Comparar</a></li>
+      <li><a href="#cuotas">Cuotas</a></li>
+      <li><a href="#accesorios">Accesorios</a></li>
+    </ul></nav>
+    <a class="cart" href="#accesorios" aria-label="Carrito">Carrito <span id="count" aria-live="polite">0</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Nuevo lanzamiento</span>
+        <h1>Nodo Phone X2. <span>Hecho para durar el día entero.</span></h1>
+        <p class="lead">Pantalla de 6,1 pulgadas a 120 Hz, cámara doble de 50 MP y batería de 4.200 mAh en un cuerpo de 172 gramos.</p>
+        <div class="price"><b>Gs. 7.490.000</b><small>o en cuotas con tarjeta de crédito</small></div>
+        <div class="cta">
+          <button class="btn solid" type="button" data-add="Nodo Phone X2">Comprar
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <a class="btn line" href="#comparar">Comparar modelos</a>
+        </div>
+      </div>
+      <div class="stage">
+        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=1400&q=80&auto=format&fit=crop" alt="Celular con la pantalla encendida junto a auriculares inalámbricos sobre una mesa de madera">
+        <div class="callout a"><b>120 Hz</b>Pantalla fluida</div>
+        <div class="callout b"><b>4.200 mAh</b>Batería de jornada completa</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="comparar">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Tres modelos.<br>Uno es el tuyo.</h2>
+        <p>Cambia de modelo y mira qué sube. Lo que mejora respecto al X2 se marca en violeta.</p>
+      </div>
+      <div class="compare reveal">
+        <div class="seg" role="tablist" aria-label="Modelos">
+          <button role="tab" aria-selected="true" aria-controls="panel" id="t0" data-i="0">X2</button>
+          <button role="tab" aria-selected="false" aria-controls="panel" id="t1" data-i="1" tabindex="-1">X2 Plus</button>
+          <button role="tab" aria-selected="false" aria-controls="panel" id="t2" data-i="2" tabindex="-1">X2 Pro</button>
+          <span class="ind" aria-hidden="true"></span>
+        </div>
+        <div id="panel" role="tabpanel" aria-labelledby="t0">
+          <dl class="specs" id="specs"></dl>
+          <div class="compare-foot"><b id="mprice"></b><button class="btn solid" type="button" id="maddbtn">Agregar al carrito</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="cuotas" style="* {
+  padding-top: 0
+}">
+    <div class="wrap">
+      <div class="plans reveal">
+        <div>
+          <h2>Cuánto pagas<br>por mes.</h2>
+          <p>Elige el equipo y la cantidad de cuotas. El número se actualiza al instante.</p>
+          <div class="field">
+            <label for="prod">Equipo</label>
+            <select id="prod">
+              <option value="7490000">Nodo Phone X2 · Gs. 7.490.000</option>
+              <option value="9890000">Nodo Phone X2 Plus · Gs. 9.890.000</option>
+              <option value="12490000">Nodo Phone X2 Pro · Gs. 12.490.000</option>
+              <option value="11900000">Notebook Nodo Air 14 · Gs. 11.900.000</option>
+            </select>
+          </div>
+          <div class="field">
+            <span class="lbl" id="mlbl">Cuotas</span>
+            <div class="months" role="group" aria-labelledby="mlbl">
+              <button type="button" aria-pressed="false" data-m="3">3</button>
+              <button type="button" aria-pressed="false" data-m="6">6</button>
+              <button type="button" aria-pressed="true" data-m="12">12</button>
+              <button type="button" aria-pressed="false" data-m="18">18</button>
+            </div>
+          </div>
+        </div>
+        <div class="result">
+          <small>Cuota mensual estimada</small>
+          <output id="fee" aria-live="polite">Gs. 0</output>
+          <p class="per" id="per"></p>
+          <div class="cards"><span>VISA</span><span>MASTERCARD</span><span>AMERICAN EXPRESS</span><span>BANCARD</span><span>DÉBITO</span></div>
+          <p class="note">Cálculo ilustrativo sin intereses. La tasa final depende del banco emisor de tu tarjeta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="accesorios" style="* {
+  padding-top: 0
+}">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Completa<br>el equipo.</h2>
+        <p>Accesorios probados con toda la línea Nodo.</p>
+      </div>
+      <div class="bento reveal">
+        <article class="tile t1">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200&q=80&auto=format&fit=crop" alt="Auriculares negros sobre fondo amarillo" loading="lazy">
+          <div class="info"><div><h3>Auriculares Studio One</h3><span class="gs">Gs. 1.850.000</span></div><button class="add" type="button" data-add="Auriculares Studio One" aria-label="Agregar Auriculares Studio One"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div>
+        </article>
+        <article class="tile t2">
+          <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1200&q=80&auto=format&fit=crop" alt="Notebook abierta sobre un escritorio de madera" loading="lazy">
+          <div class="info"><div><h3>Notebook Nodo Air 14</h3><span class="gs">Gs. 11.900.000</span></div><button class="add" type="button" data-add="Notebook Nodo Air 14" aria-label="Agregar Notebook Nodo Air 14"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div>
+        </article>
+        <article class="tile">
+          <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&q=80&auto=format&fit=crop" alt="Reloj inteligente negro con esfera iluminada" loading="lazy">
+          <div class="info"><div><h3>Pulse Watch</h3><span class="gs">Gs. 2.100.000</span></div><button class="add" type="button" data-add="Pulse Watch" aria-label="Agregar Pulse Watch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div>
+        </article>
+        <article class="tile">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80&auto=format&fit=crop" alt="Reloj blanco minimalista sobre fondo claro" loading="lazy">
+          <div class="info"><div><h3>Pulse Lite</h3><span class="gs">Gs. 1.290.000</span></div><button class="add" type="button" data-add="Pulse Lite" aria-label="Agregar Pulse Lite"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Envíos</b>A todo Paraguay. En 24 h dentro de Asunción.</div>
+    <div><b>Garantía</b>12 meses con servicio técnico propio.</div>
+    <div><b>Pagos</b>Tarjetas de crédito, débito y transferencia.</div>
+    <small>Marca ficticia · Prototipo de diseño por Jesús Amarilla</small>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><i></i><span id="toastText"></span></div>
+
+<script>const gs = n => 'Gs. ' + Math.round(n).toLocaleString('es-PY');
+
+const models = [ {
+  name: 'Nodo Phone X2',
+  price: 749e4,
+  specs: [ [ 'Pantalla', '6,1" · 120 Hz', 60 ], [ 'Cámara', 'Doble 50 MP', 55 ], [ 'Batería', '4.200 mAh', 62 ], [ 'Almacenamiento', '128 GB', 35 ] ]
+}, {
+  name: 'Nodo Phone X2 Plus',
+  price: 989e4,
+  specs: [ [ 'Pantalla', '6,7" · 120 Hz', 78 ], [ 'Cámara', 'Triple 50 MP + zoom 3x', 75 ], [ 'Batería', '5.000 mAh', 80 ], [ 'Almacenamiento', '256 GB', 60 ] ]
+}, {
+  name: 'Nodo Phone X2 Pro',
+  price: 1249e4,
+  specs: [ [ 'Pantalla', '6,8" · 144 Hz', 92 ], [ 'Cámara', 'Cuádruple 108 MP + zoom 10x', 96 ], [ 'Batería', '5.500 mAh', 90 ], [ 'Almacenamiento', '512 GB', 90 ] ]
+} ];
+
+const specsEl = document.getElementById('specs');
+
+const tabs = [ ...document.querySelectorAll('[role="tab"]') ];
+
+const ind = document.querySelector('.ind');
+
+let current = 0;
+
+function drawSpecs(i) {
+  const m = models[i];
+  if (!specsEl.children.length) {
+    m.specs.forEach(() => {
+      const d = document.createElement('div');
+      d.className = 'spec';
+      const dt = document.createElement('dt');
+      const dd = document.createElement('dd');
+      const meter = document.createElement('div');
+      meter.className = 'meter';
+      meter.append(document.createElement('i'));
+      d.append(dt, dd, meter);
+      specsEl.append(d);
+    });
+  }
+  [ ...specsEl.children ].forEach((d, k) => {
+    const [label, val, score] = m.specs[k];
+    d.querySelector('dt').textContent = label;
+    d.querySelector('dd').textContent = val;
+    d.querySelector('.meter i').style.width = score + '%';
+    d.classList.toggle('up', score > models[0].specs[k][2]);
+  });
+  document.getElementById('mprice').textContent = gs(m.price);
+  document.getElementById('maddbtn').dataset.add = m.name;
+}
+
+function select(i, focus) {
+  current = i;
+  tabs.forEach((t, k) => {
+    t.setAttribute('aria-selected', k === i);
+    t.tabIndex = k === i ? 0 : -1;
+  });
+  document.getElementById('panel').setAttribute('aria-labelledby', 't' + i);
+  ind.style.transform = `translateX(${i * 100}%)`;
+  drawSpecs(i);
+  if (focus) tabs[i].focus();
+}
+
+tabs.forEach((t, k) => {
+  t.addEventListener('click', () => select(k));
+  t.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') select((k + 1) % 3, true);
+    if (e.key === 'ArrowLeft') select((k + 2) % 3, true);
+  });
+});
+
+select(0);
+
+const fee = document.getElementById('fee'), per = document.getElementById('per'), prod = document.getElementById('prod');
+
+let months = 12, shown = 0, raf;
+
+function calc() {
+  const target = +prod.value / months;
+  const from = shown, t0 = performance.now();
+  cancelAnimationFrame(raf);
+  const step = now => {
+    const p = Math.min((now - t0) / 500, 1), e = 1 - Math.pow(1 - p, 3);
+    shown = from + (target - from) * e;
+    fee.textContent = gs(shown);
+    if (p < 1) raf = requestAnimationFrame(step);
+  };
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    shown = target;
+    fee.textContent = gs(target);
+  } else raf = requestAnimationFrame(step);
+  per.textContent = `${months} cuotas sobre ${gs(+prod.value)}`;
+}
+
+document.querySelectorAll('.months button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.months button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  months = +b.dataset.m;
+  calc();
+}));
+
+prod.addEventListener('change', calc);
+
+calc();
+
+let units = 0, tt;
+
+const count = document.getElementById('count'), toast = document.getElementById('toast'), toastText = document.getElementById('toastText');
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-add]');
+  if (!b) return;
+  units++;
+  count.textContent = units;
+  count.classList.remove('bump');
+  void count.offsetWidth;
+  count.classList.add('bump');
+  toastText.textContent = b.dataset.add + ' se agregó al carrito';
+  toast.classList.add('show');
+  clearTimeout(tt);
+  tt = setTimeout(() => toast.classList.remove('show'), 2600);
+});
+
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) {
+    en.target.classList.add('in');
+    io.unobserve(en.target);
+  }
+}), {
+  threshold: .2
+});
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el))</script>
+</body>
+</html>

@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Benítez & Ortiz Asociados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root {
+  --mist: #eef0ef;
+  --white: #fbfcfc;
+  --ink: #16201c;
+  --ink-2: #4c5854;
+  --ink-3: #7a8681;
+  --line: #cfd5d2;
+  --green: #0f3b2e;
+  --green-2: #164d3d;
+  --brass: #b39462;
+  --serif: 'Gloock',Georgia,serif;
+  --sans: 'Public Sans',system-ui,sans-serif
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+html {
+  scroll-behavior: smooth
+}
+body {
+  background: var(--mist);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  overflow-x: hidden
+}
+img {
+  display: block;
+  max-width: 100%
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit
+}
+a {
+  color: inherit;
+  text-decoration: none
+}
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px
+}
+.wrap {
+  width: min(1160px,100% - 32px);
+  margin-inline: auto
+}
+.nav {
+  border-bottom: 1px solid var(--line);
+  background: var(--mist);
+  position: sticky;
+  top: 0;
+  z-index: 20
+}
+.nav .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 68px
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px
+}
+.logo .mono {
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid var(--green);
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--green)
+}
+.logo b {
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: .01em;
+  line-height: 1.2
+}
+.logo small {
+  display: block;
+  font-size: 11.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: 500
+}
+.nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  font-size: 14px;
+  color: var(--ink-2)
+}
+.nav ul a:hover {
+  color: var(--green)
+}
+.nav .cta {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 16px;
+  background: var(--green);
+  color: var(--white);
+  border-radius: 2px
+}
+.nav .cta:hover {
+  background: var(--green-2)
+}
+.hero {
+  position: relative
+}
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 7fr 4fr;
+  gap: 0;
+  min-height: 520px;
+  border-inline: 1px solid var(--line)
+}
+.hero-copy {
+  padding: clamp(40px,7vw,88px) clamp(20px,4vw,56px);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px
+}
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--brass)
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 5.8vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  margin-top: 18px;
+  color: var(--green)
+}
+.hero-copy p {
+  color: var(--ink-2);
+  font-size: 17px;
+  max-width: 46ch;
+  margin-top: 20px
+}
+.hero-actions {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  flex-wrap: wrap
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px;
+  background: var(--green);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 2px;
+  transition: background .2s,gap .25s
+}
+.btn:hover {
+  background: var(--green-2);
+  gap: 16px
+}
+.link {
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 1.5px solid var(--brass);
+  padding-bottom: 2px
+}
+.photo {
+  position: relative;
+  overflow: hidden
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.7);
+  animation: unveil 1.4s cubic-bezier(.7,0,.2,1) both
+}
+@keyframes unveil {
+  from {
+    clip-path: inset(100% 0 0 0)
+  }
+  to {
+    clip-path: inset(0 0 0 0)
+  }
+}
+.photo figcaption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: var(--white);
+  padding: 14px 18px;
+  font-size: 13px;
+  color: var(--ink-2);
+  max-width: 82%;
+  border-top: 3px solid var(--brass)
+}
+.band {
+  background: var(--green);
+  color: var(--white)
+}
+.band .wrap {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border-inline: 1px solid rgba(255,255,255,.12)
+}
+.stat {
+  padding: 30px clamp(20px,3vw,40px);
+  border-right: 1px solid rgba(255,255,255,.12)
+}
+.stat:last-child {
+  border-right: 0
+}
+.stat b {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 5vw, 60px);
+  line-height: 1;
+  color: #fff;
+  font-variant-numeric: tabular-nums
+}
+.stat span {
+  font-size: 14px;
+  color: #b9cdc5
+}
+section.block {
+  padding: clamp(56px,9vw,104px) 0
+}
+.sec-head {
+  display: grid;
+  grid-template-columns: 4fr 7fr;
+  gap: 32px;
+  margin-bottom: 40px;
+  align-items: end
+}
+.sec-head .num {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--brass)
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(32px, 4.4vw, 54px);
+  line-height: 1.05;
+  color: var(--green);
+  letter-spacing: -.015em
+}
+.sec-head p {
+  color: var(--ink-2);
+  max-width: 52ch
+}
+.areas {
+  display: grid;
+  grid-template-columns: 4fr 7fr;
+  gap: 32px;
+  align-items: start
+}
+.areas figure {
+  position: sticky;
+  top: 96px;
+  aspect-ratio: 3/4;
+  overflow: hidden
+}
+.areas figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05)
+}
+.acc {
+  border-top: 1px solid var(--ink)
+}
+.acc-item {
+  border-bottom: 1px solid var(--line)
+}
+.acc-item h3 {
+  font-weight: 400
+}
+.acc-btn {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 48px 1fr 28px;
+  align-items: center;
+  gap: 12px;
+  padding: 22px 0;
+  background: 0 0;
+  border: 0;
+  cursor: pointer;
+  text-align: left
+}
+.acc-btn .i {
+  font-family: var(--serif);
+  color: var(--brass);
+  font-size: 17px
+}
+.acc-btn .t {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.6vw, 30px);
+  color: var(--ink);
+  transition: color .2s,transform .3s
+}
+.acc-btn:hover .t {
+  color: var(--green);
+  transform: translateX(4px)
+}
+.acc-btn .pm {
+  width: 28px;
+  height: 28px;
+  position: relative
+}
+.acc-btn .pm::after,
+.acc-btn .pm::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 13px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform .35s
+}
+.acc-btn .pm::after {
+  transform: rotate(90deg)
+}
+.acc-btn[aria-expanded=true] .pm::after {
+  transform: rotate(0)
+}
+.acc-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .4s cubic-bezier(.2,.8,.2,1)
+}
+.acc-panel > div {
+  overflow: hidden;
+  padding-left: 60px
+}
+.acc-btn[aria-expanded=true] + .acc-panel {
+  grid-template-rows: 1fr
+}
+.acc-panel p {
+  color: var(--ink-2);
+  max-width: 56ch
+}
+.acc-panel ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 24px
+}
+.acc-panel li {
+  font-size: 13px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  background: var(--white)
+}
+.team {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: clamp(16px,3vw,32px)
+}
+.person:nth-child(2) {
+  margin-top: 56px
+}
+.person:nth-child(3) {
+  margin-top: 112px
+}
+.person .ph {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--line)
+}
+.person img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  filter: grayscale(1);
+  transition: filter .6s,transform .8s cubic-bezier(.2,.7,.2,1)
+}
+.person:focus-within img,
+.person:hover img {
+  filter: grayscale(0);
+  transform: scale(1.03)
+}
+.person h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 24px;
+  color: var(--green);
+  margin-top: 16px
+}
+.person .role {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--brass)
+}
+.person p {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  margin-top: 6px
+}
+.person a {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--brass)
+}
+.consult {
+  background: var(--green);
+  color: var(--white)
+}
+.consult h2 {
+  color: var(--white)
+}
+.consult .sec-head p {
+  color: #b9cdc5
+}
+.consult .num {
+  color: var(--brass)
+}
+.consult-grid {
+  display: grid;
+  grid-template-columns: 4fr 7fr;
+  gap: 32px
+}
+.contact-list {
+  list-style: none;
+  font-size: 15px;
+  color: #d7e3de
+}
+.contact-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,.14)
+}
+.contact-list b {
+  display: block;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-weight: 600
+}
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 20px
+}
+.f {
+  display: flex;
+  flex-direction: column
+}
+.f.full {
+  grid-column: 1/-1
+}
+label {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #b9cdc5;
+  margin-bottom: 6px
+}
+input,
+select,
+textarea {
+  background: 0 0;
+  border: 0;
+  border-bottom: 1.5px solid rgba(255,255,255,.35);
+  padding: 10px 0;
+  color: var(--white);
+  border-radius: 0
+}
+select option {
+  color: var(--ink)
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 0;
+  border-bottom-color: var(--brass)
+}
+.f[data-bad] input,
+.f[data-bad] select,
+.f[data-bad] textarea {
+  border-bottom-color: #f0a58f
+}
+.msg {
+  min-height: 18px;
+  font-size: 13px;
+  color: #f7bba9;
+  margin-top: 4px
+}
+.send {
+  grid-column: 1/-1;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  background: var(--brass);
+  color: var(--green);
+  font-weight: 700;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: gap .25s,background .2s
+}
+.send:hover {
+  gap: 16px;
+  background: #c4a674
+}
+.done {
+  display: none;
+  border: 1px solid rgba(255,255,255,.25);
+  padding: 32px
+}
+.done h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 30px
+}
+.done p {
+  color: #d7e3de;
+  margin-top: 8px
+}
+.sent form {
+  display: none
+}
+.sent .done {
+  display: block
+}
+footer {
+  background: #0b2c22;
+  color: #9fb5ad;
+  font-size: 14px
+}
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 28px 0
+}
+footer small {
+  width: 100%;
+  font-size: 12.5px;
+  color: #6f8a81;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.08)
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)
+}
+.reveal.in {
+  opacity: 1;
+  transform: none
+}
+@media (max-width:820px) {
+  .nav ul {
+    display: none
+  }
+  .areas,
+  .consult-grid,
+  .hero .wrap,
+  .sec-head {
+    grid-template-columns: 1fr
+  }
+  .hero-copy {
+    border-right: 0
+  }
+  .photo {
+    aspect-ratio: 16/11
+  }
+  .areas figure {
+    position: relative;
+    top: 0;
+    aspect-ratio: 16/9
+  }
+  .band .wrap {
+    grid-template-columns: 1fr
+  }
+  .stat {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,.12)
+  }
+  .team {
+    grid-template-columns: 1fr 1fr
+  }
+  .person:nth-child(n) {
+    margin-top: 0
+  }
+  form {
+    grid-template-columns: 1fr
+  }
+  .acc-panel > div {
+    padding-left: 0
+  }
+}
+@media (max-width:480px) {
+  .team {
+    grid-template-columns: 1fr
+  }
+  .nav .cta {
+    display: none
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,
+  ::after,
+  ::before {
+    animation: none!important;
+    transition: none!important
+  }
+  .reveal {
+    opacity: 1;
+    transform: none
+  }
+}</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#inicio"><span class="mono">BO</span><span><b>Benítez & Ortiz</b><small>Asociados</small></span></a>
+    <nav aria-label="Principal"><ul>
+      <li><a href="#areas">Áreas</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#consulta">Contacto</a></li>
+    </ul></nav>
+    <a class="cta" href="#consulta">Agendar consulta</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div>
+          <span class="eyebrow">Estudio contable y jurídico · Asunción</span>
+          <h1>Los números en orden. Los contratos, en regla.</h1>
+          <p>Acompañamos a pymes y profesionales en contabilidad, impuestos y asuntos legales con un solo equipo que conoce todo tu negocio.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn" href="#consulta">Agendar una consulta
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="link" href="#areas">Áreas de práctica</a>
+        </div>
+      </div>
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1000&q=80&auto=format&fit=crop" alt="Persona firmando un documento sobre un escritorio">
+        <figcaption>Primera reunión sin costo para conocer tu caso.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="band" id="band">
+    <div class="wrap">
+      <div class="stat"><b data-to="18">0</b><span>años de trayectoria</span></div>
+      <div class="stat"><b data-to="240">0</b><span>empresas asesoradas</span></div>
+      <div class="stat"><b data-to="5">0</b><span>áreas integradas en un solo equipo</span></div>
+    </div>
+  </div>
+
+  <section class="block" id="areas">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="num">01</span><h2>Áreas de práctica</h2></div>
+        <p>Cada área trabaja con las demás. Si un cambio impositivo afecta un contrato, lo resolvemos en la misma mesa.</p>
+      </div>
+      <div class="areas">
+        <figure class="reveal"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=80&auto=format&fit=crop" alt="Estatua de la justicia con balanza" loading="lazy"></figure>
+        <div class="acc reveal" id="acc"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="equipo" style="* {
+  padding-top: 0
+}">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="num">02</span><h2>Socios</h2></div>
+        <p>Tu caso lo lleva un socio de principio a fin, no un formulario.</p>
+      </div>
+      <div class="team">
+        <article class="person reveal">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=700&q=80&auto=format&fit=crop" alt="Retrato de Martín Benítez" loading="lazy"></div>
+          <span class="role">Socio fundador</span><h3>Martín Benítez</h3>
+          <p>Contador público. Especialista en planificación tributaria para pymes.</p>
+          <a href="#consulta">Consultar con Martín</a>
+        </article>
+        <article class="person reveal">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&q=80&auto=format&fit=crop" alt="Retrato de Lucía Ortiz" loading="lazy"></div>
+          <span class="role">Socia fundadora</span><h3>Lucía Ortiz</h3>
+          <p>Abogada. Derecho societario y contratos comerciales.</p>
+          <a href="#consulta">Consultar con Lucía</a>
+        </article>
+        <article class="person reveal">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=700&q=80&auto=format&fit=crop" alt="Retrato de Andrés Villalba" loading="lazy"></div>
+          <span class="role">Socio</span><h3>Andrés Villalba</h3>
+          <p>Abogado laboralista. Relaciones laborales, IPS y conflictos.</p>
+          <a href="#consulta">Consultar con Andrés</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block consult" id="consulta">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="num">03</span><h2>Agenda una consulta</h2></div>
+        <p>Cuéntanos brevemente tu situación. Te respondemos en un día hábil para coordinar la reunión.</p>
+      </div>
+      <div class="consult-grid">
+        <ul class="contact-list reveal">
+          <li><b>Oficina</b>Av. España 1850, Asunción</li>
+          <li><b>Horario</b>Lunes a viernes, 8:00 a 17:30</li>
+          <li><b>Modalidad</b>Presencial o por videollamada</li>
+        </ul>
+        <div class="reveal" id="formbox">
+          <form id="form" novalidate>
+            <div class="f"><label for="nombre">Nombre</label><input id="nombre" autocomplete="name"><span class="msg"></span></div>
+            <div class="f"><label for="empresa">Empresa</label><input id="empresa" autocomplete="organization"><span class="msg"></span></div>
+            <div class="f"><label for="correo">Correo</label><input id="correo" type="email" autocomplete="email"><span class="msg"></span></div>
+            <div class="f"><label for="tel">Teléfono</label><input id="tel" type="tel" autocomplete="tel" placeholder="0981 000 000"><span class="msg"></span></div>
+            <div class="f full"><label for="tipo">Tipo de consulta</label>
+              <select id="tipo"><option value="">Selecciona una opción</option><option>Contabilidad</option><option>Impuestos</option><option>Derecho laboral</option><option>Derecho societario</option><option>Contratos</option></select><span class="msg"></span></div>
+            <div class="f full"><label for="mensaje">Mensaje</label><textarea id="mensaje" rows="3"></textarea><span class="msg"></span></div>
+            <button class="send" type="submit">Enviar consulta
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </form>
+          <div class="done" role="status" tabindex="-1" id="done">
+            <h3>Gracias, <span id="doneName"></span>.</h3>
+            <p>Esta es una demostración: la consulta no se envió a ningún servidor. En un sitio real, aquí llegaría un correo al estudio y otro de confirmación para ti.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Benítez & Ortiz Asociados · Asunción, Paraguay</span>
+    <span>Lunes a viernes, 8:00 a 17:30</span>
+    <small>Marca ficticia · Prototipo de diseño por Jesús Amarilla</small>
+  </div>
+</footer>
+
+<script>const areas = [ [ 'Contabilidad', 'Llevamos tus libros al día y te entregamos reportes que se entienden, no solo balances.', [ 'Libros contables', 'Estados financieros', 'Reportes mensuales', 'Auditoría interna' ] ], [ 'Impuestos', 'Liquidamos y planificamos IVA, IRE e IRP ante la SET para que pagues lo justo y a tiempo.', [ 'IVA', 'IRE', 'IRP', 'Planificación tributaria', 'Fiscalizaciones' ] ], [ 'Derecho laboral', 'Contratos de trabajo, reglamentos internos y acompañamiento en conflictos e inspecciones.', [ 'Contratos laborales', 'IPS', 'Desvinculaciones', 'Reglamento interno' ] ], [ 'Derecho societario', 'Constitución de sociedades, cambios de estatuto y actas para que tu empresa esté en regla.', [ 'Constitución de EAS y S.A.', 'Actas y asambleas', 'Reformas de estatuto' ] ], [ 'Contratos', 'Redactamos y revisamos contratos comerciales antes de que firmes, no después del problema.', [ 'Alquileres', 'Proveedores', 'Confidencialidad', 'Prestación de servicios' ] ] ];
+
+const acc = document.getElementById('acc');
+
+areas.forEach(([title, text, list], i) => {
+  const item = document.createElement('div');
+  item.className = 'acc-item';
+  const h = document.createElement('h3');
+  const btn = document.createElement('button');
+  btn.className = 'acc-btn';
+  btn.type = 'button';
+  btn.id = 'ab' + i;
+  btn.setAttribute('aria-controls', 'ap' + i);
+  btn.setAttribute('aria-expanded', i === 0);
+  const n = document.createElement('span');
+  n.className = 'i';
+  n.textContent = '0' + (i + 1);
+  const t = document.createElement('span');
+  t.className = 't';
+  t.textContent = title;
+  const pm = document.createElement('span');
+  pm.className = 'pm';
+  pm.setAttribute('aria-hidden', 'true');
+  btn.append(n, t, pm);
+  h.append(btn);
+  const panel = document.createElement('div');
+  panel.className = 'acc-panel';
+  panel.id = 'ap' + i;
+  panel.setAttribute('role', 'region');
+  panel.setAttribute('aria-labelledby', 'ab' + i);
+  const inner = document.createElement('div');
+  const p = document.createElement('p');
+  p.textContent = text;
+  const ul = document.createElement('ul');
+  list.forEach(s => {
+    const li = document.createElement('li');
+    li.textContent = s;
+    ul.append(li);
+  });
+  inner.append(p, ul);
+  panel.append(inner);
+  btn.addEventListener('click', () => btn.setAttribute('aria-expanded', btn.getAttribute('aria-expanded') !== 'true'));
+  item.append(h, panel);
+  acc.append(item);
+});
+
+function countUp(el) {
+  const to = +el.dataset.to, t0 = performance.now();
+  const step = now => {
+    const p = Math.min((now - t0) / 1400, 1);
+    el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(step);
+  };
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) el.textContent = to; else requestAnimationFrame(step);
+}
+
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if (!en.isIntersecting) return;
+  if (en.target.id === 'band') en.target.querySelectorAll('[data-to]').forEach(countUp); else en.target.classList.add('in');
+  io.unobserve(en.target);
+}), {
+  threshold: .25
+});
+
+document.querySelectorAll('.reveal, #band').forEach(el => io.observe(el));
+
+const rules = {
+  nombre: v => v.length >= 3 || 'Escribe tu nombre y apellido.',
+  empresa: v => v.length >= 2 || 'Indica el nombre de tu empresa.',
+  correo: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) || 'Revisa el formato del correo.',
+  tel: v => /^[0-9 +()-]{8,}$/.test(v) || 'Escribe un teléfono válido.',
+  tipo: v => !!v || 'Elige el tipo de consulta.',
+  mensaje: v => v.length >= 15 || 'Cuéntanos un poco más (mínimo 15 caracteres).'
+};
+
+function check(id) {
+  const el = document.getElementById(id), f = el.closest('.f'), res = rules[id](el.value.trim());
+  f.querySelector('.msg').textContent = res === true ? '' : res;
+  if (res === true) {
+    f.removeAttribute('data-bad');
+    el.removeAttribute('aria-invalid');
+  } else {
+    f.setAttribute('data-bad', '');
+    el.setAttribute('aria-invalid', 'true');
+  }
+  return res === true;
+}
+
+Object.keys(rules).forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener('blur', () => check(id));
+  el.addEventListener('input', () => {
+    if (el.closest('.f').hasAttribute('data-bad')) check(id);
+  });
+});
+
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const ok = Object.keys(rules).map(check).every(Boolean);
+  if (!ok) {
+    document.querySelector('.f[data-bad] input, .f[data-bad] select, .f[data-bad] textarea').focus();
+    return;
+  }
+  document.getElementById('doneName').textContent = document.getElementById('nombre').value.trim().split(' ')[0];
+  document.getElementById('formbox').classList.add('sent');
+  document.getElementById('done').focus();
+})</script>
+</body>
+</html>

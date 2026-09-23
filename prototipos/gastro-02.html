@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casa Tueste · Café de especialidad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>:root {
+  --mint: #e3ece6;
+  --mint-2: #d2e0d7;
+  --espresso: #2b1a12;
+  --espresso-2: #5a4439;
+  --roast: #e0662b;
+  --white: #fbfdfb;
+  --line: #bfd0c5;
+  --display: 'Bricolage Grotesque',system-ui,sans-serif;
+  --body: 'Figtree',system-ui,sans-serif
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+html {
+  scroll-behavior: smooth
+}
+body {
+  background: var(--mint);
+  color: var(--espresso);
+  font-family: var(--body);
+  line-height: 1.6;
+  overflow-x: hidden
+}
+img {
+  display: block;
+  max-width: 100%
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: 0 0;
+  border: 0
+}
+a {
+  color: inherit;
+  text-decoration: none
+}
+:focus-visible {
+  outline: 2px solid var(--roast);
+  outline-offset: 3px
+}
+.wrap {
+  width: min(1140px,100% - 32px);
+  margin-inline: auto
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px clamp(16px,4vw,40px)
+}
+.logo {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -.04em
+}
+.logo span {
+  color: var(--roast)
+}
+.nav ul {
+  display: flex;
+  gap: 26px;
+  list-style: none;
+  font-weight: 500;
+  font-size: 14.5px
+}
+.nav ul a {
+  position: relative
+}
+.nav ul a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -3px;
+  height: 2px;
+  background: var(--roast);
+  transition: right .3s
+}
+.nav ul a:hover::after {
+  right: 0
+}
+.open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border: 1.5px solid var(--espresso);
+  border-radius: 999px
+}
+.open i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9aa39c
+}
+.open.is-open i {
+  background: #1f9d55;
+  box-shadow: 0 0 0 4px rgba(31,157,85,.18)
+}
+.hero {
+  padding: clamp(24px,4vw,48px) 0 clamp(56px,8vw,96px)
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px,4vw,56px);
+  align-items: center
+}
+h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(48px, 7.4vw, 104px);
+  line-height: .9;
+  letter-spacing: -.055em
+}
+h1 em {
+  font-style: normal;
+  color: var(--roast)
+}
+.hero p {
+  margin-top: 22px;
+  font-size: 18px;
+  max-width: 38ch;
+  color: var(--espresso-2)
+}
+.hero .actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  background: var(--espresso);
+  color: var(--white);
+  transition: background .2s,transform .2s
+}
+.btn:hover {
+  background: var(--roast);
+  transform: translateY(-2px)
+}
+.btn.ghost {
+  background: 0 0;
+  color: var(--espresso);
+  border: 1.5px solid var(--espresso)
+}
+.btn.ghost:hover {
+  background: var(--espresso);
+  color: var(--white)
+}
+.pic {
+  position: relative
+}
+.pic img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 180px 180px 8px 8px
+}
+.seal {
+  position: absolute;
+  left: -36px;
+  bottom: 32px;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  background: var(--roast);
+  color: var(--white);
+  display: grid;
+  place-items: center
+}
+.seal svg {
+  position: absolute;
+  inset: 0;
+  animation: spin 18s linear infinite
+}
+.seal b {
+  font-family: var(--display);
+  font-size: 26px;
+  line-height: 1;
+  text-align: center
+}
+.seal b small {
+  display: block;
+  font-size: 11px;
+  font-family: var(--body);
+  font-weight: 600;
+  letter-spacing: .08em
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
+section.block {
+  padding: clamp(56px,9vw,104px) 0
+}
+.sec-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 32px
+}
+h2 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: .95;
+  letter-spacing: -.05em
+}
+.sec-head p {
+  max-width: 40ch;
+  color: var(--espresso-2)
+}
+.menu-box {
+  background: var(--white);
+  border-radius: 8px;
+  padding: clamp(18px,3vw,32px)
+}
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 18px
+}
+.filters button {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  font-weight: 600;
+  font-size: 14px;
+  transition: background .2s,border-color .2s,color .2s
+}
+.filters button[aria-pressed=true] {
+  background: var(--espresso);
+  border-color: var(--espresso);
+  color: var(--white)
+}
+.drinks {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 40px
+}
+.drink {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 16px;
+  padding: 16px 0;
+  border-bottom: 1px dashed var(--line);
+  transition: opacity .35s,transform .35s
+}
+.drink.hide {
+  display: none
+}
+.drink.enter {
+  animation: enter .4s cubic-bezier(.2,.7,.2,1) both
+}
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px)
+  }
+}
+.drink h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -.02em
+}
+.drink .gs {
+  font-weight: 600
+}
+.drink p {
+  grid-column: 1/-1;
+  font-size: 14px;
+  color: var(--espresso-2)
+}
+.drink .notes {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px
+}
+.drink .notes span {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--mint)
+}
+.process {
+  background: var(--espresso);
+  color: var(--white)
+}
+.process .sec-head p {
+  color: #cdbdb3
+}
+.track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(260px,32%);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--roast) transparent
+}
+.step {
+  scroll-snap-align: start
+}
+.step figure {
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 4/3
+}
+.step img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s cubic-bezier(.2,.7,.2,1)
+}
+.step:hover img {
+  transform: scale(1.06)
+}
+.step .n {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 44px;
+  color: var(--roast);
+  line-height: 1;
+  margin-top: 16px
+}
+.step h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 22px;
+  margin-top: 6px
+}
+.step p {
+  color: #cdbdb3;
+  font-size: 14.5px;
+  margin-top: 4px
+}
+.track-nav {
+  display: flex;
+  gap: 8px
+}
+.track-nav button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid #6d564a;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+  transition: background .2s,border-color .2s
+}
+.track-nav button:hover {
+  background: var(--roast);
+  border-color: var(--roast)
+}
+.visit {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(20px,4vw,48px);
+  align-items: stretch
+}
+.visit img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  border-radius: 8px
+}
+.card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: clamp(20px,3vw,36px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px
+}
+.hours {
+  list-style: none
+}
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--mint-2);
+  font-size: 15px
+}
+.hours li.today {
+  font-weight: 700;
+  color: var(--roast)
+}
+.status {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 22px
+}
+footer {
+  padding: 32px clamp(16px,4vw,40px);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--espresso-2)
+}
+footer small {
+  width: 100%;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 12.5px
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)
+}
+.reveal.in {
+  opacity: 1;
+  transform: none
+}
+@media (max-width:780px) {
+  .nav ul {
+    display: none
+  }
+  .hero-grid,
+  .visit {
+    grid-template-columns: 1fr
+  }
+  .seal {
+    left: 12px;
+    width: 108px;
+    height: 108px
+  }
+  .drinks {
+    grid-template-columns: 1fr
+  }
+  .track {
+    grid-auto-columns: 80%
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,
+  ::after,
+  ::before {
+    animation: none!important;
+    transition: none!important
+  }
+  .reveal {
+    opacity: 1;
+    transform: none
+  }
+}</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="logo" href="#inicio">casa<span>tueste</span></a>
+  <nav aria-label="Principal"><ul>
+    <li><a href="#carta">Carta</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#visita">Visítanos</a></li>
+  </ul></nav>
+  <span class="open" id="openBadge"><i></i><span id="openText">Cerrado</span></span>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <h1>Café tostado <em>esta semana</em>, no el año pasado.</h1>
+        <p>Tostamos lotes pequeños de fincas de Brasil, Colombia y Etiopía en nuestro local de Villa Morra. Lo preparas como quieras; nosotros te explicamos cada taza.</p>
+        <div class="actions">
+          <a class="btn" href="#carta">Ver la carta</a>
+          <a class="btn ghost" href="#visita">Cómo llegar</a>
+        </div>
+      </div>
+      <div class="pic reveal">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1100&q=80&auto=format&fit=crop" alt="Dos personas brindando con tazas de café con arte latte">
+        <div class="seal" aria-hidden="true">
+          <svg viewBox="0 0 132 132"><defs><path id="c" d="M66 66m-50 0a50 50 0 1 1 100 0a50 50 0 1 1-100 0"/></defs><text fill="#fbfdfb" font-size="11" font-family="Figtree" font-weight="600" letter-spacing="3"><textPath href="#c">TOSTADO EN CASA · LOTES PEQUEÑOS · </textPath></text></svg>
+          <b>72 h<small>DESDE EL TUESTE</small></b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="carta" style="* {
+  padding-top: 0
+}">
+    <div class="wrap">
+      <div class="sec-head reveal"><h2>La carta</h2><p>Filtra por método. Cada café trae sus notas de sabor para que elijas sin adivinar.</p></div>
+      <div class="menu-box reveal">
+        <div class="filters" role="group" aria-label="Filtrar por método">
+          <button type="button" aria-pressed="true" data-f="all">Todos</button>
+          <button type="button" aria-pressed="false" data-f="espresso">Espresso</button>
+          <button type="button" aria-pressed="false" data-f="filtrado">Filtrados</button>
+          <button type="button" aria-pressed="false" data-f="frio">Fríos</button>
+        </div>
+        <ul class="drinks" id="drinks" aria-live="polite"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block process" id="proceso">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><h2>Del grano<br>a la taza</h2></div>
+        <div class="track-nav"><button type="button" id="prev" aria-label="Paso anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" id="next" aria-label="Paso siguiente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      </div>
+      <div class="track reveal" id="track" tabindex="0" aria-label="Pasos del proceso, desplazable">
+        <article class="step"><figure><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80&auto=format&fit=crop" alt="Granos de café tostados" loading="lazy"></figure><div class="n">01</div><h3>Elegimos el grano</h3><p>Compramos directo a fincas con trazabilidad y puntaje de taza sobre 84.</p></article>
+        <article class="step"><figure><img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&q=80&auto=format&fit=crop" alt="Café molido en portafiltro junto a una taza" loading="lazy"></figure><div class="n">02</div><h3>Tostamos en casa</h3><p>Lotes de 5 kg dos veces por semana, con un perfil distinto para cada origen.</p></article>
+        <article class="step"><figure><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&q=80&auto=format&fit=crop" alt="Portafiltro con café molido y granos" loading="lazy"></figure><div class="n">03</div><h3>Molemos al momento</h3><p>Cada taza se muele segundos antes de prepararse. Nada queda molido.</p></article>
+        <article class="step"><figure><img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&q=80&auto=format&fit=crop" alt="Bolsa de café de especialidad" loading="lazy"></figure><div class="n">04</div><h3>Te lo llevas</h3><p>Bolsas de 250 g con fecha de tueste, molido a pedido para tu método.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="visita">
+    <div class="wrap visit">
+      <img class="reveal" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&q=80&auto=format&fit=crop" alt="Salón de la cafetería con mesas, plantas y barra" loading="lazy">
+      <div class="card reveal">
+        <h2 style="* {
+  font-size: clamp(32px,4vw,48px)
+}">Visítanos</h2>
+        <p class="status" id="status"></p>
+        <p>Senador Long 640, Villa Morra, Asunción.<br>Wifi, enchufes en cada mesa y estacionamiento en la esquina.</p>
+        <ul class="hours" id="hours"></ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Casa Tueste · Asunción</span>
+  <span>Café en grano con envío a domicilio</span>
+  <small>Marca ficticia · Prototipo de diseño por Jesús Amarilla</small>
+</footer>
+
+<script>const gs = n => 'Gs. ' + n.toLocaleString('es-PY');
+
+const drinks = [ [ 'espresso', 'Espresso', 'Brasil Cerrado, 18 g en 28 segundos.', [ 'Chocolate', 'Nuez' ], 14e3 ], [ 'espresso', 'Flat white', 'Doble ristretto con leche texturizada fina.', [ 'Caramelo', 'Cremoso' ], 22e3 ], [ 'espresso', 'Cortado', 'Espresso con una nube de leche.', [ 'Cacao', 'Dulce' ], 16e3 ], [ 'filtrado', 'V60 Etiopía', 'Yirgacheffe lavado, preparado en 3 minutos.', [ 'Jazmín', 'Limón', 'Té negro' ], 26e3 ], [ 'filtrado', 'Chemex para dos', 'Colombia Huila, 500 ml para compartir.', [ 'Manzana roja', 'Panela' ], 38e3 ], [ 'filtrado', 'AeroPress', 'El café del mes, preparado a presión suave.', [ 'Frutos rojos', 'Miel' ], 24e3 ], [ 'frio', 'Cold brew', '18 horas de infusión en frío, servido sobre hielo.', [ 'Chocolate amargo', 'Suave' ], 23e3 ], [ 'frio', 'Tónica con espresso', 'Espresso sobre agua tónica y cáscara de naranja.', [ 'Cítrico', 'Burbujeante' ], 25e3 ] ];
+
+const list = document.getElementById('drinks');
+
+drinks.forEach(([m, name, desc, notes, price]) => {
+  const li = document.createElement('li');
+  li.className = 'drink';
+  li.dataset.m = m;
+  const h = document.createElement('h3');
+  h.textContent = name;
+  const p = document.createElement('span');
+  p.className = 'gs';
+  p.textContent = gs(price);
+  const d = document.createElement('p');
+  d.textContent = desc;
+  const n = document.createElement('div');
+  n.className = 'notes';
+  notes.forEach(t => {
+    const s = document.createElement('span');
+    s.textContent = t;
+    n.append(s);
+  });
+  li.append(h, p, d, n);
+  list.append(li);
+});
+
+document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.filters button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  let i = 0;
+  list.querySelectorAll('.drink').forEach(li => {
+    const show = b.dataset.f === 'all' || li.dataset.m === b.dataset.f;
+    li.classList.toggle('hide', !show);
+    li.classList.remove('enter');
+    if (show) {
+      li.style.animationDelay = i++ * 50 + 'ms';
+      void li.offsetWidth;
+      li.classList.add('enter');
+    }
+  });
+}));
+
+const track = document.getElementById('track');
+
+const stepW = () => track.querySelector('.step').offsetWidth + 16;
+
+document.getElementById('next').onclick = () => track.scrollBy({
+  left: stepW(),
+  behavior: 'smooth'
+});
+
+document.getElementById('prev').onclick = () => track.scrollBy({
+  left: -stepW(),
+  behavior: 'smooth'
+});
+
+const days = [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado' ];
+
+const sched = {
+  0: [ 8, 13 ],
+  1: [ 7, 20 ],
+  2: [ 7, 20 ],
+  3: [ 7, 20 ],
+  4: [ 7, 20 ],
+  5: [ 7, 22 ],
+  6: [ 8, 22 ]
+};
+
+const now = new Date, today = now.getDay(), h = now.getHours() + now.getMinutes() / 60;
+
+const hoursEl = document.getElementById('hours');
+
+[ 1, 2, 3, 4, 5, 6, 0 ].forEach(d => {
+  const li = document.createElement('li');
+  if (d === today) li.className = 'today';
+  const a = document.createElement('span');
+  a.textContent = days[d];
+  const b = document.createElement('span');
+  b.textContent = `${sched[d][0]}:00 a ${sched[d][1]}:00`;
+  li.append(a, b);
+  hoursEl.append(li);
+});
+
+const isOpen = h >= sched[today][0] && h < sched[today][1];
+
+document.getElementById('openBadge').classList.toggle('is-open', isOpen);
+
+document.getElementById('openText').textContent = isOpen ? 'Abierto ahora' : 'Cerrado ahora';
+
+document.getElementById('status').textContent = isOpen ? `Abierto hasta las ${sched[today][1]}:00` : `Hoy abrimos de ${sched[today][0]}:00 a ${sched[today][1]}:00`;
+
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) {
+    en.target.classList.add('in');
+    io.unobserve(en.target);
+  }
+}), {
+  threshold: .2
+});
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el))</script>
+</body>
+</html>

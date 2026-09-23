@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Polo Sur · Heladería artesanal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chango&family=Rethink+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>:root {
+  --bg: #ffd6df;
+  --ink: #3b0d1c;
+  --accent: #e8436e;
+  --display: 'Chango',system-ui,sans-serif;
+  --body: 'Rethink Sans',system-ui,sans-serif
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+html {
+  scroll-behavior: smooth
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.55;
+  overflow-x: hidden;
+  transition: color .3s
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: 0 0;
+  border: 0
+}
+a {
+  color: inherit;
+  text-decoration: none
+}
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px
+}
+#stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%
+}
+.fallback {
+  position: fixed;
+  right: 12%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 220px;
+  height: 360px;
+  display: none;
+  z-index: 0
+}
+.no-webgl .fallback {
+  display: block
+}
+.fallback i {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--accent)
+}
+.fallback i:first-child {
+  top: 0
+}
+.fallback i:nth-child(2) {
+  top: 90px;
+  filter: brightness(.9)
+}
+.fallback b {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-top: 200px solid #d9a05b;
+  transform: translateX(-50%)
+}
+main {
+  position: relative;
+  z-index: 1
+}
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px clamp(16px,4vw,40px)
+}
+.logo {
+  font-family: var(--display);
+  font-size: 22px
+}
+.nav nav {
+  display: flex;
+  gap: 8px
+}
+.nav nav a {
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  transition: background .2s,color .2s
+}
+.nav nav a:hover {
+  background: var(--ink);
+  color: var(--bg)
+}
+.col {
+  width: min(520px,46vw);
+  margin-left: clamp(16px,6vw,96px)
+}
+.screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 0 40px
+}
+.kick {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: .16em;
+  text-transform: uppercase
+}
+h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(54px, 8vw, 118px);
+  line-height: .9;
+  margin-top: 14px
+}
+.lead {
+  font-size: 19px;
+  margin-top: 18px;
+  max-width: 34ch
+}
+.scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  font-weight: 700;
+  font-size: 14px
+}
+.scroll-hint i {
+  width: 26px;
+  height: 40px;
+  border: 2px solid currentColor;
+  border-radius: 14px;
+  position: relative
+}
+.scroll-hint i::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: currentColor;
+  animation: wheel 1.6s ease-in-out infinite
+}
+@keyframes wheel {
+  60% {
+    transform: translateY(12px);
+    opacity: 0
+  }
+}
+.flavor .num {
+  font-family: var(--display);
+  font-size: 20px;
+  opacity: .6
+}
+.flavor h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(48px, 7vw, 100px);
+  line-height: .92;
+  margin-top: 8px
+}
+.flavor p {
+  font-size: 18px;
+  margin-top: 14px;
+  max-width: 32ch
+}
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 18px
+}
+.tags span {
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.55)
+}
+.flavor .t {
+  opacity: .15;
+  transform: translateY(30px);
+  transition: opacity .6s,transform .6s cubic-bezier(.2,.7,.2,1)
+}
+.flavor.on .t {
+  opacity: 1;
+  transform: none
+}
+.panel {
+  background: rgba(255,255,255,.62);
+  border: 2px solid var(--ink);
+  border-radius: 22px;
+  padding: clamp(20px,3vw,32px);
+  backdrop-filter: blur(6px)
+}
+.panel h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: .95
+}
+.sizes {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
+  margin-top: 20px
+}
+.sizes button {
+  padding: 16px 8px;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  font-weight: 700;
+  transition: background .2s,color .2s,transform .2s
+}
+.sizes button b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1
+}
+.sizes button small {
+  display: block;
+  font-size: 13px;
+  margin-top: 4px
+}
+.sizes button:hover {
+  transform: translateY(-3px)
+}
+.sizes button[aria-pressed=true] {
+  background: var(--ink);
+  color: var(--bg)
+}
+.price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-weight: 700
+}
+.price output {
+  font-family: var(--display);
+  font-size: 36px
+}
+.cta {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 15px 22px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+  transition: transform .2s
+}
+.cta:hover {
+  transform: translateY(-2px)
+}
+.visit ul {
+  list-style: none;
+  margin-top: 18px
+}
+.visit li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 2px solid rgba(59,13,28,.2);
+  font-weight: 500
+}
+footer {
+  position: relative;
+  z-index: 1;
+  padding: 20px clamp(16px,6vw,96px) 32px;
+  font-size: 13px
+}
+@media (max-width:760px) {
+  .col {
+    width: auto;
+    margin: 0 16px
+  }
+  .screen {
+    align-items: flex-end;
+    padding-bottom: 32px;
+    min-height: 100svh
+  }
+  .flavor .t,
+  .hero-t {
+    background: rgba(255,255,255,.6);
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    padding: 18px
+  }
+  .nav nav {
+    display: none
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,
+  ::after,
+  ::before {
+    animation: none!important;
+    transition: none!important
+  }
+  .flavor .t {
+    opacity: 1;
+    transform: none
+  }
+}</style>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/" } }</script>
+</head>
+<body>
+
+<canvas id="stage" aria-hidden="true"></canvas>
+<div class="fallback" aria-hidden="true"><i></i><i></i><b></b></div>
+
+<header class="nav">
+  <a class="logo" href="#inicio">Polo Sur</a>
+  <nav aria-label="Principal"><a href="#sabores">Sabores</a><a href="#bochas">Tamaños</a><a href="#visita">Visítanos</a></nav>
+</header>
+
+<main>
+  <section class="screen" id="inicio">
+    <div class="col hero-t">
+      <span class="kick">Heladería artesanal · Asunción</span>
+      <h1>Helado que se mueve contigo.</h1>
+      <p class="lead">Baja despacio: el cucurucho gira y cambia de sabor a medida que avanzas. Mueve el mouse para inclinarlo.</p>
+      <span class="scroll-hint"><i aria-hidden="true"></i>Baja para probar</span>
+    </div>
+  </section>
+
+  <div id="sabores"></div>
+
+  <section class="screen" id="bochas">
+    <div class="col">
+      <div class="panel">
+        <span class="kick">Elige tu tamaño</span>
+        <h2>¿Cuántas bochas?</h2>
+        <p style="* {
+  margin-top: 10px
+}">Cambia la cantidad y mira cómo crece el cucurucho.</p>
+        <div class="sizes" role="group" aria-label="Cantidad de bochas">
+          <button type="button" aria-pressed="false" data-n="1"><b>1</b><small>Gs. 15.000</small></button>
+          <button type="button" aria-pressed="true" data-n="2"><b>2</b><small>Gs. 25.000</small></button>
+          <button type="button" aria-pressed="false" data-n="3"><b>3</b><small>Gs. 33.000</small></button>
+        </div>
+        <div class="price"><span>Tu cucurucho</span><output id="price" aria-live="polite">Gs. 25.000</output></div>
+        <a class="cta" href="#visita">Pedir por delivery</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen visit" id="visita">
+    <div class="col">
+      <div class="panel">
+        <span class="kick">Visítanos</span>
+        <h2>Frío todo el año.</h2>
+        <ul>
+          <li><span>Dirección</span><span>Av. Santa Teresa 2300</span></li>
+          <li><span>Horario</span><span>Todos los días, 12:00 a 23:30</span></li>
+          <li><span>Delivery</span><span>Gran Asunción</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>Marca ficticia · Prototipo de diseño por Jesús Amarilla · Helado modelado en código con Three.js, sin archivos 3D externos</footer>
+
+<script type="module">import * as THREE from 'three';
+
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const flavors = [ {
+  n: 'Frutilla a la crema',
+  d: 'Frutillas de Areguá con crema fresca, sin colorantes.',
+  tags: [ 'Fruta de estación', 'Suave' ],
+  scoop: '#ee6f93',
+  sauce: '#9e1030',
+  bg: '#ffd6df',
+  ink: '#3b0d1c',
+  acc: '#e8436e'
+}, {
+  n: 'Dulce de leche',
+  d: 'Dulce de leche casero cocido seis horas, con vetas de más dulce.',
+  tags: [ 'El más pedido', 'Cremoso' ],
+  scoop: '#c98a4b',
+  sauce: '#5a2a0c',
+  bg: '#f6e0c4',
+  ink: '#3a1f08',
+  acc: '#b86a24'
+}, {
+  n: 'Pistacho',
+  d: 'Pistacho tostado molido en casa, un toque de sal marina.',
+  tags: [ 'Intenso', 'Con trocitos' ],
+  scoop: '#93b86a',
+  sauce: '#3b1d10',
+  bg: '#e1efd2',
+  ink: '#1f3312',
+  acc: '#5f8a32'
+}, {
+  n: 'Mburucuyá',
+  d: 'Pulpa de maracuyá paraguayo, ácido y refrescante.',
+  tags: [ 'Al agua', 'Apto vegano' ],
+  scoop: '#f5c542',
+  sauce: '#c96a00',
+  bg: '#fff0bf',
+  ink: '#3b2c00',
+  acc: '#d49a00'
+}, {
+  n: 'Chocolate amargo',
+  d: 'Cacao al 70 %, denso y oscuro, para los que saben.',
+  tags: [ '70 % cacao', 'Sin gluten' ],
+  scoop: '#5a3226',
+  sauce: '#f3ead8',
+  bg: '#e7d4cf',
+  ink: '#2a120b',
+  acc: '#7a3b24'
+} ];
+
+const holder = document.getElementById('sabores');
+
+flavors.forEach((f, i) => {
+  const s = document.createElement('section');
+  s.className = 'screen flavor';
+  s.dataset.i = i;
+  const col = document.createElement('div');
+  col.className = 'col';
+  const t = document.createElement('div');
+  t.className = 't';
+  const num = document.createElement('span');
+  num.className = 'num';
+  num.textContent = `0${i + 1} / 0${flavors.length}`;
+  const h = document.createElement('h2');
+  h.textContent = f.n;
+  const p = document.createElement('p');
+  p.textContent = f.d;
+  const tags = document.createElement('div');
+  tags.className = 'tags';
+  f.tags.forEach(x => {
+    const sp = document.createElement('span');
+    sp.textContent = x;
+    tags.append(sp);
+  });
+  t.append(num, h, p, tags);
+  col.append(t);
+  s.append(col);
+  holder.append(s);
+});
+
+const flavorEls = [ ...document.querySelectorAll('.flavor') ];
+
+const canvas = document.getElementById('stage');
+
+let renderer;
+
+try {
+  renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    antialias: true,
+    alpha: true
+  });
+} catch (e) {
+  document.body.classList.add('no-webgl');
+  canvas.remove();
+}
+
+if (renderer) {
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
+  const scene = new THREE.Scene;
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment, .04).texture;
+  const camera = new THREE.PerspectiveCamera(30, 1, .1, 100);
+  camera.position.set(0, .6, 17);
+  const key = new THREE.DirectionalLight(16774376, 2.4);
+  key.position.set(4, 8, 6);
+  key.castShadow = true;
+  key.shadow.mapSize.set(1024, 1024);
+  key.shadow.radius = 6;
+  Object.assign(key.shadow.camera, {
+    left: -3,
+    right: 7,
+    top: 6,
+    bottom: -5,
+    near: 1,
+    far: 30
+  });
+  scene.add(key);
+  const rim = new THREE.DirectionalLight(16777215, 1.4);
+  rim.position.set(-6, 3, -5);
+  scene.add(rim);
+  scene.add(new THREE.HemisphereLight(16777215, 10123878, .5));
+  const hash = (x, y, z) => {
+    const h = Math.sin(x * 127.1 + y * 311.7 + z * 74.7) * 43758.5453;
+    return h - Math.floor(h);
+  };
+  const sm = t => t * t * (3 - 2 * t);
+  function noise(x, y, z) {
+    const xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
+    const xf = sm(x - xi), yf = sm(y - yi), zf = sm(z - zi);
+    const l = (a, b, t) => a + (b - a) * t;
+    const c = (dx, dy, dz) => hash(xi + dx, yi + dy, zi + dz);
+    return l(l(l(c(0, 0, 0), c(1, 0, 0), xf), l(c(0, 1, 0), c(1, 1, 0), xf), yf), l(l(c(0, 0, 1), c(1, 0, 1), xf), l(c(0, 1, 1), c(1, 1, 1), xf), yf), zf) * 2 - 1;
+  }
+  const fbm = (x, y, z) => noise(x, y, z) * .6 + noise(x * 2.1, y * 2.1, z * 2.1) * .28 + noise(x * 4.3, y * 4.3, z * 4.3) * .12;
+  function surf(dir, seed) {
+    const a = Math.atan2(dir.z, dir.x);
+    let r = 1 + fbm(dir.x * 1.8 + seed, dir.y * 1.8, dir.z * 1.8) * .1 + Math.sin(dir.y * 7 + a * 2 + seed) * .018;
+    const p = dir.clone().multiplyScalar(r);
+    if (dir.y < -.2) {
+      const t = Math.min(1, (-.2 - dir.y) / .5);
+      const flare = 1 + sm(t) * (.16 + noise(a * 2 + seed, 0, 0) * .05);
+      p.x *= flare;
+      p.z *= flare;
+      p.y = Math.max(p.y, -.58 - noise(a * 3 + seed, 1, 0) * .05);
+    }
+    p.y *= .94;
+    return p;
+  }
+  function scoopGeometry(seed) {
+    const geo = new THREE.SphereGeometry(1, 160, 110);
+    const pos = geo.attributes.position, v = new THREE.Vector3;
+    for (let k = 0; k < pos.count; k++) {
+      v.fromBufferAttribute(pos, k).normalize();
+      const p = surf(v, seed);
+      pos.setXYZ(k, p.x, p.y, p.z);
+    }
+    geo.computeVertexNormals();
+    return geo;
+  }
+  function waffleCanvas(bump) {
+    const c = document.createElement('canvas');
+    c.width = c.height = 512;
+    const g = c.getContext('2d');
+    g.fillStyle = bump ? '#bbb' : '#d99a55';
+    g.fillRect(0, 0, 512, 512);
+    if (!bump) for (let k = 0; k < 900; k++) {
+      g.fillStyle = `rgba(${150 + Math.random() * 60},${90 + Math.random() * 40},40,.25)`;
+      g.fillRect(Math.random() * 512, Math.random() * 512, 3, 3);
+    }
+    g.strokeStyle = bump ? '#222' : '#9a5a22';
+    g.lineWidth = bump ? 16 : 12;
+    for (let k = -512; k < 1024; k += 64) {
+      g.beginPath();
+      g.moveTo(k, 0);
+      g.lineTo(k + 512, 512);
+      g.stroke();
+      g.beginPath();
+      g.moveTo(k + 512, 0);
+      g.lineTo(k, 512);
+      g.stroke();
+    }
+    if (!bump) {
+      g.strokeStyle = 'rgba(255,220,160,.35)';
+      g.lineWidth = 3;
+      for (let k = -512; k < 1024; k += 64) {
+        g.beginPath();
+        g.moveTo(k + 8, 0);
+        g.lineTo(k + 520, 512);
+        g.stroke();
+      }
+    }
+    const t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    t.repeat.set(4, 3);
+    if (!bump) t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+  }
+  const cream = new THREE.Group;
+  scene.add(cream);
+  const profile = [ [ .02, -3.4 ], [ .25, -2.7 ], [ .55, -1.8 ], [ .82, -.9 ], [ 1, -.12 ], [ 1.08, -.04 ], [ 1.12, .06 ], [ 1.08, .16 ], [ .98, .17 ], [ .94, .08 ] ].map(([x, y]) => new THREE.Vector2(x, y));
+  const coneMat = new THREE.MeshStandardMaterial({
+    map: waffleCanvas(false),
+    bumpMap: waffleCanvas(true),
+    bumpScale: 2.2,
+    roughness: .78,
+    side: THREE.DoubleSide
+  });
+  const cone = new THREE.Mesh(new THREE.LatheGeometry(profile, 96), coneMat);
+  cone.castShadow = true;
+  cone.receiveShadow = true;
+  cream.add(cone);
+  const scoopMat = new THREE.MeshPhysicalMaterial({
+    color: flavors[0].scoop,
+    roughness: .58,
+    sheen: .18,
+    sheenRoughness: .7,
+    sheenColor: new THREE.Color('#ffffff'),
+    clearcoat: .08,
+    clearcoatRoughness: .7,
+    envMapIntensity: .55
+  });
+  function drips(seed, count, reach) {
+    const g = new THREE.Group;
+    for (let k = 0; k < count; k++) {
+      const a = k / count * Math.PI * 2 + hash(seed, k, 1) * .6;
+      const len = .18 + hash(seed, k, 2) * reach;
+      const rad = .07 + hash(seed, k, 3) * .05;
+      const d = new THREE.Mesh(new THREE.CapsuleGeometry(rad, len, 8, 16), scoopMat);
+      const u = new THREE.Vector3(Math.cos(a), 0, Math.sin(a));
+      const tangent = new THREE.Vector3(-Math.sin(a), 0, Math.cos(a));
+      d.quaternion.setFromAxisAngle(tangent, -.24);
+      const down = new THREE.Vector3(0, -1, 0).applyQuaternion(d.quaternion);
+      const top = u.clone().multiplyScalar(1.02).setY(-.48);
+      d.position.copy(top.add(down.multiplyScalar(len / 2)));
+      d.castShadow = true;
+      g.add(d);
+    }
+    return g;
+  }
+  const scoops = [ 0, 1, 2 ].map(i => {
+    const g = new THREE.Group;
+    const m = new THREE.Mesh(scoopGeometry(i * 3.7 + 1), scoopMat);
+    m.castShadow = true;
+    m.receiveShadow = true;
+    g.add(m, drips(i + 5, i === 0 ? 6 : 4, i === 0 ? .5 : .16));
+    g.position.y = .62 + i * 1.28;
+    g.rotation.y = i * 1.3;
+    cream.add(g);
+    return g;
+  });
+  const toppings = new THREE.Group;
+  cream.add(toppings);
+  const topSeed = 1;
+  const dirFrom = (phi, th) => new THREE.Vector3(Math.sin(phi) * Math.cos(th), Math.cos(phi), Math.sin(phi) * Math.sin(th));
+  const sauceMat = new THREE.MeshPhysicalMaterial({
+    color: '#3b1d10',
+    roughness: .18,
+    clearcoat: 1,
+    clearcoatRoughness: .08
+  });
+  const pts = [];
+  for (let k = 0; k <= 120; k++) {
+    const t = k / 120;
+    pts.push(surf(dirFrom(.12 + t * 1.25, t * Math.PI * 5), topSeed).multiplyScalar(1.02));
+  }
+  const sauce = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 400, .065, 12), sauceMat);
+  sauce.castShadow = true;
+  toppings.add(sauce);
+  for (let k = 0; k < 5; k++) {
+    const th = k * 1.3 + .4, base = surf(dirFrom(1.3, th), topSeed).multiplyScalar(1.02);
+    const len = .15 + hash(k, 9, 9) * .35;
+    const d = new THREE.Mesh(new THREE.CapsuleGeometry(.055, len, 6, 12), sauceMat);
+    d.position.set(base.x, base.y - len / 2, base.z);
+    toppings.add(d);
+  }
+  const topY = surf(new THREE.Vector3(0, 1, 0), topSeed).y;
+  const cherry = new THREE.Mesh(new THREE.SphereGeometry(.27, 48, 32), new THREE.MeshPhysicalMaterial({
+    color: '#b3001b',
+    roughness: .15,
+    clearcoat: 1,
+    clearcoatRoughness: .05
+  }));
+  cherry.position.set(.05, topY + .2, .05);
+  cherry.scale.set(1, .92, 1);
+  cherry.castShadow = true;
+  const stem = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([ new THREE.Vector3(.05, topY + .44, .05), new THREE.Vector3(.1, topY + .75, .02), new THREE.Vector3(.32, topY + .98, -.05) ]), 24, .022, 8), new THREE.MeshStandardMaterial({
+    color: '#4d6b22',
+    roughness: .6
+  }));
+  toppings.add(cherry, stem);
+  const tubeTex = waffleCanvas(false);
+  tubeTex.repeat.set(1, 4);
+  const wafer = new THREE.Mesh(new THREE.CylinderGeometry(.14, .14, 1.9, 32), new THREE.MeshStandardMaterial({
+    map: tubeTex,
+    roughness: .7
+  }));
+  wafer.position.set(-.55, topY + .35, .15);
+  wafer.rotation.z = .55;
+  wafer.rotation.x = .15;
+  wafer.castShadow = true;
+  toppings.add(wafer);
+  const spr = new THREE.InstancedMesh(new THREE.CapsuleGeometry(.026, .13, 4, 8), new THREE.MeshStandardMaterial({
+    roughness: .35
+  }), 110);
+  const sprColors = [ '#ffffff', '#ff5d8f', '#4cc9f0', '#ffd23f', '#7bd88f', '#b388ff' ].map(c => new THREE.Color(c));
+  const dm = new THREE.Object3D;
+  for (let k = 0; k < 110; k++) {
+    const d = dirFrom(Math.acos(1 - hash(k, 1, 7) * .9), hash(k, 2, 7) * Math.PI * 2);
+    dm.position.copy(surf(d, topSeed).multiplyScalar(1.015));
+    dm.lookAt(dm.position.clone().multiplyScalar(2));
+    dm.rotateX(Math.PI / 2);
+    dm.rotateZ(hash(k, 3, 7) * Math.PI);
+    dm.updateMatrix();
+    spr.setMatrixAt(k, dm.matrix);
+    spr.setColorAt(k, sprColors[k % sprColors.length]);
+  }
+  toppings.add(spr);
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(12, 12), new THREE.ShadowMaterial({
+    opacity: .16
+  }));
+  ground.rotation.x = -Math.PI / 2;
+  ground.position.y = -3.45;
+  ground.receiveShadow = true;
+  cream.add(ground);
+  let count = 2;
+  function setCount(n) {
+    count = n;
+    scoops.forEach((s, i) => s.visible = i < n);
+    toppings.position.y = scoops[n - 1].position.y;
+    toppings.rotation.y = scoops[n - 1].rotation.y;
+  }
+  setCount(2);
+  function resize() {
+    const w = innerWidth, h = innerHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    cream.position.x = w > 760 ? 2.6 : 0;
+    cream.position.y = w > 760 ? -.5 : 1.6;
+    cream.scale.setScalar(w > 760 ? 1 : .6);
+  }
+  addEventListener('resize', resize);
+  resize();
+  let tx = 0, ty = 0;
+  addEventListener('pointermove', e => {
+    tx = (e.clientY / innerHeight - .5) * .4;
+    ty = (e.clientX / innerWidth - .5) * .9;
+  });
+  const cA = new THREE.Color, cB = new THREE.Color;
+  const lerpHex = (a, b, t) => '#' + cA.set(a).lerp(cB.set(b), t).getHexString();
+  function progress() {
+    const mid = innerHeight / 2;
+    const c = flavorEls.map(el => {
+      const r = el.getBoundingClientRect();
+      return r.top + r.height / 2;
+    });
+    if (mid <= c[0]) return 0;
+    for (let i = 0; i < c.length - 1; i++) if (mid < c[i + 1]) return i + (mid - c[i]) / (c[i + 1] - c[i]);
+    return c.length - 1;
+  }
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const t0 = performance.now();
+  const tmp = new THREE.Color;
+  let spin = 0;
+  function loop() {
+    const t = (performance.now() - t0) / 1e3;
+    const p = progress(), i = Math.floor(p), k = p - i, j = Math.min(i + 1, flavors.length - 1);
+    const a = flavors[i], b = flavors[j];
+    scoopMat.color.set(a.scoop).lerp(tmp.set(b.scoop), k);
+    sauceMat.color.set(a.sauce).lerp(tmp.set(b.sauce), k);
+    document.body.style.background = lerpHex(a.bg, b.bg, k);
+    document.body.style.color = k < .5 ? a.ink : b.ink;
+    flavorEls.forEach((el, n) => el.classList.toggle('on', Math.round(p) === n));
+    spin += (scrollY * .004 - spin) * .08;
+    cream.rotation.y = spin + (reduce ? 0 : t * .25) + ty * .6;
+    cream.rotation.x += (tx - cream.rotation.x) * .06;
+    cream.rotation.z = Math.sin(t * .8) * (reduce ? 0 : .025);
+    renderer.render(scene, camera);
+    requestAnimationFrame(loop);
+  }
+  loop();
+  window.setScoops = setCount;
+}
+
+const prices = {
+  1: 15e3,
+  2: 25e3,
+  3: 33e3
+};
+
+document.querySelectorAll('.sizes button').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.sizes button').forEach(x => x.setAttribute('aria-pressed', x === btn));
+  if (window.setScoops) window.setScoops(+btn.dataset.n);
+  document.getElementById('price').textContent = 'Gs. ' + prices[btn.dataset.n].toLocaleString('es-PY');
+}))</script>
+</body>
+</html>

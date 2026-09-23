@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Humo Negro · Hamburguesas a la leña</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root {
+  --coal: #141110;
+  --coal-2: #1d1916;
+  --smoke: #2c2622;
+  --bone: #f3ede3;
+  --bone-2: #b9ad9d;
+  --mustard: #f2b705;
+  --tomato: #d8321e;
+  --display: 'Anton',Impact,sans-serif;
+  --body: 'Work Sans',system-ui,sans-serif
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark
+}
+body {
+  background: var(--coal);
+  color: var(--bone);
+  font-family: var(--body);
+  line-height: 1.55;
+  overflow-x: hidden
+}
+img {
+  display: block;
+  max-width: 100%
+}
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit
+}
+button {
+  cursor: pointer;
+  background: 0 0;
+  border: 0
+}
+a {
+  color: inherit
+}
+:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: 3px
+}
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px clamp(16px,4vw,40px);
+  background: rgba(20,17,16,.9);
+  border-bottom: 1px solid var(--smoke)
+}
+.logo {
+  font-family: var(--display);
+  font-size: 22px;
+  letter-spacing: .04em;
+  text-decoration: none
+}
+.logo span {
+  color: var(--tomato)
+}
+.nav ul {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 500
+}
+.nav ul a {
+  text-decoration: none;
+  color: var(--bone-2)
+}
+.nav ul a:hover {
+  color: var(--bone)
+}
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none
+}
+.cart-count {
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  display: grid;
+  place-items: center;
+  background: var(--mustard);
+  color: var(--coal);
+  font-weight: 700;
+  font-size: 13px;
+  transition: transform .2s cubic-bezier(.3,1.6,.5,1)
+}
+.cart-count.bump {
+  transform: scale(1.35) rotate(-6deg)
+}
+.hero {
+  position: relative;
+  min-height: min(92vh,720px);
+  display: grid;
+  align-items: end;
+  overflow: hidden
+}
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 50%;
+  transform: scale(1.08);
+  animation: settle 1.6s cubic-bezier(.2,.7,.2,1) forwards
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,rgba(20,17,16,.92) 0,rgba(20,17,16,.55) 45%,rgba(20,17,16,0) 75%),linear-gradient(0deg,var(--coal) 0,transparent 35%)
+}
+@keyframes settle {
+  to {
+    transform: scale(1)
+  }
+}
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  padding: 0 clamp(16px,4vw,40px) clamp(32px,6vw,64px);
+  max-width: 760px
+}
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mustard);
+  margin-bottom: 14px
+}
+h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(56px, 11vw, 132px);
+  line-height: .88;
+  text-transform: uppercase;
+  letter-spacing: .005em
+}
+h1 em {
+  font-style: normal;
+  color: var(--tomato);
+  display: block
+}
+.hero p {
+  margin-top: 18px;
+  max-width: 44ch;
+  color: var(--bone-2);
+  font-size: 17px
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 22px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  border: 2px solid var(--bone);
+  transition: background .2s,color .2s,transform .2s
+}
+.btn:hover {
+  background: var(--bone);
+  color: var(--coal)
+}
+.btn.hot {
+  background: var(--tomato);
+  border-color: var(--tomato);
+  color: #fff
+}
+.btn.hot:hover {
+  background: #b8260f;
+  border-color: #b8260f;
+  color: #fff;
+  transform: translateY(-2px)
+}
+.ribbon {
+  background: var(--mustard);
+  color: var(--coal);
+  overflow: hidden;
+  border-block: 3px solid var(--coal)
+}
+.ribbon div {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  padding: 14px 0;
+  font-family: var(--display);
+  font-size: 26px;
+  text-transform: uppercase;
+  animation: roll 28s linear infinite
+}
+.ribbon span::after {
+  content: "/";
+  margin-left: 40px;
+  color: var(--tomato)
+}
+@keyframes roll {
+  to {
+    transform: translateX(-50%)
+  }
+}
+.wrap {
+  width: min(1120px,100% - 32px);
+  margin-inline: auto
+}
+section.block {
+  padding: clamp(56px,9vw,110px) 0
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 36px
+}
+.kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mustard);
+  margin-bottom: 8px
+}
+h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: .92;
+  text-transform: uppercase
+}
+.head p {
+  max-width: 38ch;
+  color: var(--bone-2)
+}
+.menu {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(24px,4vw,56px);
+  align-items: start
+}
+.preview {
+  position: sticky;
+  top: 90px;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--coal-2)
+}
+.preview img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity .45s ease,transform .8s cubic-bezier(.2,.7,.2,1)
+}
+.preview img.on {
+  opacity: 1;
+  transform: scale(1)
+}
+.preview .price-tag {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background: var(--tomato);
+  color: #fff;
+  font-family: var(--display);
+  font-size: 30px;
+  padding: 10px 16px
+}
+.items {
+  list-style: none;
+  border-top: 1px solid var(--smoke)
+}
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 6px 18px;
+  align-items: start;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--smoke);
+  cursor: default
+}
+.item .n {
+  font-family: var(--display);
+  font-size: 20px;
+  color: var(--bone-2);
+  padding-top: 4px;
+  transition: color .2s
+}
+.item h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(26px, 3.2vw, 36px);
+  line-height: 1;
+  text-transform: uppercase;
+  transition: color .2s,transform .3s
+}
+.item p {
+  grid-column: 2;
+  color: var(--bone-2);
+  font-size: 14.5px;
+  max-width: 42ch
+}
+.item .side {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 10px
+}
+.item .gs {
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap
+}
+.add {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border: 1.5px solid var(--bone-2);
+  font-size: 13px;
+  font-weight: 700;
+  transition: background .2s,color .2s,border-color .2s
+}
+.add:hover {
+  background: var(--mustard);
+  border-color: var(--mustard);
+  color: var(--coal)
+}
+.item.on .n,
+.item:hover .n {
+  color: var(--mustard)
+}
+.item.on h3,
+.item:hover h3 {
+  color: var(--mustard);
+  transform: translateX(6px)
+}
+.anatomy {
+  background: var(--coal-2);
+  border-block: 1px solid var(--smoke)
+}
+.build {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px,5vw,72px);
+  align-items: center
+}
+.stack {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  margin-inline: auto
+}
+.stack svg {
+  width: 100%;
+  height: auto;
+  overflow: visible
+}
+.layer {
+  transform: translateY(-120px);
+  opacity: 0;
+  transition: transform .7s cubic-bezier(.3,1.35,.5,1),opacity .3s ease
+}
+.built .layer {
+  transform: none;
+  opacity: 1
+}
+.built .l1 {
+  transition-delay: 0s
+}
+.built .l2 {
+  transition-delay: .18s
+}
+.built .l3 {
+  transition-delay: .36s
+}
+.built .l4 {
+  transition-delay: .54s
+}
+.built .l5 {
+  transition-delay: .72s
+}
+.built .l6 {
+  transition-delay: .9s
+}
+.steps {
+  list-style: none;
+  counter-reset: s
+}
+.steps li {
+  counter-increment: s;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--smoke);
+  opacity: .25;
+  transition: opacity .4s
+}
+.built .steps li {
+  opacity: 1
+}
+.built .steps li:nth-child(2) {
+  transition-delay: .18s
+}
+.built .steps li:nth-child(3) {
+  transition-delay: .36s
+}
+.built .steps li:nth-child(4) {
+  transition-delay: .54s
+}
+.built .steps li:nth-child(5) {
+  transition-delay: .72s
+}
+.steps li::before {
+  content: "0" counter(s);
+  font-family: var(--display);
+  font-size: 34px;
+  line-height: 1;
+  color: var(--tomato)
+}
+.steps b {
+  display: block;
+  font-size: 16px
+}
+.steps span {
+  color: var(--bone-2);
+  font-size: 14.5px
+}
+.order {
+  background: var(--tomato);
+  color: #fff
+}
+.order .kicker {
+  color: var(--coal)
+}
+.order .head p {
+  color: rgba(255,255,255,.85)
+}
+.order-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 24px
+}
+.ticket {
+  background: var(--bone);
+  color: var(--coal);
+  padding: 26px;
+  position: relative
+}
+.ticket::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 10px;
+  background: radial-gradient(circle at 8px 0,transparent 8px,var(--bone) 8.5px) 0 0/16px 10px repeat-x
+}
+.ticket h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 26px;
+  text-transform: uppercase;
+  margin-bottom: 14px
+}
+.line {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px dashed #c9bfae
+}
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+.qty button {
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid var(--coal);
+  font-weight: 700
+}
+.qty button:hover {
+  background: var(--coal);
+  color: var(--bone)
+}
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-family: var(--display);
+  font-size: 30px
+}
+.empty {
+  padding: 24px 0 8px;
+  color: #5b5147
+}
+.empty a {
+  color: var(--tomato);
+  font-weight: 700
+}
+form {
+  display: grid;
+  gap: 16px;
+  align-content: start
+}
+label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 6px
+}
+input,
+textarea {
+  width: 100%;
+  padding: 13px 14px;
+  background: rgba(0,0,0,.18);
+  border: 1.5px solid rgba(255,255,255,.45);
+  color: #fff
+}
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255,255,255,.6)
+}
+input:focus,
+textarea:focus {
+  outline: 0;
+  border-color: #fff;
+  background: rgba(0,0,0,.28)
+}
+.err {
+  display: block;
+  min-height: 18px;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mustard)
+}
+.wa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  background: var(--coal);
+  color: var(--bone);
+  font-weight: 700;
+  font-size: 16px;
+  transition: transform .2s,background .2s
+}
+.wa:hover {
+  background: #000;
+  transform: translateY(-2px)
+}
+footer {
+  padding: 40px clamp(16px,4vw,40px);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: var(--bone-2);
+  font-size: 14px
+}
+footer small {
+  display: block;
+  width: 100%;
+  padding-top: 16px;
+  border-top: 1px solid var(--smoke);
+  font-size: 12.5px;
+  color: #7c7266
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)
+}
+.reveal.in {
+  opacity: 1;
+  transform: none
+}
+@media (max-width:760px) {
+  .nav ul {
+    display: none
+  }
+  .build,
+  .menu,
+  .order-grid {
+    grid-template-columns: 1fr
+  }
+  .preview {
+    position: relative;
+    top: 0;
+    aspect-ratio: 16/10
+  }
+  .item {
+    grid-template-columns: auto 1fr
+  }
+  .item .side {
+    grid-row: auto;
+    grid-column: 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,
+  ::after,
+  ::before {
+    animation: none!important;
+    transition: none!important
+  }
+  .layer,
+  .reveal,
+  .steps li {
+    opacity: 1!important;
+    transform: none!important
+  }
+}</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="logo" href="#inicio">HUMO <span>NEGRO</span></a>
+  <nav aria-label="Principal">
+    <ul>
+      <li><a href="#menu">Menú</a></li>
+      <li><a href="#anatomia">La receta</a></li>
+      <li><a href="#pedido">Pedido</a></li>
+    </ul>
+  </nav>
+  <a class="cart-link" href="#pedido" aria-label="Ir al pedido">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+    Pedido <span class="cart-count" id="count" aria-live="polite">0</span>
+  </a>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1800&q=80&auto=format&fit=crop" alt="Hamburguesa doble con queso fundido sobre tabla de madera">
+    <div class="hero-copy">
+      <span class="tag">Parrilla a leña de quebracho · Asunción</span>
+      <h1>Fuego lento. <em>Hambre rápida.</em></h1>
+      <p>Carne de 180 g madurada en casa, pan brioche que horneamos cada mañana y humo de verdad. Sin atajos.</p>
+      <div class="actions">
+        <a class="btn hot" href="#pedido">Pedir ahora
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn" href="#menu">Ver el menú</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="ribbon" aria-hidden="true">
+    <div>
+      <span>Brioche propio</span><span>Cheddar añejo</span><span>Panceta ahumada</span><span>Leña de quebracho</span><span>Salsa de la casa</span>
+      <span>Brioche propio</span><span>Cheddar añejo</span><span>Panceta ahumada</span><span>Leña de quebracho</span><span>Salsa de la casa</span>
+    </div>
+  </div>
+
+  <section class="block" id="menu">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><p class="kicker">La carta</p><h2>Cuatro que<br>no fallan</h2></div>
+        <p>Pasa el mouse por cada una para verla. Todas salen con papas rústicas.</p>
+      </div>
+      <div class="menu">
+        <div class="preview reveal" aria-hidden="true">
+          <img class="on" data-for="1" src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=1000&q=80&auto=format&fit=crop" alt="">
+          <img data-for="2" src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=1000&q=80&auto=format&fit=crop" alt="" loading="lazy">
+          <img data-for="3" src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=1000&q=80&auto=format&fit=crop" alt="" loading="lazy">
+          <img data-for="4" src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=1000&q=80&auto=format&fit=crop" alt="" loading="lazy">
+          <span class="price-tag" id="previewPrice">Gs. 52.000</span>
+        </div>
+        <ul class="items reveal">
+          <li class="item on" data-id="1" data-name="La Humera" data-price="52000">
+            <span class="n">01</span><h3>La Humera</h3>
+            <div class="side"><span class="gs">Gs. 52.000</span><button class="add" type="button">+ Agregar</button></div>
+            <p>Doble carne smash, cheddar añejo, panceta al humo, cebolla caramelizada y salsa de la casa.</p>
+          </li>
+          <li class="item" data-id="2" data-name="Clásica de Leña" data-price="41000">
+            <span class="n">02</span><h3>Clásica de leña</h3>
+            <div class="side"><span class="gs">Gs. 41.000</span><button class="add" type="button">+ Agregar</button></div>
+            <p>Carne de 180 g, queso, lechuga, tomate y mayonesa de ajo asado. La de siempre, bien hecha.</p>
+          </li>
+          <li class="item" data-id="3" data-name="Picante Quebracho" data-price="47000">
+            <span class="n">03</span><h3>Picante quebracho</h3>
+            <div class="side"><span class="gs">Gs. 47.000</span><button class="add" type="button">+ Agregar</button></div>
+            <p>Jalapeños asados, provoleta ahumada, rúcula y alioli con chipotle.</p>
+          </li>
+          <li class="item" data-id="4" data-name="Combo Rústico" data-price="58000">
+            <span class="n">04</span><h3>Combo rústico</h3>
+            <div class="side"><span class="gs">Gs. 58.000</span><button class="add" type="button">+ Agregar</button></div>
+            <p>Hamburguesa con cheddar y panceta, papas rústicas con romero y salsa barbacoa casera.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block anatomy" id="anatomia">
+    <div class="wrap">
+      <div class="head reveal"><div><p class="kicker">La receta</p><h2>Así se arma</h2></div></div>
+      <div class="build" id="build">
+        <div class="stack">
+          <svg viewBox="0 0 320 300" role="img" aria-label="Hamburguesa armándose capa por capa">
+            <g class="layer l1"><path d="M40 238h240c0 22-14 36-40 38H80c-26-2-40-16-40-38z" fill="#c98a3c"/><path d="M40 238h240c0 6-2 10-5 14H45c-3-4-5-8-5-14z" fill="#e0a456"/></g>
+            <g class="layer l2"><rect x="30" y="200" width="260" height="38" rx="14" fill="#4a2a17"/><path d="M36 214c30 6 60-4 90 2s60 6 90 0 50 4 68 0" stroke="#2c170b" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M40 226c40 4 90-2 130 2s80 2 116-2" stroke="#6a3d20" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+            <g class="layer l3"><path d="M34 196h252l-10 10-22-2-16 22-18-20-44 2-20 16-18-16-40 4-18-6z" fill="#f2b705"/></g>
+            <g class="layer l4"><path d="M26 186c20-12 36 8 58-2s34-10 52 0 34 8 54-2 38-4 52 2 28 2 36-2l-6 16c-20 6-34-4-52 2s-36 6-56-2-34-2-54 4-34 2-50-2-26 0-34-4z" fill="#4f9a3a"/></g>
+            <g class="layer l5"><ellipse cx="108" cy="168" rx="62" ry="12" fill="#d8321e"/><ellipse cx="214" cy="168" rx="62" ry="12" fill="#c02a18"/><ellipse cx="108" cy="166" rx="40" ry="6" fill="#ef5a3f"/></g>
+            <g class="layer l6"><path d="M40 156c0-70 52-110 120-110s120 40 120 110z" fill="#d4913f"/><path d="M60 150c4-56 46-90 100-90" stroke="#e8ad60" stroke-width="10" fill="none" stroke-linecap="round" opacity=".7"/>
+              <g fill="#f6ead2"><ellipse cx="120" cy="84" rx="4" ry="7" transform="rotate(-30 120 84)"/><ellipse cx="160" cy="70" rx="4" ry="7"/><ellipse cx="200" cy="86" rx="4" ry="7" transform="rotate(30 200 86)"/><ellipse cx="140" cy="108" rx="4" ry="7" transform="rotate(-15 140 108)"/><ellipse cx="184" cy="112" rx="4" ry="7" transform="rotate(20 184 112)"/><ellipse cx="96" cy="118" rx="4" ry="7" transform="rotate(-40 96 118)"/><ellipse cx="226" cy="120" rx="4" ry="7" transform="rotate(40 226 120)"/></g></g>
+          </svg>
+        </div>
+        <ol class="steps">
+          <li><div><b>Pan brioche de la casa</b><span>Horneado cada mañana y sellado en manteca.</span></div></li>
+          <li><div><b>Carne de 180 g a la leña</b><span>Corte madurado, 20 % de grasa, fuego directo de quebracho.</span></div></li>
+          <li><div><b>Cheddar añejo fundido</b><span>Se funde sobre la carne en la misma parrilla.</span></div></li>
+          <li><div><b>Lechuga y tomate del día</b><span>De productores de Areguá, cortados al momento.</span></div></li>
+          <li><div><b>Tapa con sésamo</b><span>Tostada del lado de adentro para que no se ablande.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="block order" id="pedido">
+    <div class="wrap">
+      <div class="head reveal"><div><p class="kicker">Delivery y retiro</p><h2>Tu pedido</h2></div><p>Arma el pedido acá y te lo mandamos listo a WhatsApp. Sin registrarte.</p></div>
+      <div class="order-grid">
+        <div class="ticket reveal">
+          <h3>Ticket</h3>
+          <div id="lines"></div>
+          <div class="total"><span>Total</span><span id="total">Gs. 0</span></div>
+        </div>
+        <form id="form" class="reveal" novalidate>
+          <div><label for="nombre">Nombre</label><input id="nombre" autocomplete="name" placeholder="Ej. Carlos Benítez"><span class="err" id="e-nombre"></span></div>
+          <div><label for="dir">Dirección de entrega</label><input id="dir" autocomplete="street-address" placeholder="Ej. Av. Mariscal López 1420 c/ Perú"><span class="err" id="e-dir"></span></div>
+          <div><label for="nota">Aclaraciones (opcional)</label><textarea id="nota" rows="2" placeholder="Ej. Sin cebolla, timbre 2B"></textarea></div>
+          <span class="err" id="e-cart"></span>
+          <button class="wa" type="submit">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>
+            Enviar pedido por WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Av. Mariscal López y Brasilia · Asunción</span>
+  <span>Miércoles a domingo · 19:00 a 00:00</span>
+  <small>Marca ficticia · Prototipo de diseño por Jesús Amarilla</small>
+</footer>
+
+<script>const gs = n => 'Gs. ' + n.toLocaleString('es-PY');
+
+const cart = new Map;
+
+const lines = document.getElementById('lines');
+
+const count = document.getElementById('count');
+
+const previews = document.querySelectorAll('.preview img');
+
+const previewPrice = document.getElementById('previewPrice');
+
+document.querySelectorAll('.item').forEach(item => {
+  const show = () => {
+    document.querySelectorAll('.item').forEach(i => i.classList.toggle('on', i === item));
+    previews.forEach(img => img.classList.toggle('on', img.dataset.for === item.dataset.id));
+    previewPrice.textContent = gs(+item.dataset.price);
+  };
+  item.addEventListener('mouseenter', show);
+  item.addEventListener('focusin', show);
+  item.querySelector('.add').addEventListener('click', () => {
+    const it = cart.get(item.dataset.id) || {
+      name: item.dataset.name,
+      price: +item.dataset.price,
+      qty: 0
+    };
+    it.qty++;
+    cart.set(item.dataset.id, it);
+    render();
+    count.classList.remove('bump');
+    void count.offsetWidth;
+    count.classList.add('bump');
+  });
+});
+
+function render() {
+  lines.replaceChildren();
+  let total = 0, units = 0;
+  cart.forEach((it, id) => {
+    total += it.price * it.qty;
+    units += it.qty;
+    const row = document.createElement('div');
+    row.className = 'line';
+    const name = document.createElement('span');
+    name.textContent = it.name;
+    const q = document.createElement('div');
+    q.className = 'qty';
+    const minus = document.createElement('button');
+    minus.type = 'button';
+    minus.textContent = '-';
+    minus.setAttribute('aria-label', 'Quitar uno de ' + it.name);
+    const n = document.createElement('span');
+    n.textContent = it.qty;
+    const plus = document.createElement('button');
+    plus.type = 'button';
+    plus.textContent = '+';
+    plus.setAttribute('aria-label', 'Sumar uno de ' + it.name);
+    minus.onclick = () => {
+      it.qty--;
+      if (!it.qty) cart.delete(id);
+      render();
+    };
+    plus.onclick = () => {
+      it.qty++;
+      render();
+    };
+    q.append(minus, n, plus);
+    const sub = document.createElement('b');
+    sub.textContent = gs(it.price * it.qty);
+    row.append(name, q, sub);
+    lines.append(row);
+  });
+  if (!cart.size) {
+    const p = document.createElement('p');
+    p.className = 'empty';
+    p.append('Todavía no agregaste nada. ');
+    const a = document.createElement('a');
+    a.href = '#menu';
+    a.textContent = 'Elige del menú';
+    p.append(a);
+    lines.append(p);
+  }
+  document.getElementById('total').textContent = gs(total);
+  count.textContent = units;
+}
+
+render();
+
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const nombre = document.getElementById('nombre').value.trim();
+  const dir = document.getElementById('dir').value.trim();
+  const nota = document.getElementById('nota').value.trim();
+  const eN = document.getElementById('e-nombre'), eD = document.getElementById('e-dir'), eC = document.getElementById('e-cart');
+  eN.textContent = nombre.length < 2 ? 'Escribe tu nombre.' : '';
+  eD.textContent = dir.length < 6 ? 'Escribe una dirección con calle y referencia.' : '';
+  eC.textContent = !cart.size ? 'Agrega al menos una hamburguesa del menú.' : '';
+  if (eN.textContent || eD.textContent || eC.textContent) return;
+  let msg = 'Pedido Humo Negro\n\n';
+  let total = 0;
+  cart.forEach(it => {
+    total += it.price * it.qty;
+    msg += `${it.qty} x ${it.name} - ${gs(it.price * it.qty)}\n`;
+  });
+  msg += `\nTotal: ${gs(total)}\nNombre: ${nombre}\nDirección: ${dir}`;
+  if (nota) msg += `\nAclaraciones: ${nota}`;
+  window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+});
+
+const io = new IntersectionObserver(entries => entries.forEach(en => {
+  if (!en.isIntersecting) return;
+  en.target.classList.add(en.target.id === 'build' ? 'built' : 'in');
+  io.unobserve(en.target);
+}), {
+  threshold: .25
+});
+
+document.querySelectorAll('.reveal, #build').forEach(el => io.observe(el))</script>
+</body>
+</html>
