@@ -14,6 +14,7 @@
   --teal-2: #0a5f67;
   --teal-soft: #d4ecee;
   --coral: #ff7a5c;
+  --coral-deep: #c8472a;
   --ink: #0f2a2e;
   --ink-2: #4f6a6e;
   --line: #d9e6e8;
@@ -180,7 +181,8 @@ h1 span {
   color: var(--teal)
 }
 .btn.soft:hover {
-  background: var(--teal-soft)
+  background: var(--teal-soft);
+  color: var(--teal-2)
 }
 .photo {
   position: relative
@@ -202,7 +204,7 @@ h1 span {
   display: flex;
   gap: 14px;
   align-items: center;
-  animation: pop .7s .5s cubic-bezier(.3,1.4,.5,1) both
+  animation: pop .7s .5s cubic-bezier(.22,1,.36,1) both
 }
 @keyframes pop {
   from {
@@ -214,7 +216,7 @@ h1 span {
   width: 52px;
   height: 56px;
   border-radius: 12px;
-  background: var(--coral);
+  background: var(--coral-deep);
   color: var(--white);
   display: grid;
   place-items: center;
@@ -422,7 +424,7 @@ h2 {
   cursor: not-allowed
 }
 .days button[aria-pressed=true] {
-  background: var(--coral);
+  background: var(--coral-deep);
   color: var(--white);
   font-weight: 500
 }
@@ -471,7 +473,7 @@ select {
   width: 100%;
   padding: 15px;
   border-radius: 12px;
-  background: var(--coral);
+  background: var(--coral-deep);
   color: var(--white);
   font-weight: 500;
   transition: opacity .2s
@@ -573,21 +575,56 @@ footer small {
   .treat {
     grid-template-columns: 1fr
   }
+  .hero .wrap {
+    gap: 24px
+  }
   .next {
-    left: 12px
+    position: static;
+    margin-top: 12px;
+    box-shadow: 0 12px 30px -18px rgba(15,42,46,.45)
   }
   .tlist {
     flex-direction: row;
-    overflow-x: auto
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    margin-inline: -16px;
+    padding-inline: 16px
+  }
+  .tlist::-webkit-scrollbar {
+    display: none
   }
   .tlist button {
-    white-space: nowrap
+    white-space: nowrap;
+    flex: none;
+    scroll-snap-align: start;
+    background: var(--sky)
   }
   .tpanel {
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr;
+    min-height: 0
   }
   .tpanel img {
+    height: auto;
     aspect-ratio: 16/9
+  }
+  .tpanel h3 {
+    font-size: 24px
+  }
+  .tpanel .from {
+    flex-wrap: wrap
+  }
+}
+@media (max-width:420px) {
+  .actions .btn {
+    flex: 1 1 100%;
+    justify-content: center
+  }
+  .panel {
+    padding: 16px
+  }
+  .slots {
+    grid-template-columns: repeat(2,1fr)
   }
 }
 @media (prefers-reduced-motion:reduce) {
