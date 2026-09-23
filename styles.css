@@ -146,7 +146,9 @@ h1 em { font-style: normal; color: var(--accent); text-shadow: 0 0 18px var(--gl
 .spec dd { color: var(--ink); }
 .swatches { display: flex; gap: 6px; }
 .swatches i { width: 26px; height: 26px; border-radius: 6px; border: 1px solid var(--edge); }
-.spec .open-new { font: 500 12.5px var(--mono); color: var(--accent); text-decoration: none; }
+.spec .open-new { display: inline-flex; align-items: center; gap: 8px; font: 500 12.5px var(--mono); color: var(--accent); text-decoration: none; }
+.spec .open-new svg { display: none; }
+.spec .why { display: none; }
 .fict { margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--edge); font: 500 11.5px/1.4 var(--mono); color: var(--ink-3); }
 
 .lab-filters { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 18px; }
@@ -220,6 +222,29 @@ footer.end a { color: var(--ink-2); }
 .legal code { font: 13px var(--mono); color: var(--accent); }
 .legal a { color: var(--accent); }
 
+.con-intro, .con-intro body { overflow: hidden; }
+.con-intro .intro { display: grid; }
+.intro { position: fixed; inset: 0; z-index: 200; grid-template-columns: minmax(0, 1fr); place-items: center; align-content: center; gap: 26px; padding: 24px; text-align: center;
+  background: radial-gradient(90% 60% at 50% 38%, rgba(80, 120, 220, .14), transparent 70%), var(--ground); transition: opacity .5s ease-out, visibility .5s; }
+.intro:focus { outline: none; }
+.intro.saliendo { opacity: 0; visibility: hidden; }
+.intro-mono { font: 600 44px/1 var(--mono); letter-spacing: .02em; }
+.intro-mono b { color: var(--accent); font-weight: 600; text-shadow: 0 0 22px var(--glow); }
+.intro-mono .caret { width: 16px; height: 36px; margin-left: 4px; vertical-align: -4px; }
+.intro-line { position: relative; width: 220px; height: 1px; overflow: hidden; background: var(--edge); }
+.intro-line i { position: absolute; inset: 0; background: var(--accent); transform: scaleX(var(--p, 0)); transform-origin: left; transition: transform .7s cubic-bezier(.22, 1, .36, 1); }
+.intro-tip { display: flex; gap: 14px; max-width: min(440px, 100%); padding: 16px 18px; text-align: left; animation: intro-rise .5s .3s cubic-bezier(.22, 1, .36, 1) both; }
+.intro-ico { flex: none; margin-top: 2px; color: var(--accent); }
+.intro-ico[hidden] { display: none; }
+.intro-tip p { color: var(--ink-2); font-size: 14.5px; }
+.intro-tip strong { display: block; margin-bottom: 4px; color: var(--ink); font-weight: 600; }
+.intro-tip b { color: var(--ink); font-weight: 600; }
+.intro-go { visibility: hidden; opacity: 0; transform: translateY(10px); transition: opacity .45s cubic-bezier(.22, 1, .36, 1), transform .45s cubic-bezier(.22, 1, .36, 1), visibility .45s; }
+.intro.listo .intro-go { visibility: visible; opacity: 1; transform: none; }
+.intro-hint { margin-top: -14px; font: 11.5px var(--mono); color: var(--ink-3); visibility: hidden; }
+.intro.listo .intro-hint { visibility: visible; }
+@keyframes intro-rise { from { opacity: 0; transform: translateY(12px); } }
+
 .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
 .js .reveal.in { opacity: 1; transform: none; }
 
@@ -242,6 +267,10 @@ footer.end a { color: var(--ink-2); }
   .level { white-space: nowrap; }
   .stage { grid-template-columns: 1fr; }
   .spec { border-left: 0; border-top: 1px solid var(--edge); }
+  
+  .spec .open-new { justify-content: center; padding: 13px 14px; border-radius: 8px; background: var(--accent); color: var(--accent-ink); font: 600 14px/1 var(--body); }
+  .spec .open-new svg { display: block; }
+  .spec .why { display: block; margin-top: -8px; font: 12px/1.5 var(--mono); color: var(--ink-3); }
   .frame, .frame[data-device="tablet"], .frame[data-device="mobile"] { width: 100%; height: 520px; }
   .lab { grid-template-columns: 1fr; }
   .lab-demo { height: 260px; }
@@ -262,10 +291,12 @@ footer.end a { color: var(--ink-2); }
   .viewport-area { padding: 14px; }
   .stack-row { padding: 16px; }
   .stack-row h3 { font-size: 18px; }
-  .level { font-size: 10.5px; padding: 5px 6px; letter-spacing: .04em; }
+  .level { font-size: 11px; padding: 5px 6px; letter-spacing: .03em; }
   .contact .say { padding: 24px 20px; }
   .json { padding: 20px; font-size: 12.5px; white-space: pre-wrap; overflow-wrap: anywhere; }
   .lab-code pre { max-height: 220px; }
+  .intro-mono { font-size: 36px; }
+  .intro-mono .caret { width: 13px; height: 30px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }

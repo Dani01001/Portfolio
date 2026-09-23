@@ -1,5 +1,91 @@
 document.documentElement.classList.add('js');
 
+(function() {
+  const intro = document.getElementById('intro');
+  if (!intro || !document.documentElement.classList.contains('con-intro')) return;
+  const go = document.getElementById('introGo');
+  const bar = intro.querySelector('.intro-line');
+  const outside = [ ...document.body.children ].filter(el => el !== intro && el.tagName !== 'SCRIPT');
+  outside.forEach(el => {
+    el.inert = true;
+  });
+  const isPc = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const platform = (navigator.userAgentData && navigator.userAgentData.platform || navigator.platform || '').toLowerCase();
+  const title = document.getElementById('introTipTitle');
+  const text = document.getElementById('introTipText');
+  const setText = (t, parts) => {
+    title.textContent = t;
+    text.replaceChildren(...parts.map(p => {
+      if (typeof p === 'string') return p;
+      const b = document.createElement('b');
+      b.textContent = p.b;
+      return b;
+    }));
+  };
+  if (!isPc) {
+    setText('Un consejo para el celular', [ 'En el Estudio de diseño, toca ', {
+      b: '"Abrir en pestaña nueva"'
+    }, ' para ver cada prototipo a pantalla completa. En el recuadro se siente limitado.' ]);
+    intro.querySelector('[data-dev="pc"]').setAttribute('hidden', '');
+    intro.querySelector('[data-dev="movil"]').removeAttribute('hidden');
+    document.getElementById('introHint').hidden = true;
+  } else if (platform.includes('win')) {
+    setText('Para verlo como fue diseñado', [ 'En Windows, abre "Ajustar la apariencia y el rendimiento de Windows" y elige ', {
+      b: 'Ajustar para obtener la mejor apariencia'
+    }, '. En modo rendimiento se apagan las animaciones y el sitio se ve plano.' ]);
+  } else if (platform.includes('mac')) {
+    setText('Para verlo como fue diseñado', [ 'En Mac, revisa que esté desactivado ', {
+      b: 'Reducir movimiento'
+    }, ' (Configuración del Sistema › Accesibilidad › Pantalla). Si está activo, se apagan las animaciones.' ]);
+  }
+  intro.hidden = false;
+  intro.focus();
+  const setProgress = p => {
+    bar.style.setProperty('--p', p);
+    bar.setAttribute('aria-valuenow', Math.round(p * 100));
+  };
+  requestAnimationFrame(() => setProgress(.7));
+  let ready = false;
+  const markReady = () => {
+    if (ready) return;
+    ready = true;
+    setProgress(1);
+    setTimeout(() => {
+      intro.classList.add('listo');
+      go.disabled = false;
+      go.focus({
+        focusVisible: false
+      });
+    }, 450);
+  };
+  if (document.readyState === 'complete') markReady(); else window.addEventListener('load', markReady, {
+    once: true
+  });
+  setTimeout(markReady, 8e3);
+  function enter() {
+    if (go.disabled) return;
+    try {
+      sessionStorage.setItem('jda-intro', '1');
+    } catch (e) {}
+    outside.forEach(el => {
+      el.inert = false;
+    });
+    intro.classList.add('saliendo');
+    document.documentElement.classList.remove('con-intro');
+    setTimeout(() => {
+      intro.remove();
+    }, 550);
+  }
+  go.addEventListener('click', enter);
+  document.addEventListener('keydown', function onKey(e) {
+    if (e.key !== 'Enter' || !intro.isConnected || go.disabled) return;
+    if (e.target === go) return;
+    e.preventDefault();
+    enter();
+    document.removeEventListener('keydown', onKey);
+  });
+})();
+
 const nav = document.getElementById('nav');
 
 const toggle = nav.querySelector('.nav-toggle');
@@ -188,11 +274,15 @@ function showProto() {
   open.href = p.src;
   open.target = '_blank';
   open.rel = 'noopener';
-  open.textContent = 'Abrir en pestaña nueva';
+  open.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
+  open.append('Abrir en pestaña nueva');
+  const why = document.createElement('p');
+  why.className = 'why';
+  why.textContent = '// en el recuadro se ve reducido; a pantalla completa se recorre como un sitio real';
   const note = document.createElement('p');
   note.className = 'fict';
   note.textContent = 'Marca ficticia creada para este estudio. No es un cliente real.';
-  spec.replaceChildren(row('Prototipo', p.name), row('Estilo', p.style), row('Tipografía', p.type), row('Paleta', sw), open, note);
+  spec.replaceChildren(row('Prototipo', p.name), row('Estilo', p.style), row('Tipografía', p.type), row('Paleta', sw), open, why, note);
 }
 
 document.querySelectorAll('.tabs .chip').forEach(b => b.addEventListener('click', () => {

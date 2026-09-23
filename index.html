@@ -32,6 +32,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>try {
+  if (!sessionStorage.getItem('jda-intro')) document.documentElement.classList.add('con-intro');
+} catch (e) {}</script>
 
   <script type="application/ld+json">
   {
@@ -52,6 +55,19 @@
   </script>
 </head>
 <body>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introTitle" aria-describedby="introTip" tabindex="-1" hidden>
+  <p class="intro-mono" id="introTitle" aria-label="Portafolio de Jesús Amarilla">~/<b>JDA</b><span class="caret" aria-hidden="true"></span></p>
+  <div class="intro-line" role="progressbar" aria-label="Cargando el sitio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
+  <div class="glass intro-tip" id="introTip">
+    <svg class="intro-ico" data-dev="pc" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>
+    <svg class="intro-ico" data-dev="movil" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" hidden><rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M11 18.5h2"/></svg>
+    <p><strong id="introTipTitle">Para verlo como fue diseñado</strong><span id="introTipText">Si tu sistema está en modo rendimiento o con movimiento reducido, se apagan las animaciones y el sitio se ve plano.</span></p>
+  </div>
+  <button class="btn primary intro-go" type="button" id="introGo" disabled="disabled">Entrar al portafolio</button>
+  <p class="intro-hint" id="introHint" aria-hidden="true">o presiona Enter</p>
+</div>
+
 <a class="skip-link" href="#main">Saltar al contenido</a>
 <div class="bg" aria-hidden="true"></div>
 
