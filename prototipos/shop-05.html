@@ -507,7 +507,7 @@ footer .wrap {
 <script>const ways = [ {
   v: 'beach',
   n: 'Playa',
-  dot: '#d69a9c',
+  dot: '#d8a1a4',
   bg: '#f1e6d4',
   bg2: '#e6d6bd',
   ink: '#1d1a14',
@@ -515,7 +515,7 @@ footer .wrap {
 }, {
   v: 'midnight',
   n: 'Medianoche',
-  dot: '#27324d',
+  dot: '#1f82b8',
   bg: '#141a2b',
   bg2: '#1d2640',
   ink: '#eef1f8',
@@ -523,7 +523,7 @@ footer .wrap {
 }, {
   v: 'street',
   n: 'Calle',
-  dot: '#c43b2f',
+  dot: 'linear-gradient(135deg, #2b2b2b 55%, #e8454f 55%)',
   bg: '#e9e7e2',
   bg2: '#dcd9d1',
   ink: '#161616',
@@ -574,45 +574,7 @@ mv.addEventListener('error', () => {
   document.getElementById('loading').textContent = 'No se pudo cargar el modelo 3D. Revisa tu conexión.';
 });
 
-mv.addEventListener('load', async () => {
-  const avg = async tex => {
-    const img = new Image;
-    img.src = await tex.source.createThumbnail(32, 32);
-    await img.decode();
-    const c = document.createElement('canvas');
-    c.width = c.height = 32;
-    const g = c.getContext('2d');
-    g.drawImage(img, 0, 0);
-    const d = g.getImageData(0, 0, 32, 32).data;
-    let r = 0, gg = 0, b = 0, n = 0;
-    for (let i = 0; i < d.length; i += 4) {
-      const mx = Math.max(d[i], d[i + 1], d[i + 2]), mn = Math.min(d[i], d[i + 1], d[i + 2]);
-      if (mx > 25 && mx < 245) {
-        r += d[i];
-        gg += d[i + 1];
-        b += d[i + 2];
-        n++;
-      }
-    }
-    return n ? {
-      hex: '#' + [ r, gg, b ].map(x => Math.round(x / n).toString(16).padStart(2, '0')).join(''),
-      sat: Math.max(r, gg, b) / n - Math.min(r, gg, b) / n
-    } : null;
-  };
-  try {
-    for (const w of ways) {
-      mv.variantName = w.v;
-      await new Promise(r => setTimeout(r, 120));
-      let best = null;
-      for (const m of mv.model.materials) {
-        const t = m.pbrMetallicRoughness.baseColorTexture && m.pbrMetallicRoughness.baseColorTexture.texture;
-        if (!t) continue;
-        const c = await avg(t);
-        if (c && (!best || c.sat > best.sat)) best = c;
-      }
-      if (best) document.querySelector(`.way[data-v="${w.v}"] i`).style.background = best.hex;
-    }
-  } catch (e) {}
+mv.addEventListener('load', () => {
   mv.variantName = current.v;
 });
 
