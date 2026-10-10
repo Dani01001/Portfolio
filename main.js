@@ -282,7 +282,9 @@ function showProto() {
   const note = document.createElement('p');
   note.className = 'fict';
   note.textContent = 'Marca ficticia creada para este estudio. No es un cliente real.';
-  spec.replaceChildren(row('Prototipo', p.name), row('Estilo', p.style), row('Tipografía', p.type), row('Paleta', sw), open, why, note);
+  const list = document.createElement('dl');
+  list.append(row('Prototipo', p.name), row('Estilo', p.style), row('Tipografía', p.type), row('Paleta', sw));
+  spec.replaceChildren(list, open, why, note);
 }
 
 document.querySelectorAll('.tabs .chip').forEach(b => b.addEventListener('click', () => {

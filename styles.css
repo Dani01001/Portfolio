@@ -142,6 +142,7 @@ h1 em { font-style: normal; color: var(--accent); text-shadow: 0 0 18px var(--gl
 .frame[data-device="mobile"] { width: 360px; }
 .frame iframe { display: block; width: 100%; height: 100%; border: 0; }
 .spec { border-left: 1px solid var(--edge); padding: 20px; display: flex; flex-direction: column; gap: 16px; font-size: 14px; }
+.spec dl { display: flex; flex-direction: column; gap: 16px; }
 .spec dt { margin-bottom: 6px; font: 500 11.5px/1 var(--mono); color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
 .spec dd { color: var(--ink); }
 .swatches { display: flex; gap: 6px; }
