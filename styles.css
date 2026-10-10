@@ -100,6 +100,12 @@ h1 em { font-style: normal; color: var(--accent); text-shadow: 0 0 18px var(--gl
 .urlbar { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--edge); background: rgba(3, 6, 14, .5); font: 12.5px var(--mono); color: var(--ink-3); }
 .urlbar i { width: 8px; height: 8px; border-radius: 50%; background: var(--mark-live); flex: none; }
 .urlbar.dev i { background: var(--mark-dev); }
+
+.shot { position: relative; overflow: hidden; border: 1px solid var(--edge); border-radius: 6px; background: var(--ground-2); }
+.shot-desk { display: block; width: 100%; height: auto; }
+.shot-phone { position: absolute; right: 5%; bottom: 0; width: 22%; min-width: 72px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--edge); border-bottom: 0; border-radius: 8px 8px 0 0; background: var(--ground); box-shadow: -8px -8px 24px rgba(0, 0, 0, .6); }
+.shot-phone::before { content: ""; flex: none; height: 12px; background: var(--ground-2) radial-gradient(circle, var(--ink-3) 1.5px, transparent 2px) center / 100% 100% no-repeat; border-bottom: 1px solid var(--edge); }
+.shot-phone img { display: block; width: 100%; height: auto; }
 .urlbar span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .stack { display: flex; flex-wrap: wrap; gap: 6px; }
 .stack span { padding: 7px 9px; border-radius: 6px; background: var(--glass-strong); color: var(--ink-2); font: 500 12px/1 var(--mono); }
@@ -142,6 +148,7 @@ h1 em { font-style: normal; color: var(--accent); text-shadow: 0 0 18px var(--gl
 .frame[data-device="mobile"] { width: 360px; }
 .frame iframe { display: block; width: 100%; height: 100%; border: 0; }
 .spec { border-left: 1px solid var(--edge); padding: 20px; display: flex; flex-direction: column; gap: 16px; font-size: 14px; }
+.spec dl { display: flex; flex-direction: column; gap: 16px; }
 .spec dt { margin-bottom: 6px; font: 500 11.5px/1 var(--mono); color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
 .spec dd { color: var(--ink); }
 .swatches { display: flex; gap: 6px; }
