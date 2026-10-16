@@ -6,7 +6,7 @@ Sitio personal de presentación profesional. Frontend Developer Junior, Técnico
 
 ## Qué incluye
 
-- **Proyectos reales:** ReservaYa, SERCAP e IR Barber Supply, con enlaces en vivo y el caso completo de cada uno.
+- **Proyectos reales:** ReservaYa, SERCAP y la plantilla de tienda Tuerca y Clavo, con enlaces en vivo y el caso completo de cada uno.
 - **Estudio de diseño:** 15 prototipos navegables de marcas ficticias (gastronomía, e-commerce y corporativo), con visor en modo escritorio, tablet y móvil. Tres son experimentales: un helado 3D con Three.js, una zapatilla 3D con model-viewer y una agencia con tipografía de ancho variable.
 - **Laboratorio de componentes:** 16 componentes interactivos con su HTML, CSS y JavaScript a la vista.
 - **Lo que puedo integrar:** demostraciones de inicio de sesión con Google, pago con tarjeta en modo prueba, pedidos a WhatsApp, formularios, app sin conexión, API con JWT y panel de ventas.
